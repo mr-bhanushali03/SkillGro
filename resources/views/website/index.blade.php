@@ -528,7 +528,7 @@
                       </ul>
                     </div>
                     <div class="tg-button-wrap">
-                      <a href="instructor-details.php" class="btn arrow-btn">Join My Class
+                      <a href="{{ url('instructorDetail') }}" class="btn arrow-btn">Join My Class
                         <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg" alt="img" class="injectable" /></a>
                     </div>
                   </div>
@@ -576,7 +576,7 @@
                       </ul>
                     </div>
                     <div class="tg-button-wrap">
-                      <a href="instructor-details.php" class="btn arrow-btn">Join My Class
+                      <a href="{{ url('instructorDetail') }}" class="btn arrow-btn">Join My Class
                         <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg" alt="img" class="injectable" /></a>
                     </div>
                   </div>
@@ -624,7 +624,7 @@
                       </ul>
                     </div>
                     <div class="tg-button-wrap">
-                      <a href="instructor-details.php" class="btn arrow-btn">Join My Class
+                      <a href="{{ url('instructorDetail') }}" class="btn arrow-btn">Join My Class
                         <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg" alt="img" class="injectable" /></a>
                     </div>
                   </div>
@@ -672,7 +672,7 @@
                       </ul>
                     </div>
                     <div class="tg-button-wrap">
-                      <a href="instructor-details.php" class="btn arrow-btn">Join My Class
+                      <a href="{{ url('instructorDetail') }}" class="btn arrow-btn">Join My Class
                         <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg" alt="img" class="injectable" /></a>
                     </div>
                   </div>
@@ -720,7 +720,7 @@
                       </ul>
                     </div>
                     <div class="tg-button-wrap">
-                      <a href="instructor-details.php" class="btn arrow-btn">Join My Class
+                      <a href="{{ url('instructorDetail') }}" class="btn arrow-btn">Join My Class
                         <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg" alt="img" class="injectable" /></a>
                     </div>
                   </div>
@@ -768,7 +768,7 @@
                       </ul>
                     </div>
                     <div class="tg-button-wrap">
-                      <a href="instructor-details.php" class="btn arrow-btn">Join My Class
+                      <a href="{{ url('instructorDetail') }}" class="btn arrow-btn">Join My Class
                         <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg" alt="img" class="injectable" /></a>
                     </div>
                   </div>
@@ -816,7 +816,7 @@
                       </ul>
                     </div>
                     <div class="tg-button-wrap">
-                      <a href="instructor-details.php" class="btn arrow-btn">Join My Class
+                      <a href="{{ url('instructorDetail') }}" class="btn arrow-btn">Join My Class
                         <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg" alt="img" class="injectable" /></a>
                     </div>
                   </div>
@@ -936,7 +936,7 @@
                 out on something special – stay tuned for details!
               </p>
               <div class="tg-button-wrap">
-                <a href="events.php" class="btn arrow-btn">See All Events
+                <a href="{{ url('events') }}" class="btn arrow-btn">See All Events
                   <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg" alt="img" class="injectable" /></a>
               </div>
             </div>
@@ -947,12 +947,12 @@
                 <div class="col-lg-4 col-md-6">
                   <div class="event__item shine__animate-item">
                     <div class="event__item-thumb">
-                      <a href="events-details.php" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/events/event_thumb01.jpg" alt="img" /></a>
+                      <a href="{{ url('eventDetail') }}" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/events/event_thumb01.jpg" alt="img" /></a>
                     </div>
                     <div class="event__item-content">
                       <span class="date">25 June, 2024</span>
                       <h2 class="title">
-                        <a href="events-details.php">The Accessible Target Sizes Cheatsheet</a>
+                        <a href="{{ url('eventDetail') }}">The Accessible Target Sizes Cheatsheet</a>
                       </h2>
                       <a href="https://maps.google.com/maps" class="location" target="_blank"><i class="flaticon-map"></i>United Kingdom</a>
                     </div>
@@ -961,12 +961,12 @@
                 <div class="col-lg-4 col-md-6">
                   <div class="event__item shine__animate-item">
                     <div class="event__item-thumb">
-                      <a href="events-details.php" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/events/event_thumb02.jpg" alt="img" /></a>
+                      <a href="{{ url('eventDetail') }}" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/events/event_thumb02.jpg" alt="img" /></a>
                     </div>
                     <div class="event__item-content">
                       <span class="date">25 June, 2024</span>
                       <h2 class="title">
-                        <a href="events-details.php">Exactly How Technology Can Make Reading</a>
+                        <a href="{{ url('eventDetail') }}">Exactly How Technology Can Make Reading</a>
                       </h2>
                       <a href="https://maps.google.com/maps" class="location" target="_blank"><i class="flaticon-map"></i>Tokyo Japan</a>
                     </div>
@@ -975,12 +975,12 @@
                 <div class="col-lg-4 col-md-6">
                   <div class="event__item shine__animate-item">
                     <div class="event__item-thumb">
-                      <a href="events-details.php" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/events/event_thumb03.jpg" alt="img" /></a>
+                      <a href="{{ url('eventDetail') }}" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/events/event_thumb03.jpg" alt="img" /></a>
                     </div>
                     <div class="event__item-content">
                       <span class="date">25 June, 2024</span>
                       <h2 class="title">
-                        <a href="events-details.php">Aewe Creating Futures Through Technology</a>
+                        <a href="{{ url('eventDetail') }}">Aewe Creating Futures Through Technology</a>
                       </h2>
                       <a href="https://maps.google.com/maps" class="location" target="_blank"><i class="flaticon-map"></i>New Work</a>
                     </div>

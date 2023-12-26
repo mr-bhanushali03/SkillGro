@@ -6,7 +6,8 @@
                 <div class="col-xl-3 col-lg-4 col-md-6">
                     <div class="footer__widget">
                         <div class="logo mb-35">
-                            <a href="{{ route('website.home') }}"><img src="{{ asset('storage/website') }}/img/logo/secondary_logo.svg" alt="img" /></a>
+                            <a href="{{ route('website.home') }}"><img
+                                    src="{{ asset('storage/website') }}/img/logo/secondary_logo.svg" alt="img" /></a>
                         </div>
                         <div class="footer__content">
                             <p>
@@ -15,7 +16,8 @@
                             </p>
                             <ul class="list-wrap">
                                 <li>
-                                    <a href="https://maps.google.com?q=463+7th+Ave,+NY+10018,+USA" target="_blank" style="color: #949bb1">
+                                    <a href="https://maps.google.com?q=463+7th+Ave,+NY+10018,+USA" target="_blank"
+                                        style="color: #949bb1">
                                         <i class="fa fa-map-marker"></i> 463 7th Ave, NY 10018,
                                         USA
                                     </a>
@@ -43,10 +45,10 @@
                                 <li>
                                     <a href="{{ url('about') }}">About Us</a>
                                 </li>
-                                <li><a href="courses.php">Courses</a></li>
-                                <li><a href="instructors.php">Instructor</a></li>
+                                <li><a href="{{ url('courses') }}">Courses</a></li>
+                                <li><a href="{{ url('instructors') }}">Instructor</a></li>
                                 <li>
-                                    <a href="contact.php">Contact Us</a>
+                                    <a href="{{ url('contact') }}">Contact Us</a>
                                 </li>
                             </ul>
                         </div>
@@ -57,16 +59,16 @@
                         <h4 class="footer__widget-title">Our Company</h4>
                         <div class="footer__link">
                             <ul class="list-wrap">
-                                <li><a href="{{url('blogs')}}">Blogs</a></li>
-                                <li><a href="events.php">Events</a></li>
+                                <li><a href="{{ url('blogs') }}">Blogs</a></li>
+                                <li><a href="{{ url('events') }}">Events</a></li>
                                 <li>
-                                    <a href="privacy.php">Privacy</a>
+                                    <a href="{{url('privacy')}}">Privacy</a>
                                 </li>
                                 <li>
-                                    <a href="terms.php">Terms</a>
+                                    <a href="{{url('terms')}}">Terms</a>
                                 </li>
                                 <li>
-                                    <a href="support.php">Support</a>
+                                    <a href="{{url('support')}}">Support</a>
                                 </li>
                             </ul>
                         </div>
@@ -83,34 +85,41 @@
                             <ul class="list-wrap footer__social">
                                 <li>
                                     <a href="https://www.facebook.com/" target="_blank">
-                                        <img src="{{ asset('storage/website') }}/img/icons/facebook.svg" alt="img" class="injectable" />
+                                        <img src="{{ asset('storage/website') }}/img/icons/facebook.svg" alt="img"
+                                            class="injectable" />
                                     </a>
                                 </li>
                                 <li>
                                     <a href="https://www.facebook.com/" target="_blank">
-                                        <img src="{{ asset('storage/website') }}/img/icons/twitter.svg" alt="img" class="injectable" />
+                                        <img src="{{ asset('storage/website') }}/img/icons/twitter.svg" alt="img"
+                                            class="injectable" />
                                     </a>
                                 </li>
                                 <li>
                                     <a href="https://www.facebook.com/" target="_blank">
-                                        <img src="{{ asset('storage/website') }}/img/icons/whatsapp.svg" alt="img" class="injectable" />
+                                        <img src="{{ asset('storage/website') }}/img/icons/whatsapp.svg" alt="img"
+                                            class="injectable" />
                                     </a>
                                 </li>
                                 <li>
                                     <a href="https://www.facebook.com/" target="_blank">
-                                        <img src="{{ asset('storage/website') }}/img/icons/instagram.svg" alt="img" class="injectable" />
+                                        <img src="{{ asset('storage/website') }}/img/icons/instagram.svg"
+                                            alt="img" class="injectable" />
                                     </a>
                                 </li>
                                 <li>
                                     <a href="https://www.facebook.com/" target="_blank">
-                                        <img src="{{ asset('storage/website') }}/img/icons/youtube.svg" alt="img" class="injectable" />
+                                        <img src="{{ asset('storage/website') }}/img/icons/youtube.svg" alt="img"
+                                            class="injectable" />
                                     </a>
                                 </li>
                             </ul>
                         </div>
                         <div class="app-download">
-                            <a href="#"><img src="{{ asset('storage/website') }}/img/others/google-play.svg" alt="img" /></a>
-                            <a href="#"><img src="{{ asset('storage/website') }}/img/others/apple-store.svg" alt="img" /></a>
+                            <a href="#"><img src="{{ asset('storage/website') }}/img/others/google-play.svg"
+                                    alt="img" /></a>
+                            <a href="#"><img src="{{ asset('storage/website') }}/img/others/apple-store.svg"
+                                    alt="img" /></a>
                         </div>
                     </div>
                 </div>

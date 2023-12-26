@@ -70,8 +70,8 @@
                                                 href="{{ url('courses') }}">Courses</a></li>
                                         <li class="{{ Request::is('instructors') ? 'active' : '' }} menu-item"><a
                                                 href="{{ url('instructors') }}">Instructors</a></li>
-                                        <li class="{{ Request::is('contact-us') ? 'active' : '' }} menu-item"><a
-                                                href="{{ url('contact-us') }}">Contact Us</a></li>
+                                        <li class="{{ Request::is('contact') ? 'active' : '' }} menu-item"><a
+                                                href="{{ url('contact') }}">Contact Us</a></li>
                                     </ul>
                                 </div>
                                 <script>

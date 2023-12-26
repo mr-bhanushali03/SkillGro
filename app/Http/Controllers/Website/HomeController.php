@@ -22,4 +22,44 @@ class HomeController extends Controller
     function blogDetail() {
         return view('website.blog-details');
     }
+
+    function courses() {
+        return view('website.courses');
+    }
+
+    function courseDetail() {
+        return view('website.courseDetail');
+    }
+
+    function events() {
+        return view('website.events');
+    }
+
+    function eventDetail() {
+        return view('website.eventDetail');
+    }
+
+    function instructors() {
+        return view('website.instructors');
+    }
+
+    function instructorDetail() {
+        return view('website.instructorDetail');
+    }
+
+    function contact() {
+        return view('website.contact');
+    }
+
+    function privacy() {
+        return view('website.privacy');
+    }
+
+    function support() {
+        return view('website.support');
+    }
+
+    function terms() {
+        return view('website.terms');
+    }
 }
