@@ -76,7 +76,7 @@
                             </li>
                         </ul>
                         <div class="tg-button-wrap">
-                            <a href="contact.php" class="btn arrow-btn">Start Free Trial <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg" alt="img" class="injectable"></a>
+                            <a href="{{ url('contact') }}" class="btn arrow-btn">Start Free Trial <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg" alt="img" class="injectable"></a>
                         </div>
                     </div>
                 </div>

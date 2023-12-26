@@ -137,8 +137,8 @@
                 <div class="col-md-5">
                     <div class="footer__bottom-menu">
                         <ul class="list-wrap">
-                            <li><a href="contact.php">Term of Use</a></li>
-                            <li><a href="contact.php">Privacy Policy</a></li>
+                            <li><a href="{{ url('contact') }}">Term of Use</a></li>
+                            <li><a href="{{ url('contact') }}">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>

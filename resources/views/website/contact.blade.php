@@ -73,7 +73,7 @@
                         <div class="contact-form-wrap">
                             <h4 class="title">Send Us Message</h4>
                             <p>Your email address will not be published. Required fields are marked *</p>
-                            <form id="contact-form" action="assets/mail.php" method="POST">
+                            <form id="contact-form" action="#" method="POST">
                                 <div class="form-grp">
                                     <textarea name="message" placeholder="Comment" required></textarea>
                                 </div>

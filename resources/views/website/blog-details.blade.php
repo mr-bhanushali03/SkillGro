@@ -15,7 +15,7 @@
                             </span>
                             <span class="breadcrumb-separator"><i class="fas fa-angle-right"></i></span>
                             <span property="itemListElement" typeof="ListItem">
-                                <a href="blog.html">Blogs</a>
+                                <a href="{{ url('blogs') }}">Blogs</a>
                             </span>
                             <span class="breadcrumb-separator"><i class="fas fa-angle-right"></i></span>
                             <span property="itemListElement" typeof="ListItem">How To Become idiculously Self-Aware In 20 Minutes</span>
@@ -240,46 +240,46 @@
                             <h4 class="widget-title">Latest Post</h4>
                             <div class="rc-post-item">
                                 <div class="rc-post-thumb">
-                                    <a href="blog-details.php">
+                                    <a href="{{ url('blogDetail') }}">
                                         <img src="{{ asset('storage/website') }}/img/blog/latest_post01.jpg" alt="img">
                                     </a>
                                 </div>
                                 <div class="rc-post-content">
                                     <span class="date"><i class="flaticon-calendar"></i> April 13, 2024</span>
-                                    <h4 class="title"><a href="blog-details.php">the Right Learning Path for your</a></h4>
+                                    <h4 class="title"><a href="{{ url('blogDetail') }}">the Right Learning Path for your</a></h4>
                                 </div>
                             </div>
                             <div class="rc-post-item">
                                 <div class="rc-post-thumb">
-                                    <a href="blog-details.php">
+                                    <a href="{{ url('blogDetail') }}">
                                         <img src="{{ asset('storage/website') }}/img/blog/latest_post02.jpg" alt="img">
                                     </a>
                                 </div>
                                 <div class="rc-post-content">
                                     <span class="date"><i class="flaticon-calendar"></i> April 13, 2024</span>
-                                    <h4 class="title"><a href="blog-details.php">The Growing Need Management</a></h4>
+                                    <h4 class="title"><a href="{{ url('blogDetail') }}">The Growing Need Management</a></h4>
                                 </div>
                             </div>
                             <div class="rc-post-item">
                                 <div class="rc-post-thumb">
-                                    <a href="blog-details.php">
+                                    <a href="{{ url('blogDetail') }}">
                                         <img src="{{ asset('storage/website') }}/img/blog/latest_post03.jpg" alt="img">
                                     </a>
                                 </div>
                                 <div class="rc-post-content">
                                     <span class="date"><i class="flaticon-calendar"></i> April 13, 2024</span>
-                                    <h4 class="title"><a href="blog-details.php">the Right Learning Path for your</a></h4>
+                                    <h4 class="title"><a href="{{ url('blogDetail') }}">the Right Learning Path for your</a></h4>
                                 </div>
                             </div>
                             <div class="rc-post-item">
                                 <div class="rc-post-thumb">
-                                    <a href="blog-details.php">
+                                    <a href="{{ url('blogDetail') }}">
                                         <img src="{{ asset('storage/website') }}/img/blog/latest_post04.jpg" alt="img">
                                     </a>
                                 </div>
                                 <div class="rc-post-content">
                                     <span class="date"><i class="flaticon-calendar"></i> April 13, 2024</span>
-                                    <h4 class="title"><a href="blog-details.php">The Growing Need Management</a></h4>
+                                    <h4 class="title"><a href="{{ url('blogDetail') }}">The Growing Need Management</a></h4>
                                 </div>
                             </div>
                         </div>

@@ -15,7 +15,7 @@
                             </span>
                             <span class="breadcrumb-separator"><i class="fas fa-angle-right"></i></span>
                             <span property="itemListElement" typeof="ListItem">
-                                <a href="events.html">Events</a>
+                                <a href="{{ url('events') }}">Events</a>
                             </span>
                             <span class="breadcrumb-separator"><i class="fas fa-angle-right"></i></span>
                             <span property="itemListElement" typeof="ListItem">Resolving Conflicts Between Designers</span>
@@ -47,7 +47,7 @@
                             <div class="col-70">
                                 <div class="event__details-content">
                                     <div class="event__details-content-top">
-                                        <a href="courses.html" class="tag">Development</a>
+                                        <a href="{{ url('courses') }}" class="tag">Development</a>
                                         <span class="avg-rating"><i class="fas fa-star"></i>(4.8 Reviews)</span>
                                     </div>
                                     <h2 class="title">How To Become idiculously Self-Aware In 20 Minutes</h2>
@@ -56,7 +56,7 @@
                                             <li class="author">
                                                 <img src="{{ asset('storage/website') }}/img/courses/course_author001.png" alt="img">
                                                 By
-                                                <a href="instructor-details.html">David Millar</a>
+                                                <a href="{{ url('instructorDetail') }}">David Millar</a>
                                             </li>
                                             <li class="location"><i class="flaticon-placeholder"></i>LocationWashington DC, MI 2726</li>
                                             <li><i class="flaticon-mortarboard"></i>2,250 Students</li>
@@ -160,7 +160,7 @@
                                             </div>
                                             <div class="courses__details-enroll">
                                                 <div class="tg-button-wrap">
-                                                    <a href="contact.html" class="btn arrow-btn">Join This Event <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg" alt="img" class="injectable"></a>
+                                                    <a href="{{ url('contact') }}" class="btn arrow-btn">Join This Event <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg" alt="img" class="injectable"></a>
                                                 </div>
                                             </div>
                                         </div>

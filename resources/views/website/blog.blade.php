@@ -40,7 +40,7 @@
                             <div class="blog__post-item shine__animate-item">
                                 <div class="blog__post-thumb">
                                     <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/blog/blog_post01.jpg" alt="img"></a>
-                                    <a href="blog.php" class="post-tag">Marketing</a>
+                                    <a href="{{ url('blog') }}" class="post-tag">Marketing</a>
                                 </div>
                                 <div class="blog__post-content">
                                     <div class="blog__post-meta">
@@ -57,7 +57,7 @@
                             <div class="blog__post-item shine__animate-item">
                                 <div class="blog__post-thumb">
                                     <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/blog/blog_post02.jpg" alt="img"></a>
-                                    <a href="blog.php" class="post-tag">Students</a>
+                                    <a href="{{ url('blog') }}" class="post-tag">Students</a>
                                 </div>
                                 <div class="blog__post-content">
                                     <div class="blog__post-meta">
@@ -74,7 +74,7 @@
                             <div class="blog__post-item shine__animate-item">
                                 <div class="blog__post-thumb">
                                     <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/blog/blog_post03.jpg" alt="img"></a>
-                                    <a href="blog.php" class="post-tag">Science</a>
+                                    <a href="{{ url('blog') }}" class="post-tag">Science</a>
                                 </div>
                                 <div class="blog__post-content">
                                     <div class="blog__post-meta">
@@ -91,7 +91,7 @@
                             <div class="blog__post-item shine__animate-item">
                                 <div class="blog__post-thumb">
                                     <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/blog/blog_post04.jpg" alt="img"></a>
-                                    <a href="blog.php" class="post-tag">Agency</a>
+                                    <a href="{{ url('blog') }}" class="post-tag">Agency</a>
                                 </div>
                                 <div class="blog__post-content">
                                     <div class="blog__post-meta">
@@ -108,7 +108,7 @@
                             <div class="blog__post-item shine__animate-item">
                                 <div class="blog__post-thumb">
                                     <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/blog/blog_post05.jpg" alt="img"></a>
-                                    <a href="blog.php" class="post-tag">Agency</a>
+                                    <a href="{{ url('blog') }}" class="post-tag">Agency</a>
                                 </div>
                                 <div class="blog__post-content">
                                     <div class="blog__post-meta">
@@ -125,7 +125,7 @@
                             <div class="blog__post-item shine__animate-item">
                                 <div class="blog__post-thumb">
                                     <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/blog/blog_post06.jpg" alt="img"></a>
-                                    <a href="blog.php" class="post-tag">Agency</a>
+                                    <a href="{{ url('blog') }}" class="post-tag">Agency</a>
                                 </div>
                                 <div class="blog__post-content">
                                     <div class="blog__post-meta">
@@ -142,7 +142,7 @@
                             <div class="blog__post-item shine__animate-item">
                                 <div class="blog__post-thumb">
                                     <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/blog/blog_post07.jpg" alt="img"></a>
-                                    <a href="blog.php" class="post-tag">Agency</a>
+                                    <a href="{{ url('blog') }}" class="post-tag">Agency</a>
                                 </div>
                                 <div class="blog__post-content">
                                     <div class="blog__post-meta">
@@ -159,7 +159,7 @@
                             <div class="blog__post-item shine__animate-item">
                                 <div class="blog__post-thumb">
                                     <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/blog/blog_post08.jpg" alt="img"></a>
-                                    <a href="blog.php" class="post-tag">Agency</a>
+                                    <a href="{{ url('blog') }}" class="post-tag">Agency</a>
                                 </div>
                                 <div class="blog__post-content">
                                     <div class="blog__post-meta">
@@ -176,7 +176,7 @@
                             <div class="blog__post-item shine__animate-item">
                                 <div class="blog__post-thumb">
                                     <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/blog/blog_post09.jpg" alt="img"></a>
-                                    <a href="blog.php" class="post-tag">Agency</a>
+                                    <a href="{{ url('blog') }}" class="post-tag">Agency</a>
                                 </div>
                                 <div class="blog__post-content">
                                     <div class="blog__post-meta">
@@ -193,9 +193,9 @@
                     <nav class="pagination__wrap mt-25">
                         <ul class="list-wrap">
                             <li class="active"><a href="#">1</a></li>
-                            <li><a href="blog.php">2</a></li>
-                            <li><a href="blog.php">3</a></li>
-                            <li><a href="blog.php">4</a></li>
+                            <li><a href="{{ url('blog') }}">2</a></li>
+                            <li><a href="{{ url('blog') }}">3</a></li>
+                            <li><a href="{{ url('blog') }}">4</a></li>
                         </ul>
                     </nav>
                 </div>

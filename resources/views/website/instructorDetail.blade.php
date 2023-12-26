@@ -11,11 +11,11 @@
                     <h3 class="title">Instructor Details</h3>
                         <nav class="breadcrumb">
                             <span property="itemListElement" typeof="ListItem">
-                                <a href="index.html">Home</a>
+                                <a href="{{ url('/') }}">Home</a>
                             </span>
                             <span class="breadcrumb-separator"><i class="fas fa-angle-right"></i></span>
                             <span property="itemListElement" typeof="ListItem">
-                                <a href="index.html">Instructors</a>
+                                <a href="{{ url('/') }}">Instructors</a>
                             </span>
                             <span class="breadcrumb-separator"><i class="fas fa-angle-right"></i></span>
                             <span property="itemListElement" typeof="ListItem">Robert Fox</span>
@@ -138,22 +138,22 @@
                                                 <div class="swiper-slide">
                                                     <div class="courses__item shine__animate-item">
                                                         <div class="courses__item-thumb">
-                                                            <a href="course-details.html" class="shine__animate-link">
+                                                            <a href="{{ url('courseDetail') }}" class="shine__animate-link">
                                                                 <img src="{{ asset('storage/website') }}/img/courses/course_thumb01.jpg" alt="img">
                                                             </a>
                                                         </div>
                                                         <div class="courses__item-content">
                                                             <ul class="courses__item-meta list-wrap">
                                                                 <li class="courses__item-tag">
-                                                                    <a href="course.html">Development</a>
+                                                                    <a href="{{ url('courses') }}">Development</a>
                                                                 </li>
                                                                 <li class="avg-rating"><i class="fas fa-star"></i> (4.8 Reviews)</li>
                                                             </ul>
-                                                            <h5 class="title"><a href="course-details.html">Learning JavaScript With Imagination</a></h5>
+                                                            <h5 class="title"><a href="{{ url('courseDetail') }}">Learning JavaScript With Imagination</a></h5>
                                                             <p class="author">By <a href="#">David Millar</a></p>
                                                             <div class="courses__item-bottom">
                                                                 <div class="button">
-                                                                    <a href="course-details.html">
+                                                                    <a href="{{ url('courseDetail') }}">
                                                                         <span class="text">Enroll Now</span>
                                                                         <i class="flaticon-arrow-right"></i>
                                                                     </a>
@@ -166,22 +166,22 @@
                                                 <div class="swiper-slide">
                                                     <div class="courses__item shine__animate-item">
                                                         <div class="courses__item-thumb">
-                                                            <a href="course-details.html" class="shine__animate-link">
+                                                            <a href="{{ url('courseDetail') }}" class="shine__animate-link">
                                                                 <img src="{{ asset('storage/website') }}/img/courses/course_thumb02.jpg" alt="img">
                                                             </a>
                                                         </div>
                                                         <div class="courses__item-content">
                                                             <ul class="courses__item-meta list-wrap">
                                                                 <li class="courses__item-tag">
-                                                                    <a href="course.html">Design</a>
+                                                                    <a href="{{ url('courses') }}">Design</a>
                                                                 </li>
                                                                 <li class="avg-rating"><i class="fas fa-star"></i> (4.5 Reviews)</li>
                                                             </ul>
-                                                            <h5 class="title"><a href="course-details.html">The Complete Graphic Design for Beginners</a></h5>
+                                                            <h5 class="title"><a href="{{ url('courseDetail') }}">The Complete Graphic Design for Beginners</a></h5>
                                                             <p class="author">By <a href="#">David Millar</a></p>
                                                             <div class="courses__item-bottom">
                                                                 <div class="button">
-                                                                    <a href="course-details.html">
+                                                                    <a href="{{ url('courseDetail') }}">
                                                                         <span class="text">Enroll Now</span>
                                                                         <i class="flaticon-arrow-right"></i>
                                                                     </a>
@@ -194,22 +194,22 @@
                                                 <div class="swiper-slide">
                                                     <div class="courses__item shine__animate-item">
                                                         <div class="courses__item-thumb">
-                                                            <a href="course-details.html" class="shine__animate-link">
+                                                            <a href="{{ url('courseDetail') }}" class="shine__animate-link">
                                                                 <img src="{{ asset('storage/website') }}/img/courses/course_thumb03.jpg" alt="img">
                                                             </a>
                                                         </div>
                                                         <div class="courses__item-content">
                                                             <ul class="courses__item-meta list-wrap">
                                                                 <li class="courses__item-tag">
-                                                                    <a href="course.html">Marketing</a>
+                                                                    <a href="{{ url('courses') }}">Marketing</a>
                                                                 </li>
                                                                 <li class="avg-rating"><i class="fas fa-star"></i> (4.3 Reviews)</li>
                                                             </ul>
-                                                            <h5 class="title"><a href="course-details.html">Learning Digital Marketing on Facebook</a></h5>
+                                                            <h5 class="title"><a href="{{ url('courseDetail') }}">Learning Digital Marketing on Facebook</a></h5>
                                                             <p class="author">By <a href="#">David Millar</a></p>
                                                             <div class="courses__item-bottom">
                                                                 <div class="button">
-                                                                    <a href="course-details.html">
+                                                                    <a href="{{ url('courseDetail') }}">
                                                                         <span class="text">Enroll Now</span>
                                                                         <i class="flaticon-arrow-right"></i>
                                                                     </a>
@@ -222,22 +222,22 @@
                                                 <div class="swiper-slide">
                                                     <div class="courses__item shine__animate-item">
                                                         <div class="courses__item-thumb">
-                                                            <a href="course-details.html" class="shine__animate-link">
+                                                            <a href="{{ url('courseDetail') }}" class="shine__animate-link">
                                                                 <img src="{{ asset('storage/website') }}/img/courses/course_thumb04.jpg" alt="img">
                                                             </a>
                                                         </div>
                                                         <div class="courses__item-content">
                                                             <ul class="courses__item-meta list-wrap">
                                                                 <li class="courses__item-tag">
-                                                                    <a href="course.html">Business</a>
+                                                                    <a href="{{ url('courses') }}">Business</a>
                                                                 </li>
                                                                 <li class="avg-rating"><i class="fas fa-star"></i> (4.8 Reviews)</li>
                                                             </ul>
-                                                            <h5 class="title"><a href="course-details.html">Financial Analyst Training & Investing Course</a></h5>
+                                                            <h5 class="title"><a href="{{ url('courseDetail') }}">Financial Analyst Training & Investing Course</a></h5>
                                                             <p class="author">By <a href="#">David Millar</a></p>
                                                             <div class="courses__item-bottom">
                                                                 <div class="button">
-                                                                    <a href="course-details.html">
+                                                                    <a href="{{ url('courseDetail') }}">
                                                                         <span class="text">Enroll Now</span>
                                                                         <i class="flaticon-arrow-right"></i>
                                                                     </a>
@@ -250,22 +250,22 @@
                                                 <div class="swiper-slide">
                                                     <div class="courses__item shine__animate-item">
                                                         <div class="courses__item-thumb">
-                                                            <a href="course-details.html" class="shine__animate-link">
+                                                            <a href="{{ url('courseDetail') }}" class="shine__animate-link">
                                                                 <img src="{{ asset('storage/website') }}/img/courses/course_thumb05.jpg" alt="img">
                                                             </a>
                                                         </div>
                                                         <div class="courses__item-content">
                                                             <ul class="courses__item-meta list-wrap">
                                                                 <li class="courses__item-tag">
-                                                                    <a href="course.html">Data Science</a>
+                                                                    <a href="{{ url('courses') }}">Data Science</a>
                                                                 </li>
                                                                 <li class="avg-rating"><i class="fas fa-star"></i> (4.5 Reviews)</li>
                                                             </ul>
-                                                            <h5 class="title"><a href="course-details.html">Data Analysis & Visualization Masterclass</a></h5>
+                                                            <h5 class="title"><a href="{{ url('courseDetail') }}">Data Analysis & Visualization Masterclass</a></h5>
                                                             <p class="author">By <a href="#">David Millar</a></p>
                                                             <div class="courses__item-bottom">
                                                                 <div class="button">
-                                                                    <a href="course-details.html">
+                                                                    <a href="{{ url('courseDetail') }}">
                                                                         <span class="text">Enroll Now</span>
                                                                         <i class="flaticon-arrow-right"></i>
                                                                     </a>
@@ -278,22 +278,22 @@
                                                 <div class="swiper-slide">
                                                     <div class="courses__item shine__animate-item">
                                                         <div class="courses__item-thumb">
-                                                            <a href="course-details.html" class="shine__animate-link">
+                                                            <a href="{{ url('courseDetail') }}" class="shine__animate-link">
                                                                 <img src="{{ asset('storage/website') }}/img/courses/course_thumb06.jpg" alt="img">
                                                             </a>
                                                         </div>
                                                         <div class="courses__item-content">
                                                             <ul class="courses__item-meta list-wrap">
                                                                 <li class="courses__item-tag">
-                                                                    <a href="course.html">Mathematic</a>
+                                                                    <a href="{{ url('courses') }}">Mathematic</a>
                                                                 </li>
                                                                 <li class="avg-rating"><i class="fas fa-star"></i> (4.7 Reviews)</li>
                                                             </ul>
-                                                            <h5 class="title"><a href="course-details.html">Master the Fundamentals of Math</a></h5>
+                                                            <h5 class="title"><a href="{{ url('courseDetail') }}">Master the Fundamentals of Math</a></h5>
                                                             <p class="author">By <a href="#">David Millar</a></p>
                                                             <div class="courses__item-bottom">
                                                                 <div class="button">
-                                                                    <a href="course-details.html">
+                                                                    <a href="{{ url('courseDetail') }}">
                                                                         <span class="text">Enroll Now</span>
                                                                         <i class="flaticon-arrow-right"></i>
                                                                     </a>

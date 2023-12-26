@@ -18,7 +18,7 @@
               Make of it. Make it Yours at SkillGro.
             </h3>
             <div class="banner__btn-two" data-aos="fade-right" data-aos-delay="600">
-              <a href="contact.php" class="btn arrow-btn">Start Free Trial
+              <a href="{{ url('contact') }}" class="btn arrow-btn">Start Free Trial
                 <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg" alt="img" class="injectable" /></a>
               <a href="https://www.youtube.com/embed/5ez2buc0i8I?si=UfABArZeTxqdfi-U" class="play-btn popup-video"><i class="fas fa-play"></i> Watch Our <br />
                 Class Demo</a>
@@ -237,7 +237,7 @@
               </li>
             </ul>
             <div class="tg-button-wrap">
-              <a href="about-us.html" class="btn arrow-btn">
+              <a href="{{ url('about') }}" class="btn arrow-btn">
                 Start Free Trial
                 <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg" alt="Right Arrow" class="injectable" />
               </a>
@@ -270,7 +270,7 @@
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
                   <div class="categories__item">
-                    <a href="courses.html">
+                    <a href="{{ url('courses') }}">
                       <div class="icon">
                         <i class="flaticon-graphic-design"></i>
                       </div>
@@ -281,7 +281,7 @@
                 </div>
                 <div class="swiper-slide">
                   <div class="categories__item">
-                    <a href="courses.html">
+                    <a href="{{ url('courses') }}">
                       <div class="icon">
                         <i class="flaticon-investment"></i>
                       </div>
@@ -292,7 +292,7 @@
                 </div>
                 <div class="swiper-slide">
                   <div class="categories__item">
-                    <a href="courses.html">
+                    <a href="{{ url('courses') }}">
                       <div class="icon">
                         <i class="flaticon-coding"></i>
                       </div>
@@ -303,7 +303,7 @@
                 </div>
                 <div class="swiper-slide">
                   <div class="categories__item">
-                    <a href="courses.html">
+                    <a href="{{ url('courses') }}">
                       <div class="icon">
                         <i class="flaticon-email"></i>
                       </div>
@@ -314,7 +314,7 @@
                 </div>
                 <div class="swiper-slide">
                   <div class="categories__item">
-                    <a href="courses.html">
+                    <a href="{{ url('courses') }}">
                       <div class="icon">
                         <i class="flaticon-fashion"></i>
                       </div>
@@ -325,7 +325,7 @@
                 </div>
                 <div class="swiper-slide">
                   <div class="categories__item">
-                    <a href="courses.html">
+                    <a href="{{ url('courses') }}">
                       <div class="icon">
                         <i class="flaticon-interaction"></i>
                       </div>
@@ -336,7 +336,7 @@
                 </div>
                 <div class="swiper-slide">
                   <div class="categories__item">
-                    <a href="courses.html">
+                    <a href="{{ url('courses') }}">
                       <div class="icon">
                         <i class="flaticon-web-design"></i>
                       </div>
@@ -416,7 +416,7 @@
               </div>
             </div>
             <div class="tg-button-wrap">
-              <a href="contact.php" class="btn arrow-btn">Quick Join Now
+              <a href="{{ url('contact') }}" class="btn arrow-btn">Quick Join Now
                 <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg" alt="img" class="injectable" /></a>
             </div>
           </div>
@@ -1014,8 +1014,8 @@
         <div class="col-xl-3 col-md-6">
           <div class="blog__post-item shine__animate-item">
             <div class="blog__post-thumb">
-              <a href="blog-details.php" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/blog/blog_post01.jpg" alt="img" /></a>
-              <a href="blog.php" class="post-tag">Marketing</a>
+              <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/blog/blog_post01.jpg" alt="img" /></a>
+              <a href="{{ url('blog') }}" class="post-tag">Marketing</a>
             </div>
             <div class="blog__post-content">
               <div class="blog__post-meta">
@@ -1023,12 +1023,12 @@
                   <li><i class="flaticon-calendar"></i>20 July, 2024</li>
                   <li>
                     <i class="flaticon-user-1"></i>by
-                    <a href="blog-details.php">Admin</a>
+                    <a href="{{ url('blogDetail') }}">Admin</a>
                   </li>
                 </ul>
               </div>
               <h4 class="title">
-                <a href="blog-details.php">How To Become idiculously Self-Aware In 20 Minutes</a>
+                <a href="{{ url('blogDetail') }}">How To Become idiculously Self-Aware In 20 Minutes</a>
               </h4>
             </div>
           </div>
@@ -1036,8 +1036,8 @@
         <div class="col-xl-3 col-md-6">
           <div class="blog__post-item shine__animate-item">
             <div class="blog__post-thumb">
-              <a href="blog-details.php" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/blog/blog_post02.jpg" alt="img" /></a>
-              <a href="blog.php" class="post-tag">Students</a>
+              <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/blog/blog_post02.jpg" alt="img" /></a>
+              <a href="{{ url('blog') }}" class="post-tag">Students</a>
             </div>
             <div class="blog__post-content">
               <div class="blog__post-meta">
@@ -1045,12 +1045,12 @@
                   <li><i class="flaticon-calendar"></i>20 July, 2024</li>
                   <li>
                     <i class="flaticon-user-1"></i>by
-                    <a href="blog-details.php">Admin</a>
+                    <a href="{{ url('blogDetail') }}">Admin</a>
                   </li>
                 </ul>
               </div>
               <h4 class="title">
-                <a href="blog-details.php">Get Started With UI Design With Tips To Speed</a>
+                <a href="{{ url('blogDetail') }}">Get Started With UI Design With Tips To Speed</a>
               </h4>
             </div>
           </div>
@@ -1058,8 +1058,8 @@
         <div class="col-xl-3 col-md-6">
           <div class="blog__post-item shine__animate-item">
             <div class="blog__post-thumb">
-              <a href="blog-details.php" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/blog/blog_post03.jpg" alt="img" /></a>
-              <a href="blog.php" class="post-tag">Science</a>
+              <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/blog/blog_post03.jpg" alt="img" /></a>
+              <a href="{{ url('blog') }}" class="post-tag">Science</a>
             </div>
             <div class="blog__post-content">
               <div class="blog__post-meta">
@@ -1067,12 +1067,12 @@
                   <li><i class="flaticon-calendar"></i>20 July, 2024</li>
                   <li>
                     <i class="flaticon-user-1"></i>by
-                    <a href="blog-details.php">Admin</a>
+                    <a href="{{ url('blogDetail') }}">Admin</a>
                   </li>
                 </ul>
               </div>
               <h4 class="title">
-                <a href="blog-details.php">Make Your Own Expanding Contracting Content</a>
+                <a href="{{ url('blogDetail') }}">Make Your Own Expanding Contracting Content</a>
               </h4>
             </div>
           </div>
@@ -1080,8 +1080,8 @@
         <div class="col-xl-3 col-md-6">
           <div class="blog__post-item shine__animate-item">
             <div class="blog__post-thumb">
-              <a href="blog-details.php" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/blog/blog_post04.jpg" alt="img" /></a>
-              <a href="blog.php" class="post-tag">Agency</a>
+              <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/blog/blog_post04.jpg" alt="img" /></a>
+              <a href="{{ url('blog') }}" class="post-tag">Agency</a>
             </div>
             <div class="blog__post-content">
               <div class="blog__post-meta">
@@ -1089,12 +1089,12 @@
                   <li><i class="flaticon-calendar"></i>20 July, 2024</li>
                   <li>
                     <i class="flaticon-user-1"></i>by
-                    <a href="blog-details.php">Admin</a>
+                    <a href="{{ url('blogDetail') }}">Admin</a>
                   </li>
                 </ul>
               </div>
               <h4 class="title">
-                <a href="blog-details.php">What we are capable to usually discovered</a>
+                <a href="{{ url('blogDetail') }}">What we are capable to usually discovered</a>
               </h4>
             </div>
           </div>
@@ -1122,14 +1122,14 @@
               </div>
               <div class="instructor__content-two">
                 <h3 class="title">
-                  <a href="contact.php">Become a Instructor</a>
+                  <a href="{{ url('contact') }}">Become a Instructor</a>
                 </h3>
                 <p>
                   Join us and become an instructor! Share your expertise and
                   inspire others.
                 </p>
                 <div class="tg-button-wrap">
-                  <a href="contact.php" class="btn arrow-btn">Apply Now
+                  <a href="{{ url('contact') }}" class="btn arrow-btn">Apply Now
                     <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg" alt="img" class="injectable" /></a>
                 </div>
               </div>
@@ -1148,14 +1148,14 @@
               </div>
               <div class="instructor__content-two">
                 <h3 class="title">
-                  <a href="contact.php">Become a Student</a>
+                  <a href="{{ url('contact') }}">Become a Student</a>
                 </h3>
                 <p>
                   Join millions of people from around the world learning
                   together. Online learning.
                 </p>
                 <div class="tg-button-wrap">
-                  <a href="contact.php" class="btn arrow-btn">Apply Now
+                  <a href="{{ url('contact') }}" class="btn arrow-btn">Apply Now
                     <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg" alt="img" class="injectable" /></a>
                 </div>
               </div>

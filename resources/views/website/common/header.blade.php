@@ -121,14 +121,14 @@
                                 <div class="tgmenu__action tgmenu__action-two">
                                     <ul class="list-wrap">
                                         <li class="mini-cart-icon">
-                                            <a href="shop.html" class="cart-count-two">
+                                            <a href="{{ url('shop') }}" class="cart-count-two">
                                                 <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
                                                 <span class="mini-cart-count">0</span>
                                             </a>
                                             <strong class="price">$00.0</strong>
                                         </li>
                                         <li class="header-btn login-btn">
-                                            <a href="login.php" class="btn">Get Started</a>
+                                            <a href="{{ url('login') }}" class="btn">Get Started</a>
                                         </li>
                                     </ul>
                                 </div>
