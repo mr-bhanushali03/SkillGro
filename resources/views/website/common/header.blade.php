@@ -121,7 +121,7 @@
                                 <div class="tgmenu__action tgmenu__action-two">
                                     <ul class="list-wrap">
                                         <li class="mini-cart-icon">
-                                            <a href="{{ url('shop') }}" class="cart-count-two">
+                                            <a href="{{ url('courses') }}" class="cart-count-two">
                                                 <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
                                                 <span class="mini-cart-count">0</span>
                                             </a>
