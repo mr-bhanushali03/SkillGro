@@ -1168,10 +1168,10 @@
   <!-- instructor-area-two-end -->
 </main>
 <!-- main-area-end -->
+@include('website.common.footer')
 <script>
   $(document).ready(function() {
     // Add the class to the footer element
     $('footer').addClass('footer__area-two');
   });
 </script>
-@include('website.common.footer')

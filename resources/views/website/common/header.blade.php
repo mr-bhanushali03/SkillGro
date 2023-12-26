@@ -56,25 +56,22 @@
                         <div class="tgmenu__wrap">
                             <nav class="tgmenu__nav">
                                 <div class="logo">
-                                    <a href="index.php"><img src="{{ asset('storage/website') }}/img/logo/logo.svg" alt="Logo" /></a>
+                                    <a href="{{ route('website.home') }}"><img
+                                            src="{{ asset('storage/website') }}/img/logo/logo.svg"
+                                            alt="Logo" /></a>
                                 </div>
                                 <div class="tgmenu__navbar-wrap tgmenu__main-menu d-none d-xl-flex">
                                     <ul class="navigation">
-                                        <li class="menu-item">
-                                            <a href="index.php">Home</a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a href="about-us.php">About Us</a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a href="courses.php">Courses</a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a href="instructors.php">Instructor</a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a href="contact.php">Contact Us</a>
-                                        </li>
+                                        <li class="{{ Request::is('/') ? 'active' : '' }} menu-item"><a
+                                                href="{{ url('/') }}">Home</a></li>
+                                        <li class="{{ Request::is('about') ? 'active' : '' }} menu-item"><a
+                                                href="{{ url('about') }}">About Us</a></li>
+                                        <li class="{{ Request::is('courses') ? 'active' : '' }} menu-item"><a
+                                                href="{{ url('courses') }}">Courses</a></li>
+                                        <li class="{{ Request::is('instructors') ? 'active' : '' }} menu-item"><a
+                                                href="{{ url('instructors') }}">Instructors</a></li>
+                                        <li class="{{ Request::is('contact-us') ? 'active' : '' }} menu-item"><a
+                                                href="{{ url('contact-us') }}">Contact Us</a></li>
                                     </ul>
                                 </div>
                                 <script>
@@ -147,7 +144,9 @@
                                     <i class="tg-flaticon-close-1"></i>
                                 </div>
                                 <div class="nav-logo">
-                                    <a href="index.php"><img src="{{ asset('storage/website') }}/img/logo/logo.svg" alt="Logo" /></a>
+                                    <a href="{{ route('website.home') }}"><img
+                                            src="{{ asset('storage/website') }}/img/logo/logo.svg"
+                                            alt="Logo" /></a>
                                 </div>
                                 <div class="tgmobile__search">
                                     <form action="#">

@@ -8,7 +8,18 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     function index() {
-        // return view('website.common.header');
         return view('website.index');
+    }
+
+    function about() {
+        return view('website.about');
+    }
+
+    function blogs() {
+        return view('website.blog');
+    }
+
+    function blogDetail() {
+        return view('website.blog-details');
     }
 }

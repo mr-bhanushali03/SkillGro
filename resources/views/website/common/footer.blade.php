@@ -6,7 +6,7 @@
                 <div class="col-xl-3 col-lg-4 col-md-6">
                     <div class="footer__widget">
                         <div class="logo mb-35">
-                            <a href="index.php"><img src="{{ asset('storage/website') }}/img/logo/secondary_logo.svg" alt="img" /></a>
+                            <a href="{{ route('website.home') }}"><img src="{{ asset('storage/website') }}/img/logo/secondary_logo.svg" alt="img" /></a>
                         </div>
                         <div class="footer__content">
                             <p>
@@ -39,9 +39,9 @@
                         <h4 class="footer__widget-title">Useful Links</h4>
                         <div class="footer__link">
                             <ul class="list-wrap">
-                                <li><a href="index.php">Home</a></li>
+                                <li><a href="{{ url('/') }}">Home</a></li>
                                 <li>
-                                    <a href="about-us.php">About Us</a>
+                                    <a href="{{ url('about') }}">About Us</a>
                                 </li>
                                 <li><a href="courses.php">Courses</a></li>
                                 <li><a href="instructors.php">Instructor</a></li>
@@ -57,7 +57,7 @@
                         <h4 class="footer__widget-title">Our Company</h4>
                         <div class="footer__link">
                             <ul class="list-wrap">
-                                <li><a href="blog.php">Blogs</a></li>
+                                <li><a href="{{url('blogs')}}">Blogs</a></li>
                                 <li><a href="events.php">Events</a></li>
                                 <li>
                                     <a href="privacy.php">Privacy</a>
