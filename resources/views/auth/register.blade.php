@@ -45,7 +45,7 @@
                             {{ __('started.') }}
                             {{ __("Let's do this!") }}</p>
                         <div class="account__social">
-                            <a href="#" class="account__social-btn">
+                            <a href="{{ url('authorized/google') }}" class="account__social-btn">
                                 <img src="{{ asset('storage/website') }}/img/icons/google.svg" alt="img">
                                 {{ __('Continue with google') }}
                             </a>
@@ -56,25 +56,13 @@
                         <form action="{{ url('store') }}" class="account__form" method="POST">
                             @csrf
                             <div class="row gutter-20">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-grp">
-                                        <label for="first-name">{{ __('First Name') }}</label>
-                                        <input type="text" id="first-name" name="firstName"
-                                            value="{{ old('firstName') }}" placeholder="First Name" autocomplete="off"
+                                        <label for="name">{{ __('Name') }}</label>
+                                        <input type="text" id="name" name="name"
+                                            value="{{ old('name') }}" placeholder="Full Name" autocomplete="off"
                                             autofocus required>
-                                        @error('firstName')
-                                            <span class="invalid-feedback d-block" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-grp">
-                                        <label for="last-name">{{ __('Last Name') }}</label>
-                                        <input type="text" id="last-name" name="lastName" value="{{ old('lastName') }}"
-                                            placeholder="Last name" autocomplete="off" autofocus required>
-                                        @error('lastName')
+                                        @error('name')
                                             <span class="invalid-feedback d-block" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>

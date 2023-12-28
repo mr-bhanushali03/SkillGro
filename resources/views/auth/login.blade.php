@@ -46,7 +46,7 @@
                                                                                                                                                                                                                                                                                                                                                                                                     action in no time. Let's go!") }}
                         </p>
                         <div class="account__social">
-                            <a href="#" class="account__social-btn">
+                            <a href="{{ url('authorized/google') }}" class="account__social-btn">
                                 <img src="{{ asset('storage/website') }}/img/icons/google.svg" alt="img">
                                 {{ __('Continue with google') }}
                             </a>
@@ -82,8 +82,15 @@
                                         id="terms-check" autocomplete="off" autofocus>
                                     <label for="terms-check" class="form-check-label">{{ __('Remember me') }}</label>
                                 </div>
+                                {{-- <div class="account__check-forgot">
+                                    <a href="{{ Route::has('forgot-password') }}">{{ __('Forgot Password?') }}</a>
+                                </div> --}}
                                 <div class="account__check-forgot">
-                                    <a href="{{ url('forgotPassword') }}">{{ __('Forgot Password?') }}</a>
+                                    @if (Route::has('password.request'))
+                                        <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
+                                            {{ __('Forgot your password?') }}
+                                        </a>
+                                    @endif
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-two arrow-btn">{{ __('Sign In') }}<img
