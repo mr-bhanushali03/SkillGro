@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Website\HomeController;
+use App\Http\Controllers\Auth\LoginRegisterController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,17 +16,28 @@ use App\Http\Controllers\Website\HomeController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('website.home');
-Route::get('/about', [HomeController::class, 'about'])->name('website.about');
-Route::get('/blogs', [HomeController::class, 'blogs'])->name('website.blogs');
-Route::get('/blogDetail', [HomeController::class, 'blogDetail'])->name('website.blogDetail');
-Route::get('/courses', [HomeController::class, 'courses'])->name('website.courses');
-Route::get('/courseDetail', [HomeController::class, 'courseDetail'])->name('website.courseDetail');
-Route::get('/events', [HomeController::class, 'events'])->name('website.events');
-Route::get('/eventDetail', [HomeController::class, 'eventDetail'])->name('website.eventDetail');
-Route::get('/instructors', [HomeController::class, 'instructors'])->name('website.instructors');
-Route::get('/instructorDetail', [HomeController::class, 'instructorDetail'])->name('website.instructorDetail');
-Route::get('/contact', [HomeController::class, 'contact'])->name('website.contact');
-Route::get('/privacy', [HomeController::class, 'privacy'])->name('website.privacy');
-Route::get('/support', [HomeController::class, 'support'])->name('website.support');
-Route::get('/terms', [HomeController::class, 'terms'])->name('website.terms');
+Route::controller(HomeController::class)->group(function () {
+    Route::get('/', 'index')->name('website.home');
+    Route::get('about', 'about')->name('website.about');
+    Route::get('blogs', 'blogs')->name('website.blogs');
+    Route::get('blogDetail', 'blogDetail')->name('website.blogDetail');
+    Route::get('courses', 'courses')->name('website.courses');
+    Route::get('courseDetail', 'courseDetail')->name('website.courseDetail');
+    Route::get('events', 'events')->name('website.events');
+    Route::get('eventDetail', 'eventDetail')->name('website.eventDetail');
+    Route::get('instructors', 'instructors')->name('website.instructors');
+    Route::get('instructorDetail', 'instructorDetail')->name('website.instructorDetail');
+    Route::get('contact', 'contact')->name('website.contact');
+    Route::get('privacy', 'privacy')->name('website.privacy');
+    Route::get('support', 'support')->name('website.support');
+    Route::get('terms', 'terms')->name('website.terms');
+})->middleware('web');
+
+Route::controller(LoginRegisterController::class)->group(function() {
+    Route::get('register', 'register')->name('register');
+    Route::post('store', 'store')->name('store');
+    Route::get('login', 'login')->name('login');
+    Route::post('authenticate', 'authenticate')->name('authenticate');
+    Route::get('dashboard', 'dashboard')->name('dashboard');
+    Route::post('logout', 'logout')->name('logout');
+})->middleware('guest');
