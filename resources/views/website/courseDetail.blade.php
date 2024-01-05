@@ -15,7 +15,7 @@
                             </span>
                             <span class="breadcrumb-separator"><i class="fas fa-angle-right"></i></span>
                             <span property="itemListElement" typeof="ListItem">
-                                <a href="{{ url('/') }}">Courses</a>
+                                <a href="{{ url('courses') }}">Courses</a>
                             </span>
                             <span class="breadcrumb-separator"><i class="fas fa-angle-right"></i></span>
                             <span property="itemListElement" typeof="ListItem">Resolving Conflicts Between Designers And
@@ -484,7 +484,7 @@
                         </div>
                         <div class="courses__details-enroll">
                             <div class="tg-button-wrap">
-                                <a href="{{ url('instructors') }}" class="btn btn-two arrow-btn">
+                                <a href="{{ url('cart') }}" class="btn btn-two arrow-btn">
                                     Enroll Now
                                     <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg" alt="img"
                                         class="injectable">

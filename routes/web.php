@@ -32,6 +32,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('privacy', 'privacy')->name('website.privacy');
     Route::get('support', 'support')->name('website.support');
     Route::get('terms', 'terms')->name('website.terms');
+    Route::get('cart', 'cart')->name('website.cart');
 })->middleware('web');
 
 Route::controller(LoginRegisterController::class)->group(function () {

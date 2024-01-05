@@ -62,4 +62,8 @@ class HomeController extends Controller
     function terms() {
         return view('website.terms');
     }
+
+    function cart() {
+        return view('website.cart');
+    }
 }
