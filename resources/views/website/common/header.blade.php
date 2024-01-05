@@ -129,8 +129,8 @@
                                         </li>
                                         @if (Auth::check())
                                             <li class="header-btn login-btn">
-                                                <a href="{{ url('user/profile') }}"
-                                                    class="btn">{{ Auth::user()->name }}</a>
+                                                <a href="{{ url('dashboard') }}"
+                                                    class="btn">{{ __("Dashboard") }}</a>
                                             </li>
                                         @else
                                             <li class="header-btn login-btn">

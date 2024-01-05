@@ -1,9 +1,9 @@
-@include('website.common.header')
-<!-- main-area -->
-<main class="main-area fix">
+@extends('website.layout.layouts')
 
+@section('content')
     <!-- breadcrumb-area -->
-    <section class="breadcrumb__area breadcrumb__bg" data-background="{{ asset('storage/website') }}/img/bg/breadcrumb_bg.jpg">
+    <section class="breadcrumb__area breadcrumb__bg"
+        data-background="{{ asset('storage/website') }}/img/bg/breadcrumb_bg.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -11,7 +11,7 @@
                         <h3 class="title">Latest Blogs</h3>
                         <nav class="breadcrumb">
                             <span property="itemListElement" typeof="ListItem">
-                                <a href="{{ url('/')}}">Home</a>
+                                <a href="{{ url('/') }}">Home</a>
                             </span>
                             <span class="breadcrumb-separator"><i class="fas fa-angle-right"></i></span>
                             <span property="itemListElement" typeof="ListItem">Blogs</span>
@@ -21,11 +21,16 @@
             </div>
         </div>
         <div class="breadcrumb__shape-wrap">
-            <img src="{{ asset('storage/website') }}/img/others/breadcrumb_shape01.svg" alt="img" class="alltuchtopdown">
-            <img src="{{ asset('storage/website') }}/img/others/breadcrumb_shape02.svg" alt="img" data-aos="fade-right" data-aos-delay="300">
-            <img src="{{ asset('storage/website') }}/img/others/breadcrumb_shape03.svg" alt="img" data-aos="fade-up" data-aos-delay="400">
-            <img src="{{ asset('storage/website') }}/img/others/breadcrumb_shape04.svg" alt="img" data-aos="fade-down-left" data-aos-delay="400">
-            <img src="{{ asset('storage/website') }}/img/others/breadcrumb_shape05.svg" alt="img" data-aos="fade-left" data-aos-delay="400">
+            <img src="{{ asset('storage/website') }}/img/others/breadcrumb_shape01.svg" alt="img"
+                class="alltuchtopdown">
+            <img src="{{ asset('storage/website') }}/img/others/breadcrumb_shape02.svg" alt="img" data-aos="fade-right"
+                data-aos-delay="300">
+            <img src="{{ asset('storage/website') }}/img/others/breadcrumb_shape03.svg" alt="img" data-aos="fade-up"
+                data-aos-delay="400">
+            <img src="{{ asset('storage/website') }}/img/others/breadcrumb_shape04.svg" alt="img"
+                data-aos="fade-down-left" data-aos-delay="400">
+            <img src="{{ asset('storage/website') }}/img/others/breadcrumb_shape05.svg" alt="img" data-aos="fade-left"
+                data-aos-delay="400">
         </div>
     </section>
     <!-- breadcrumb-area-end -->
@@ -39,153 +44,189 @@
                         <div class="col-xl-4 col-md-6">
                             <div class="blog__post-item shine__animate-item">
                                 <div class="blog__post-thumb">
-                                    <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/blog/blog_post01.jpg" alt="img"></a>
+                                    <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img
+                                            src="{{ asset('storage/website') }}/img/blog/blog_post01.jpg"
+                                            alt="img"></a>
                                     <a href="{{ url('blog') }}" class="post-tag">Marketing</a>
                                 </div>
                                 <div class="blog__post-content">
                                     <div class="blog__post-meta">
                                         <ul class="list-wrap">
                                             <li><i class="flaticon-calendar"></i>20 July, 2024</li>
-                                            <li><i class="flaticon-user-1"></i>by <a href="{{ url('blogDetail') }}">Admin</a></li>
+                                            <li><i class="flaticon-user-1"></i>by <a
+                                                    href="{{ url('blogDetail') }}">Admin</a></li>
                                         </ul>
                                     </div>
-                                    <h4 class="title"><a href="{{ url('blogDetail') }}">How To Become idiculously Self-Aware In 20 Minutes</a></h4>
+                                    <h4 class="title"><a href="{{ url('blogDetail') }}">How To Become idiculously
+                                            Self-Aware In 20 Minutes</a></h4>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-4 col-md-6">
                             <div class="blog__post-item shine__animate-item">
                                 <div class="blog__post-thumb">
-                                    <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/blog/blog_post02.jpg" alt="img"></a>
+                                    <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img
+                                            src="{{ asset('storage/website') }}/img/blog/blog_post02.jpg"
+                                            alt="img"></a>
                                     <a href="{{ url('blog') }}" class="post-tag">Students</a>
                                 </div>
                                 <div class="blog__post-content">
                                     <div class="blog__post-meta">
                                         <ul class="list-wrap">
                                             <li><i class="flaticon-calendar"></i>20 July, 2024</li>
-                                            <li><i class="flaticon-user-1"></i>by <a href="{{ url('blogDetail') }}">Admin</a></li>
+                                            <li><i class="flaticon-user-1"></i>by <a
+                                                    href="{{ url('blogDetail') }}">Admin</a></li>
                                         </ul>
                                     </div>
-                                    <h4 class="title"><a href="{{ url('blogDetail') }}">Get Started With UI Design With Tips To Speed</a></h4>
+                                    <h4 class="title"><a href="{{ url('blogDetail') }}">Get Started With UI Design With
+                                            Tips To Speed</a></h4>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-4 col-md-6">
                             <div class="blog__post-item shine__animate-item">
                                 <div class="blog__post-thumb">
-                                    <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/blog/blog_post03.jpg" alt="img"></a>
+                                    <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img
+                                            src="{{ asset('storage/website') }}/img/blog/blog_post03.jpg"
+                                            alt="img"></a>
                                     <a href="{{ url('blog') }}" class="post-tag">Science</a>
                                 </div>
                                 <div class="blog__post-content">
                                     <div class="blog__post-meta">
                                         <ul class="list-wrap">
                                             <li><i class="flaticon-calendar"></i>20 July, 2024</li>
-                                            <li><i class="flaticon-user-1"></i>by <a href="{{ url('blogDetail') }}">Admin</a></li>
+                                            <li><i class="flaticon-user-1"></i>by <a
+                                                    href="{{ url('blogDetail') }}">Admin</a></li>
                                         </ul>
                                     </div>
-                                    <h4 class="title"><a href="{{ url('blogDetail') }}">Make Your Own Expanding Contracting Content</a></h4>
+                                    <h4 class="title"><a href="{{ url('blogDetail') }}">Make Your Own Expanding
+                                            Contracting Content</a></h4>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-4 col-md-6">
                             <div class="blog__post-item shine__animate-item">
                                 <div class="blog__post-thumb">
-                                    <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/blog/blog_post04.jpg" alt="img"></a>
+                                    <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img
+                                            src="{{ asset('storage/website') }}/img/blog/blog_post04.jpg"
+                                            alt="img"></a>
                                     <a href="{{ url('blog') }}" class="post-tag">Agency</a>
                                 </div>
                                 <div class="blog__post-content">
                                     <div class="blog__post-meta">
                                         <ul class="list-wrap">
                                             <li><i class="flaticon-calendar"></i>20 July, 2024</li>
-                                            <li><i class="flaticon-user-1"></i>by <a href="{{ url('blogDetail') }}">Admin</a></li>
+                                            <li><i class="flaticon-user-1"></i>by <a
+                                                    href="{{ url('blogDetail') }}">Admin</a></li>
                                         </ul>
                                     </div>
-                                    <h4 class="title"><a href="{{ url('blogDetail') }}">What we are capable to usually discovered</a></h4>
+                                    <h4 class="title"><a href="{{ url('blogDetail') }}">What we are capable to usually
+                                            discovered</a></h4>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-4 col-md-6">
                             <div class="blog__post-item shine__animate-item">
                                 <div class="blog__post-thumb">
-                                    <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/blog/blog_post05.jpg" alt="img"></a>
+                                    <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img
+                                            src="{{ asset('storage/website') }}/img/blog/blog_post05.jpg"
+                                            alt="img"></a>
                                     <a href="{{ url('blog') }}" class="post-tag">Agency</a>
                                 </div>
                                 <div class="blog__post-content">
                                     <div class="blog__post-meta">
                                         <ul class="list-wrap">
                                             <li><i class="flaticon-calendar"></i>20 July, 2024</li>
-                                            <li><i class="flaticon-user-1"></i>by <a href="{{ url('blogDetail') }}">Admin</a></li>
+                                            <li><i class="flaticon-user-1"></i>by <a
+                                                    href="{{ url('blogDetail') }}">Admin</a></li>
                                         </ul>
                                     </div>
-                                    <h4 class="title"><a href="{{ url('blogDetail') }}">What we are capable to usually discovered</a></h4>
+                                    <h4 class="title"><a href="{{ url('blogDetail') }}">What we are capable to usually
+                                            discovered</a></h4>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-4 col-md-6">
                             <div class="blog__post-item shine__animate-item">
                                 <div class="blog__post-thumb">
-                                    <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/blog/blog_post06.jpg" alt="img"></a>
+                                    <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img
+                                            src="{{ asset('storage/website') }}/img/blog/blog_post06.jpg"
+                                            alt="img"></a>
                                     <a href="{{ url('blog') }}" class="post-tag">Agency</a>
                                 </div>
                                 <div class="blog__post-content">
                                     <div class="blog__post-meta">
                                         <ul class="list-wrap">
                                             <li><i class="flaticon-calendar"></i>20 July, 2024</li>
-                                            <li><i class="flaticon-user-1"></i>by <a href="{{ url('blogDetail') }}">Admin</a></li>
+                                            <li><i class="flaticon-user-1"></i>by <a
+                                                    href="{{ url('blogDetail') }}">Admin</a></li>
                                         </ul>
                                     </div>
-                                    <h4 class="title"><a href="{{ url('blogDetail') }}">What we are capable to usually discovered</a></h4>
+                                    <h4 class="title"><a href="{{ url('blogDetail') }}">What we are capable to usually
+                                            discovered</a></h4>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-4 col-md-6">
                             <div class="blog__post-item shine__animate-item">
                                 <div class="blog__post-thumb">
-                                    <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/blog/blog_post07.jpg" alt="img"></a>
+                                    <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img
+                                            src="{{ asset('storage/website') }}/img/blog/blog_post07.jpg"
+                                            alt="img"></a>
                                     <a href="{{ url('blog') }}" class="post-tag">Agency</a>
                                 </div>
                                 <div class="blog__post-content">
                                     <div class="blog__post-meta">
                                         <ul class="list-wrap">
                                             <li><i class="flaticon-calendar"></i>20 July, 2024</li>
-                                            <li><i class="flaticon-user-1"></i>by <a href="{{ url('blogDetail') }}">Admin</a></li>
+                                            <li><i class="flaticon-user-1"></i>by <a
+                                                    href="{{ url('blogDetail') }}">Admin</a></li>
                                         </ul>
                                     </div>
-                                    <h4 class="title"><a href="{{ url('blogDetail') }}">What we are capable to usually discovered</a></h4>
+                                    <h4 class="title"><a href="{{ url('blogDetail') }}">What we are capable to usually
+                                            discovered</a></h4>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-4 col-md-6">
                             <div class="blog__post-item shine__animate-item">
                                 <div class="blog__post-thumb">
-                                    <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/blog/blog_post08.jpg" alt="img"></a>
+                                    <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img
+                                            src="{{ asset('storage/website') }}/img/blog/blog_post08.jpg"
+                                            alt="img"></a>
                                     <a href="{{ url('blog') }}" class="post-tag">Agency</a>
                                 </div>
                                 <div class="blog__post-content">
                                     <div class="blog__post-meta">
                                         <ul class="list-wrap">
                                             <li><i class="flaticon-calendar"></i>20 July, 2024</li>
-                                            <li><i class="flaticon-user-1"></i>by <a href="{{ url('blogDetail') }}">Admin</a></li>
+                                            <li><i class="flaticon-user-1"></i>by <a
+                                                    href="{{ url('blogDetail') }}">Admin</a></li>
                                         </ul>
                                     </div>
-                                    <h4 class="title"><a href="{{ url('blogDetail') }}">What we are capable to usually discovered</a></h4>
+                                    <h4 class="title"><a href="{{ url('blogDetail') }}">What we are capable to usually
+                                            discovered</a></h4>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-4 col-md-6">
                             <div class="blog__post-item shine__animate-item">
                                 <div class="blog__post-thumb">
-                                    <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img src="{{ asset('storage/website') }}/img/blog/blog_post09.jpg" alt="img"></a>
+                                    <a href="{{ url('blogDetail') }}" class="shine__animate-link"><img
+                                            src="{{ asset('storage/website') }}/img/blog/blog_post09.jpg"
+                                            alt="img"></a>
                                     <a href="{{ url('blog') }}" class="post-tag">Agency</a>
                                 </div>
                                 <div class="blog__post-content">
                                     <div class="blog__post-meta">
                                         <ul class="list-wrap">
                                             <li><i class="flaticon-calendar"></i>20 July, 2024</li>
-                                            <li><i class="flaticon-user-1"></i>by <a href="{{ url('blogDetail') }}">Admin</a></li>
+                                            <li><i class="flaticon-user-1"></i>by <a
+                                                    href="{{ url('blogDetail') }}">Admin</a></li>
                                         </ul>
                                     </div>
-                                    <h4 class="title"><a href="{{ url('blogDetail') }}">What we are capable to usually discovered</a></h4>
+                                    <h4 class="title"><a href="{{ url('blogDetail') }}">What we are capable to usually
+                                            discovered</a></h4>
                                 </div>
                             </div>
                         </div>
@@ -242,45 +283,53 @@
                             <div class="rc-post-item">
                                 <div class="rc-post-thumb">
                                     <a href="{{ url('blogDetail') }}">
-                                        <img src="{{ asset('storage/website') }}/img/blog/latest_post01.jpg" alt="img">
+                                        <img src="{{ asset('storage/website') }}/img/blog/latest_post01.jpg"
+                                            alt="img">
                                     </a>
                                 </div>
                                 <div class="rc-post-content">
                                     <span class="date"><i class="flaticon-calendar"></i> April 13, 2024</span>
-                                    <h4 class="title"><a href="{{ url('blogDetail') }}">the Right Learning Path for your</a></h4>
+                                    <h4 class="title"><a href="{{ url('blogDetail') }}">the Right Learning Path for
+                                            your</a></h4>
                                 </div>
                             </div>
                             <div class="rc-post-item">
                                 <div class="rc-post-thumb">
                                     <a href="{{ url('blogDetail') }}">
-                                        <img src="{{ asset('storage/website') }}/img/blog/latest_post02.jpg" alt="img">
+                                        <img src="{{ asset('storage/website') }}/img/blog/latest_post02.jpg"
+                                            alt="img">
                                     </a>
                                 </div>
                                 <div class="rc-post-content">
                                     <span class="date"><i class="flaticon-calendar"></i> April 13, 2024</span>
-                                    <h4 class="title"><a href="{{ url('blogDetail') }}">The Growing Need Management</a></h4>
+                                    <h4 class="title"><a href="{{ url('blogDetail') }}">The Growing Need Management</a>
+                                    </h4>
                                 </div>
                             </div>
                             <div class="rc-post-item">
                                 <div class="rc-post-thumb">
                                     <a href="{{ url('blogDetail') }}">
-                                        <img src="{{ asset('storage/website') }}/img/blog/latest_post03.jpg" alt="img">
+                                        <img src="{{ asset('storage/website') }}/img/blog/latest_post03.jpg"
+                                            alt="img">
                                     </a>
                                 </div>
                                 <div class="rc-post-content">
                                     <span class="date"><i class="flaticon-calendar"></i> April 13, 2024</span>
-                                    <h4 class="title"><a href="{{ url('blogDetail') }}">the Right Learning Path for your</a></h4>
+                                    <h4 class="title"><a href="{{ url('blogDetail') }}">the Right Learning Path for
+                                            your</a></h4>
                                 </div>
                             </div>
                             <div class="rc-post-item">
                                 <div class="rc-post-thumb">
                                     <a href="{{ url('blogDetail') }}">
-                                        <img src="{{ asset('storage/website') }}/img/blog/latest_post04.jpg" alt="img">
+                                        <img src="{{ asset('storage/website') }}/img/blog/latest_post04.jpg"
+                                            alt="img">
                                     </a>
                                 </div>
                                 <div class="rc-post-content">
                                     <span class="date"><i class="flaticon-calendar"></i> April 13, 2024</span>
-                                    <h4 class="title"><a href="{{ url('blogDetail') }}">The Growing Need Management</a></h4>
+                                    <h4 class="title"><a href="{{ url('blogDetail') }}">The Growing Need Management</a>
+                                    </h4>
                                 </div>
                             </div>
                         </div>
@@ -301,7 +350,4 @@
         </div>
     </section>
     <!-- blog-area-end -->
-
-</main>
-<!-- main-area-end -->
-@include('website.common.footer')
+@endsection

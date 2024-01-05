@@ -7,3 +7,6 @@
 </main>
 <!-- main-area-end -->
 @include('website.common.footer')
+
+<!-- script here -->
+@yield('script')

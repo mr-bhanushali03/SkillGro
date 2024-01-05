@@ -1,9 +1,9 @@
-@include('website.common.header')
-<!-- main-area -->
-<main class="main-area fix">
+@extends('website.layout.layouts')
 
+@section('content')
     <!-- breadcrumb-area -->
-    <section class="breadcrumb__area breadcrumb__bg" data-background="{{ asset('storage/website') }}/img/bg/breadcrumb_bg.jpg">
+    <section class="breadcrumb__area breadcrumb__bg"
+        data-background="{{ asset('storage/website') }}/img/bg/breadcrumb_bg.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -11,25 +11,31 @@
                         <h3 class="title">Blog Details</h3>
                         <nav class="breadcrumb">
                             <span property="itemListElement" typeof="ListItem">
-                                <a href="{{url('/')}}">Home</a>
+                                <a href="{{ url('/') }}">Home</a>
                             </span>
                             <span class="breadcrumb-separator"><i class="fas fa-angle-right"></i></span>
                             <span property="itemListElement" typeof="ListItem">
                                 <a href="{{ url('blogs') }}">Blogs</a>
                             </span>
                             <span class="breadcrumb-separator"><i class="fas fa-angle-right"></i></span>
-                            <span property="itemListElement" typeof="ListItem">How To Become idiculously Self-Aware In 20 Minutes</span>
+                            <span property="itemListElement" typeof="ListItem">How To Become idiculously Self-Aware In 20
+                                Minutes</span>
                         </nav>
                     </div>
                 </div>
             </div>
         </div>
         <div class="breadcrumb__shape-wrap">
-            <img src="{{ asset('storage/website') }}/img/others/breadcrumb_shape01.svg" alt="img" class="alltuchtopdown">
-            <img src="{{ asset('storage/website') }}/img/others/breadcrumb_shape02.svg" alt="img" data-aos="fade-right" data-aos-delay="300">
-            <img src="{{ asset('storage/website') }}/img/others/breadcrumb_shape03.svg" alt="img" data-aos="fade-up" data-aos-delay="400">
-            <img src="{{ asset('storage/website') }}/img/others/breadcrumb_shape04.svg" alt="img" data-aos="fade-down-left" data-aos-delay="400">
-            <img src="{{ asset('storage/website') }}/img/others/breadcrumb_shape05.svg" alt="img" data-aos="fade-left" data-aos-delay="400">
+            <img src="{{ asset('storage/website') }}/img/others/breadcrumb_shape01.svg" alt="img"
+                class="alltuchtopdown">
+            <img src="{{ asset('storage/website') }}/img/others/breadcrumb_shape02.svg" alt="img" data-aos="fade-right"
+                data-aos-delay="300">
+            <img src="{{ asset('storage/website') }}/img/others/breadcrumb_shape03.svg" alt="img" data-aos="fade-up"
+                data-aos-delay="400">
+            <img src="{{ asset('storage/website') }}/img/others/breadcrumb_shape04.svg" alt="img"
+                data-aos="fade-down-left" data-aos-delay="400">
+            <img src="{{ asset('storage/website') }}/img/others/breadcrumb_shape05.svg" alt="img" data-aos="fade-left"
+                data-aos-delay="400">
         </div>
     </section>
     <!-- breadcrumb-area-end -->
@@ -53,15 +59,28 @@
                                 </ul>
                             </div>
                             <h3 class="title">How To Become idiculously Self-Aware In 20 Minutes</h3>
-                            <p>Maximus ligula eleifend id nisl quis interdum. Sed malesuada tortor non turpis semper bibendum. Ut ac nisi porta, malesuada risus nonrra dolo areay Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae in tristique libero, quis ultrices diamraesent varius diam dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra.Maximus ligula eleifend.</p>
-                            <p>Maximus ligula eleifend id nisl quis interdum. Sed malesuada tortor non turpis semper bibendum. Ut ac nisi porta, malesuada risus nonrra dolo areay Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae in tristique libero, quis ultrices diamraesent varius diam dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra.Maximus ligula eleifend.</p>
+                            <p>Maximus ligula eleifend id nisl quis interdum. Sed malesuada tortor non turpis semper
+                                bibendum. Ut ac nisi porta, malesuada risus nonrra dolo areay Vestibulum ante ipsum primis
+                                in faucibus orci luctus et ultrices posuere cubilia curae in tristique libero, quis ultrices
+                                diamraesent varius diam dui. Class aptent taciti sociosqu ad litora torquent per conubia
+                                nostra.Maximus ligula eleifend.</p>
+                            <p>Maximus ligula eleifend id nisl quis interdum. Sed malesuada tortor non turpis semper
+                                bibendum. Ut ac nisi porta, malesuada risus nonrra dolo areay Vestibulum ante ipsum primis
+                                in faucibus orci luctus et ultrices posuere cubilia curae in tristique libero, quis ultrices
+                                diamraesent varius diam dui. Class aptent taciti sociosqu ad litora torquent per conubia
+                                nostra.Maximus ligula eleifend.</p>
                             <blockquote>
-                                <p>“ urabitur varius eros rutrum consequat Mauris areathe sollicitudin enim condimentum luctus enim justo non molestie nisl ”</p>
+                                <p>“ urabitur varius eros rutrum consequat Mauris areathe sollicitudin enim condimentum
+                                    luctus enim justo non molestie nisl ”</p>
                             </blockquote>
-                            <p>Maximus ligula eleifend id nisl quis interdum. Sed malesuada tortor non turpis semper bibendum. Ut ac nisi porta, malesuada risus nonrra dolo areay Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.</p>
+                            <p>Maximus ligula eleifend id nisl quis interdum. Sed malesuada tortor non turpis semper
+                                bibendum. Ut ac nisi porta, malesuada risus nonrra dolo areay Vestibulum ante ipsum primis
+                                in faucibus orci luctus et ultrices posuere cubilia curae.</p>
                             <div class="blog__details-content-inner">
                                 <h4 class="inner-title">What Will I Learn From This Course?</h4>
-                                <p>Maximus ligula eleifend id nisl quis interdum. Sed malesuada tortor non turpis semper bibendum. Ut ac nisi porta, malesuada risus non viverra dolor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere.</p>
+                                <p>Maximus ligula eleifend id nisl quis interdum. Sed malesuada tortor non turpis semper
+                                    bibendum. Ut ac nisi porta, malesuada risus non viverra dolor. Vestibulum ante ipsum
+                                    primis in faucibus orci luctus et ultrices posuere.</p>
                                 <ul class="about__info-list list-wrap">
                                     <li class="about__info-list-item">
                                         <i class="flaticon-angle-right"></i>
@@ -81,7 +100,12 @@
                                     </li>
                                 </ul>
                             </div>
-                            <p>Maximus ligula eleifend id nisl quis interdum. Sed malesuada tortor non turpis semper bibendum. Ut ac nisi porta, malesuada risus nonrra dolo areay Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae in tristique libero, quis ultrices diamraesent varius diam dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra.Maximus ligula eleifend id nisl quis interdum. Sed malesuada tortor non turpis semper bibendum. Ut ac nisi porta, malesuada risus nonVestibulum ante ipsum primis</p>
+                            <p>Maximus ligula eleifend id nisl quis interdum. Sed malesuada tortor non turpis semper
+                                bibendum. Ut ac nisi porta, malesuada risus nonrra dolo areay Vestibulum ante ipsum primis
+                                in faucibus orci luctus et ultrices posuere cubilia curae in tristique libero, quis ultrices
+                                diamraesent varius diam dui. Class aptent taciti sociosqu ad litora torquent per conubia
+                                nostra.Maximus ligula eleifend id nisl quis interdum. Sed malesuada tortor non turpis semper
+                                bibendum. Ut ac nisi porta, malesuada risus nonVestibulum ante ipsum primis</p>
                             <div class="blog__details-bottom">
                                 <div class="row align-items-center">
                                     <div class="col-xl-6 col-md-7">
@@ -110,12 +134,15 @@
                     </div>
                     <div class="blog__post-author">
                         <div class="blog__post-author-thumb">
-                            <a href="#"><img src="{{ asset('storage/website') }}/img/blog/author.png" alt="img"></a>
+                            <a href="#"><img src="{{ asset('storage/website') }}/img/blog/author.png"
+                                    alt="img"></a>
                         </div>
                         <div class="blog__post-author-content">
                             <span class="designation">Author</span>
                             <h5 class="name">Brooklyn Simmons</h5>
-                            <p>Finanappreciate your trust greatly Our clients choose dentace ducts a curae in tristique liberois ultrices diamraesent varius diam dui. Class aptent taciti sociosqu ad litora torquent per.</p>
+                            <p>Finanappreciate your trust greatly Our clients choose dentace ducts a curae in tristique
+                                liberois ultrices diamraesent varius diam dui. Class aptent taciti sociosqu ad litora
+                                torquent per.</p>
                         </div>
                     </div>
                     <div class="blog-post-comment">
@@ -128,14 +155,17 @@
                                     <li>
                                         <div class="comments-box">
                                             <div class="comments-avatar">
-                                                <img src="{{ asset('storage/website') }}/img/blog/comment01.png" alt="img">
+                                                <img src="{{ asset('storage/website') }}/img/blog/comment01.png"
+                                                    alt="img">
                                             </div>
                                             <div class="comments-text">
                                                 <div class="avatar-name">
                                                     <h6 class="name">Jessica Rose</h6>
                                                     <span class="date">20 July, 2024</span>
                                                 </div>
-                                                <p>Maximus ligula eleifend id nisl quis interdum. Sed malesuada tortor non turpis semper bibendum. Ut ac nisi porta, malesuada risus nonVestibulum ante ipsum primisMaximus ligula eleifend id nisl quis interdum. </p>
+                                                <p>Maximus ligula eleifend id nisl quis interdum. Sed malesuada tortor non
+                                                    turpis semper bibendum. Ut ac nisi porta, malesuada risus nonVestibulum
+                                                    ante ipsum primisMaximus ligula eleifend id nisl quis interdum. </p>
                                                 <div class="comment-reply">
                                                     <a href="#" class="comment-reply-link">Reply</a>
                                                 </div>
@@ -145,14 +175,17 @@
                                     <li>
                                         <div class="comments-box">
                                             <div class="comments-avatar">
-                                                <img src="{{ asset('storage/website') }}/img/blog/comment02.png" alt="img">
+                                                <img src="{{ asset('storage/website') }}/img/blog/comment02.png"
+                                                    alt="img">
                                             </div>
                                             <div class="comments-text">
                                                 <div class="avatar-name">
                                                     <h6 class="name">Parker Willy</h6>
                                                     <span class="date">20 July, 2024</span>
                                                 </div>
-                                                <p>Maximus ligula eleifend id nisl quis interdum. Sed malesuada tortor non turpis semper bibendum. Ut ac nisi porta, malesuada risus nonVestibulum ante ipsum primis</p>
+                                                <p>Maximus ligula eleifend id nisl quis interdum. Sed malesuada tortor non
+                                                    turpis semper bibendum. Ut ac nisi porta, malesuada risus nonVestibulum
+                                                    ante ipsum primis</p>
                                                 <div class="comment-reply">
                                                     <a href="#" class="comment-reply-link">Reply</a>
                                                 </div>
@@ -190,10 +223,13 @@
                                 </div>
                                 <div class="comment-field checkbox-grp">
                                     <input type="checkbox" id="checkbox_two">
-                                    <label for="checkbox_two">Save my name, email, and website in this browser for the next time I comment.</label>
+                                    <label for="checkbox_two">Save my name, email, and website in this browser for the next
+                                        time I comment.</label>
                                 </div>
                                 <p class="form-submit"></p>
-                                <button class="btn btn-two arrow-btn">Post Comment <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg" alt="img" class="injectable"></button>
+                                <button class="btn btn-two arrow-btn">Post Comment <img
+                                        src="{{ asset('storage/website') }}/img/icons/right_arrow.svg" alt="img"
+                                        class="injectable"></button>
                             </form>
                         </div>
                     </div>
@@ -241,45 +277,53 @@
                             <div class="rc-post-item">
                                 <div class="rc-post-thumb">
                                     <a href="{{ url('blogDetail') }}">
-                                        <img src="{{ asset('storage/website') }}/img/blog/latest_post01.jpg" alt="img">
+                                        <img src="{{ asset('storage/website') }}/img/blog/latest_post01.jpg"
+                                            alt="img">
                                     </a>
                                 </div>
                                 <div class="rc-post-content">
                                     <span class="date"><i class="flaticon-calendar"></i> April 13, 2024</span>
-                                    <h4 class="title"><a href="{{ url('blogDetail') }}">the Right Learning Path for your</a></h4>
+                                    <h4 class="title"><a href="{{ url('blogDetail') }}">the Right Learning Path for
+                                            your</a></h4>
                                 </div>
                             </div>
                             <div class="rc-post-item">
                                 <div class="rc-post-thumb">
                                     <a href="{{ url('blogDetail') }}">
-                                        <img src="{{ asset('storage/website') }}/img/blog/latest_post02.jpg" alt="img">
+                                        <img src="{{ asset('storage/website') }}/img/blog/latest_post02.jpg"
+                                            alt="img">
                                     </a>
                                 </div>
                                 <div class="rc-post-content">
                                     <span class="date"><i class="flaticon-calendar"></i> April 13, 2024</span>
-                                    <h4 class="title"><a href="{{ url('blogDetail') }}">The Growing Need Management</a></h4>
+                                    <h4 class="title"><a href="{{ url('blogDetail') }}">The Growing Need Management</a>
+                                    </h4>
                                 </div>
                             </div>
                             <div class="rc-post-item">
                                 <div class="rc-post-thumb">
                                     <a href="{{ url('blogDetail') }}">
-                                        <img src="{{ asset('storage/website') }}/img/blog/latest_post03.jpg" alt="img">
+                                        <img src="{{ asset('storage/website') }}/img/blog/latest_post03.jpg"
+                                            alt="img">
                                     </a>
                                 </div>
                                 <div class="rc-post-content">
                                     <span class="date"><i class="flaticon-calendar"></i> April 13, 2024</span>
-                                    <h4 class="title"><a href="{{ url('blogDetail') }}">the Right Learning Path for your</a></h4>
+                                    <h4 class="title"><a href="{{ url('blogDetail') }}">the Right Learning Path for
+                                            your</a></h4>
                                 </div>
                             </div>
                             <div class="rc-post-item">
                                 <div class="rc-post-thumb">
                                     <a href="{{ url('blogDetail') }}">
-                                        <img src="{{ asset('storage/website') }}/img/blog/latest_post04.jpg" alt="img">
+                                        <img src="{{ asset('storage/website') }}/img/blog/latest_post04.jpg"
+                                            alt="img">
                                     </a>
                                 </div>
                                 <div class="rc-post-content">
                                     <span class="date"><i class="flaticon-calendar"></i> April 13, 2024</span>
-                                    <h4 class="title"><a href="{{ url('blogDetail') }}">The Growing Need Management</a></h4>
+                                    <h4 class="title"><a href="{{ url('blogDetail') }}">The Growing Need Management</a>
+                                    </h4>
                                 </div>
                             </div>
                         </div>
@@ -300,7 +344,4 @@
         </div>
     </section>
     <!-- blog-details-area-end -->
-
-</main>
-<!-- main-area-end -->
-@include('website.common.footer')
+@endsection
