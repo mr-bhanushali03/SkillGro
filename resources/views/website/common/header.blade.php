@@ -127,9 +127,16 @@
                                             </a>
                                             <strong class="price">$00.0</strong>
                                         </li>
-                                        <li class="header-btn login-btn">
-                                            <a href="{{ url('login') }}" class="btn">Get Started</a>
-                                        </li>
+                                        @if (Auth::check())
+                                            <li class="header-btn login-btn">
+                                                <a href="{{ url('user/profile') }}"
+                                                    class="btn">{{ Auth::user()->name }}</a>
+                                            </li>
+                                        @else
+                                            <li class="header-btn login-btn">
+                                                <a href="{{ url('login') }}" class="btn">Get Started</a>
+                                            </li>
+                                        @endif
                                     </ul>
                                 </div>
                                 <div class="mobile-nav-toggler">
