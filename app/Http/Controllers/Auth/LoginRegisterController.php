@@ -33,6 +33,7 @@ class LoginRegisterController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => 'student',
             'remember_token' => Hash::make($request->email . $request->password),
         ]));
 
