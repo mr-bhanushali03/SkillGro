@@ -12,7 +12,7 @@ class LoginRegisterController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest')->except(['logout', 'dashboard', 'uploadAvatar']);
+        $this->middleware('guest')->except(['logout', 'dashboard', 'uploadAvatar', 'roles']);
     }
 
     public function register()
@@ -95,6 +95,19 @@ class LoginRegisterController extends Controller
 
         User::where('id', Auth::user()->id)->update(['avatar' => $request->file('avatar')->store('avatars', 'public')]);
         return redirect()->route('dashboard')->withSuccess('You have successfully uploaded your avatar!');
+    }
+
+    public function roles()
+    {
+        if(Auth::user()->role == 'Student'){
+            User::where('id', Auth::user()->id)->update(['role' => 'Instructor']);
+            Auth::user()->update(['role' => 'Instructor']);
+            return redirect()->route('dashboard')->withSuccess('You have successfully changed your role to Instructor!');
+        }else{
+            User::where('id', Auth::user()->id)->update(['role' => 'Student']);
+            Auth::user()->update(['role' => 'Student']);
+            return redirect()->route('dashboard')->withSuccess('You have successfully changed your role to Student!');
+        }
     }
 
     public function logout(Request $request)

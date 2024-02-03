@@ -49,6 +49,7 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', [LoginRegisterController::class,'dashboard'])->name('dashboard');
     Route::post('/upload-avatar', [LoginRegisterController::class,'uploadAvatar'])->name('upload.avatar');
+    Route::get('roles', [LoginRegisterController::class,'roles'])->name('roles');
 });
 
 Route::controller(GoogleController::class)->group(function(){
