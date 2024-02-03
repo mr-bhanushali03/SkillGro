@@ -12,7 +12,7 @@ class LoginRegisterController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest')->except(['logout', 'dashboard']);
+        $this->middleware('guest')->except(['logout', 'dashboard', 'uploadAvatar']);
     }
 
     public function register()
@@ -27,6 +27,7 @@ class LoginRegisterController extends Controller
             'email' => 'required|email|max:250|unique:users',
             'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required|string|min:8|same:password',
+            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         Auth::login(User::create([
@@ -34,6 +35,7 @@ class LoginRegisterController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => 'Student',
+            'avatar' => $request->hasFile('avatar') ? $request->file('avatar')->store('avatars', 'public') : null,
             'remember_token' => Hash::make($request->email . $request->password),
         ]));
 
@@ -62,7 +64,12 @@ class LoginRegisterController extends Controller
                     Auth::login($user);
                     return redirect()->route('dashboard')->withSuccess('You have successfully logged in!');
                 } else {
-                    Auth::attempt($user);
+                    $credentials = [
+                        'email' => $user->email,
+                        'password' => $request->password,
+                    ];
+
+                    $user = Auth::attempt($credentials);
                     return redirect()->route('dashboard')->withSuccess('You have successfully logged in!');
                 }
             } else {
@@ -78,6 +85,16 @@ class LoginRegisterController extends Controller
         return Auth::check()
             ? view('dashboard.dashboard')
             : redirect()->route('login')->withErrors(['email' => 'Please login to access the dashboard.'])->onlyInput('email');
+    }
+
+    public function uploadAvatar(Request $request)
+    {
+        $request->validate([
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+
+        User::where('id', Auth::user()->id)->update(['avatar' => $request->file('avatar')->store('avatars', 'public')]);
+        return redirect()->route('dashboard')->withSuccess('You have successfully uploaded your avatar!');
     }
 
     public function logout(Request $request)

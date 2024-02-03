@@ -53,7 +53,7 @@
                         <div class="account__divider">
                             <span>{{ __('or') }}</span>
                         </div>
-                        <form action="{{ url('store') }}" class="account__form" method="POST">
+                        <form action="{{ url('store') }}" class="account__form" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row gutter-20">
                                 <div class="col-md-12">
@@ -102,6 +102,14 @@
                                     @endforeach
                                 @enderror
                             </div>
+                            <div class="form-grp">
+                                <label for="avatar">{{ __('Avatar') }}</label>
+                                <input type="file" id="avatar" name="avatar" autocomplete="off" autofocus required>
+                                @error('avatar')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             <button type="submit" class="btn btn-two arrow-btn">{{ __('Sign Up') }}<img
                                     src="{{ asset('storage/website') }}/img/icons/right_arrow.svg" alt="img"
                                     class="injectable"></button>

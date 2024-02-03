@@ -48,6 +48,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', [LoginRegisterController::class,'dashboard'])->name('dashboard');
+    Route::post('/upload-avatar', [LoginRegisterController::class,'uploadAvatar'])->name('upload.avatar');
 });
 
 Route::controller(GoogleController::class)->group(function(){
