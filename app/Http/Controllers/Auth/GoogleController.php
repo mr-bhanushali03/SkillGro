@@ -33,7 +33,7 @@ class GoogleController extends Controller
                     'name' => $user->name,
                     'email' => $user->email,
                     'google_id' => $user->id,
-                    'role' => 'student',
+                    'role' => 'Student',
                     'password' => encrypt('123456dummy')
                 ]);
 
