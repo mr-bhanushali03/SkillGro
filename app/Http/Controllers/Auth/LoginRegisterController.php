@@ -76,7 +76,7 @@ class LoginRegisterController extends Controller
     public function dashboard(Request $request)
     {
         return Auth::check()
-            ? view('dashboard')
+            ? view('dashboard.dashboard')
             : redirect()->route('login')->withErrors(['email' => 'Please login to access the dashboard.'])->onlyInput('email');
     }
 
