@@ -130,11 +130,12 @@
                                         @if (Auth::check())
                                             <li class="header-btn login-btn">
                                                 <a href="{{ url('dashboard') }}"
-                                                    class="btn">{{ __("Dashboard") }}</a>
+                                                    class="btn">{{ __('Dashboard') }}</a>
                                             </li>
                                         @else
                                             <li class="header-btn login-btn">
-                                                <a href="{{ url('login') }}" class="btn">Get Started</a>
+                                                <a href="{{ url('login') }}"
+                                                    class="btn">{{ __('Get Started') }}</a>
                                             </li>
                                         @endif
                                     </ul>

@@ -40,7 +40,7 @@ Route::controller(LoginRegisterController::class)->group(function () {
     Route::post('store', 'store')->name('store');
     Route::get('login', 'login')->name('login');
     Route::post('authenticate', 'authenticate')->name('authenticate');
-    Route::post('logout', 'logout')->name('logout');
+    Route::get('logout', 'logout')->name('logout');
 })->middleware('guest');
 Route::middleware([
     'auth:sanctum',

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Exception;
 
 class GoogleController extends Controller
@@ -34,7 +35,7 @@ class GoogleController extends Controller
                     'email' => $user->email,
                     'google_id' => $user->id,
                     'role' => 'Student',
-                    'password' => encrypt('123456dummy')
+                    'password' => Hash::make('123456dummy')
                 ]);
 
                 Auth::login($newUser);
