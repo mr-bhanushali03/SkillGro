@@ -32,16 +32,16 @@ class GoogleController extends Controller
                 return redirect()->intended('dashboard');
             } else {
                 // Download the avatar image and store it locally
-                $avatarPath = 'avatars/' . $user->id . '_avatar.jpg'; // Define the storage path
-                $avatarContents = file_get_contents($user->avatar);
-                Storage::disk('public')->put($avatarPath, $avatarContents);
+                // $avatarPath = 'avatars/' . $user->id . '_avatar.jpg'; 
+                // $avatarContents = file_get_contents($user->avatar);
+                // Storage::disk('public')->put($avatarPath, $avatarContents);
 
                 $newUser = User::create([
                     'name' => $user->name,
                     'email' => $user->email,
                     'google_id' => $user->id,
                     'role' => 'Student',
-                    'avatar' => $avatarPath,
+                    // 'avatar' => $avatarPath,
                     'password' => Hash::make('123456dummy')
                 ]);
 

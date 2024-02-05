@@ -27,7 +27,6 @@ class LoginRegisterController extends Controller
             'email' => 'required|email|max:250|unique:users',
             'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required|string|min:8|same:password',
-            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         Auth::login(User::create([
@@ -35,7 +34,6 @@ class LoginRegisterController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => 'Student',
-            'avatar' => $request->hasFile('avatar') ? $request->file('avatar')->store('avatars', 'public') : null,
             'remember_token' => Hash::make($request->email . $request->password),
         ]));
 

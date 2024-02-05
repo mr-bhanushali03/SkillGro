@@ -12,7 +12,7 @@
             <x-label for="current_password" value="{{ __('Current Password') }}" />
             <x-input id="current_password" type="password" class="mt-1 block w-full" wire:model="state.current_password"
                 autocomplete="current-password" />
-            @if (Auth::user()->google_id)
+            @if (Hash::check('123456dummy', Auth::user()->password))
                 <p class="mt-2 text-sm text-black-600">You are using Google to login. Your password is 123456dummy.</p>
             @endif
             <x-input-error for="current_password" class="mt-2" />
