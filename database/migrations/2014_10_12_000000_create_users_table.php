@@ -18,10 +18,12 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->date('dob')->nullable();
             $table->string('mobile', 10)->nullable();
+            $table->string('profession')->nullable();
+            $table->string('qualification')->nullable();
+            $table->string('workplace')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->string('role')->default('Student');
-            // $table->string('avatar')->nullable();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();

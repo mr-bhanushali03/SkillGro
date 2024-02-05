@@ -107,13 +107,40 @@
             <x-input id="dob" type="date" class="mt-1 block w-full" wire:model="state.dob" required />
             <x-input-error for="dob" class="mt-2" />
         </div>
-        
+
         <!-- Mobile Number -->
         <div class="col-span-6 sm:col-span-4">
             <x-label for="mobile" value="{{ __('Mobile Number') }}" />
-            <x-input id="mobile" type="tel" class="mt-1 block w-full" wire:model="state.mobile" required />
+            <x-input id="mobile" type="tel" class="mt-1 block w-full" wire:model="state.mobile" placeholder="8347XXXXXX" required />
             <x-input-error for="mobile" class="mt-2" />
         </div>
+
+        @if (Auth::user()->role == 'Instructor')
+            <!-- Profession -->
+            <div class="col-span-6 sm:col-span-4">
+                <x-label for="profession" value="{{ __('Profession') }}" />
+                <x-input id="profession" type="text" class="mt-1 block w-full" wire:model="state.profession"
+                    placeholder="E.g., Software Developer, Marketing Specialist" required />
+                <x-input-error for="profession" class="mt-2" />
+            </div>
+
+            <!-- Qualification -->
+            <div class="col-span-6 sm:col-span-4">
+                <x-label for="qualification" value="{{ __('Qualification') }}" />
+                <x-input id="qualification" type="text" class="mt-1 block w-full" wire:model="state.qualification"
+                    placeholder="E.g., Bachelor of Science in Computer Science" required />
+                <x-input-error for="qualification" class="mt-2" />
+            </div>
+
+            <!-- Workplace -->
+            <div class="col-span-6 sm:col-span-4">
+                <x-label for="workplace" value="{{ __('Workplace') }}" />
+                <x-input id="workplace" type="text" class="mt-1 block w-full" wire:model="state.workplace"
+                    placeholder="E.g., Company Name, Office Location" required />
+                <p class="mt-2 text-sm text-black-600">You are currently working at which place.</p>
+                <x-input-error for="workplace" class="mt-2" />
+            </div>
+        @endif
     </x-slot>
 
     <x-slot name="actions">

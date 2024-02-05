@@ -17,13 +17,26 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
      */
     public function update(User $user, array $input): void
     {
-        Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
-            'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
-            'dob' => 'required|date',
-            'mobile' => 'required|string|max:10',
-        ])->validateWithBag('updateProfileInformation');
+        if (isset($input['profession']) && isset($input['qualification']) && isset($input['workplace'])) {
+            Validator::make($input, [
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
+                'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
+                'dob' => 'required|date',
+                'mobile' => 'required|string|max:10',
+                'profession' => 'required|string|max:255',
+                'qualification' => 'required|string|max:255',
+                'workplace' => 'required|string|max:255',
+            ])->validateWithBag('updateProfileInformation');
+        } else {
+            Validator::make($input, [
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
+                'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
+                'dob' => 'required|date',
+                'mobile' => 'required|string|max:10',
+            ])->validateWithBag('updateProfileInformation');
+        }
 
         if (isset($input['photo'])) {
             $user->updateProfilePhoto($input['photo']);
@@ -35,12 +48,24 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         ) {
             $this->updateVerifiedUser($user, $input);
         } else {
-            $user->forceFill([
-                'name' => $input['name'],
-                'email' => $input['email'],
-                'dob' => $input['dob'],
-                'mobile' => $input['mobile'],
-            ])->save();
+            if(isset($input['profession']) && isset($input['qualification']) && isset($input['workplace'])) {
+                $user->forceFill([
+                    'name' => $input['name'],
+                    'email' => $input['email'],
+                    'dob' => $input['dob'],
+                    'mobile' => $input['mobile'],
+                    'profession' => $input['profession'],
+                    'qualification' => $input['qualification'],
+                    'workplace' => $input['workplace'],
+                ])->save();
+            } else {
+                $user->forceFill([
+                    'name' => $input['name'],
+                    'email' => $input['email'],
+                    'dob' => $input['dob'],
+                    'mobile' => $input['mobile'],
+                ])->save();
+            }
         }
     }
 
@@ -51,13 +76,24 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
      */
     protected function updateVerifiedUser(User $user, array $input): void
     {
-        $user->forceFill([
-            'name' => $input['name'],
-            'email' => $input['email'],
-            'email_verified_at' => null,
-            'dob' => $input['dob'],
-            'mobile' => $input['mobile'],
-        ])->save();
+        if(isset($input['profession']) && isset($input['qualification']) && isset($input['workplace'])) {
+            $user->forceFill([
+                'name' => $input['name'],
+                'email' => $input['email'],
+                'dob' => $input['dob'],
+                'mobile' => $input['mobile'],
+                'profession' => $input['profession'],
+                'qualification' => $input['qualification'],
+                'workplace' => $input['workplace'],
+            ])->save();
+        } else {
+            $user->forceFill([
+                'name' => $input['name'],
+                'email' => $input['email'],
+                'dob' => $input['dob'],
+                'mobile' => $input['mobile'],
+            ])->save();
+        }
 
         $user->sendEmailVerificationNotification();
     }

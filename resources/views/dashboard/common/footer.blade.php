@@ -711,7 +711,7 @@
                             <input class="form-check-input" type="radio" name="data-sidebar-image"
                                 id="sidebarimg-01" value="img-1">
                             <label class="form-check-label p-0 avatar-sm h-auto" for="sidebarimg-01">
-                                <img src="assets/images/sidebar/img-1.jpg" alt=""
+                                <img src="{{ asset('storage/dashboard') }}/images/sidebar/img-1.jpg" alt=""
                                     class="avatar-md w-auto object-fit-cover">
                             </label>
                         </div>
@@ -720,7 +720,7 @@
                             <input class="form-check-input" type="radio" name="data-sidebar-image"
                                 id="sidebarimg-02" value="img-2">
                             <label class="form-check-label p-0 avatar-sm h-auto" for="sidebarimg-02">
-                                <img src="assets/images/sidebar/img-2.jpg" alt=""
+                                <img src="{{ asset('storage/dashboard') }}/images/sidebar/img-2.jpg" alt=""
                                     class="avatar-md w-auto object-fit-cover">
                             </label>
                         </div>
@@ -728,7 +728,7 @@
                             <input class="form-check-input" type="radio" name="data-sidebar-image"
                                 id="sidebarimg-03" value="img-3">
                             <label class="form-check-label p-0 avatar-sm h-auto" for="sidebarimg-03">
-                                <img src="assets/images/sidebar/img-3.jpg" alt=""
+                                <img src="{{ asset('storage/dashboard') }}/images/sidebar/img-3.jpg" alt=""
                                     class="avatar-md w-auto object-fit-cover">
                             </label>
                         </div>
@@ -736,7 +736,7 @@
                             <input class="form-check-input" type="radio" name="data-sidebar-image"
                                 id="sidebarimg-04" value="img-4">
                             <label class="form-check-label p-0 avatar-sm h-auto" for="sidebarimg-04">
-                                <img src="assets/images/sidebar/img-4.jpg" alt=""
+                                <img src="{{ asset('storage/dashboard') }}/images/sidebar/img-4.jpg" alt=""
                                     class="avatar-md w-auto object-fit-cover">
                             </label>
                         </div>
@@ -817,11 +817,10 @@
     <div class="offcanvas-footer border-top p-3 text-center">
         <div class="row">
             <div class="col-6">
-                <button type="button" class="btn btn-light w-100" id="reset-layout">Reset</button>
+                <button type="button" class="btn btn-light w-100" id="customizerclose-btn" data-bs-dismiss="offcanvas" aria-label="Close">Close</button>
             </div>
             <div class="col-6">
-                <a href="https://1.envato.market/velzon-admin" target="_blank" class="btn btn-primary w-100">Buy
-                    Now</a>
+                <button type="button" class="btn btn-primary w-100" id="reset-layout">Reset</button>
             </div>
         </div>
     </div>

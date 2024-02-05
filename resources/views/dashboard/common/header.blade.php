@@ -94,7 +94,7 @@
                             </button>
                         </div>
 
-                        <div class="dropdown ms-sm-3 header-item topbar-user">
+                        <div class="dropdown sm-3 header-item">
                             <button type="button" class="btn" id="page-header-user-dropdown"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="d-flex align-items-center">

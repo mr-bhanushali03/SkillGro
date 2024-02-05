@@ -29,6 +29,9 @@ class User extends Authenticatable
         'password',
         'dob',
         'mobile',
+        'profession',
+        'qualification',
+        'workplace',
         'role',
         'google_id',
         // 'avatar'
