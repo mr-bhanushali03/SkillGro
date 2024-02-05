@@ -100,6 +100,20 @@
                 @endif
             @endif
         </div>
+
+        <!-- Date of Birth -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="dob" value="{{ __('Date of Birth') }}" />
+            <x-input id="dob" type="date" class="mt-1 block w-full" wire:model="state.dob" required />
+            <x-input-error for="dob" class="mt-2" />
+        </div>
+        
+        <!-- Mobile Number -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="mobile" value="{{ __('Mobile Number') }}" />
+            <x-input id="mobile" type="tel" class="mt-1 block w-full" wire:model="state.mobile" required />
+            <x-input-error for="mobile" class="mt-2" />
+        </div>
     </x-slot>
 
     <x-slot name="actions">
