@@ -29,7 +29,8 @@
     <link href="{{ asset('assets/dashboard') }}/css/app.min.css" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
     <link href="{{ asset('assets/dashboard') }}/css/custom.min.css" rel="stylesheet" type="text/css" />
-
+    <!-- Jquery Js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 </head>
 
@@ -76,6 +77,10 @@
                                 <span></span>
                             </span>
                         </button>
+
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h4 class="mb-0">{{ $Title }}</h4>
+                        </div>
                     </div>
 
                     <div class="d-flex align-items-center">
@@ -129,7 +134,7 @@
                                             class="mdi mdi-school text-muted fs-16 align-middle me-1"></i> <span
                                             class="align-middle">Become A Instructor</span></a>
                                 @endif
-                                <a class="dropdown-item" href="auth-lockscreen-basic.html"><i
+                                <a class="dropdown-item" href="{{ route('lockscreen') }}"><i
                                         class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span
                                         class="align-middle">Lock screen</span></a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"><i

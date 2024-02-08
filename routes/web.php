@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Website\HomeController;
 use App\Http\Controllers\Auth\LoginRegisterController;
 use App\Http\Controllers\Auth\GoogleController;
+use App\Http\Controllers\Dashboard\CategoryController;
+use App\Http\Controllers\Dashboard\DashboardController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -40,6 +42,8 @@ Route::controller(LoginRegisterController::class)->group(function () {
     Route::post('store', 'store')->name('store');
     Route::get('login', 'login')->name('login');
     Route::post('authenticate', 'authenticate')->name('authenticate');
+    Route::get('lockscreen', 'lockscreen')->name('lockscreen');
+    Route::post('unlock', 'unlock')->name('unlock');
     Route::get('logout', 'logout')->name('logout');
 })->middleware('guest');
 Route::middleware([
@@ -47,9 +51,11 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', [LoginRegisterController::class,'dashboard'])->name('dashboard');
-    Route::post('/upload-avatar', [LoginRegisterController::class,'uploadAvatar'])->name('upload.avatar');
-    Route::get('roles', [LoginRegisterController::class,'roles'])->name('roles');
+    Route::get('/dashboard', [DashboardController::class,'dashboard'])->name('dashboard');
+    Route::get('category', [CategoryController::class,'category'])->name('category');
+    Route::get('roles', [DashboardController::class,'roles'])->name('roles');
+    Route::get('icons', [CategoryController::class,'icons'])->name('icons');
+    Route::post('addCategory', [CategoryController::class,'addCategory'])->name('addCategory');
 });
 
 Route::controller(GoogleController::class)->group(function(){

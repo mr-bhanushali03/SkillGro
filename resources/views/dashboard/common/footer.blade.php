@@ -4,11 +4,11 @@
             <div class="col-sm-6">
                 <script>
                     document.write(new Date().getFullYear())
-                </script> © Velzon.
+                </script> © SkillGro.
             </div>
             <div class="col-sm-6">
                 <div class="text-sm-end d-none d-sm-block">
-                    Design & Develop by Themesbrand
+                    Design & Develop by Command Sector
                 </div>
             </div>
         </div>
@@ -374,8 +374,8 @@
                     </div>
                     <div class="col-4">
                         <div class="form-check card-radio">
-                            <input class="form-check-input" type="radio" name="data-topbar"
-                                id="topbar-color-dark" value="dark">
+                            <input class="form-check-input" type="radio" name="data-topbar" id="topbar-color-dark"
+                                value="dark">
                             <label class="form-check-label p-0 avatar-md w-100" for="topbar-color-dark">
                                 <span class="d-flex gap-1 h-100">
                                     <span class="flex-shrink-0">
@@ -817,7 +817,8 @@
     <div class="offcanvas-footer border-top p-3 text-center">
         <div class="row">
             <div class="col-6">
-                <button type="button" class="btn btn-light w-100" id="customizerclose-btn" data-bs-dismiss="offcanvas" aria-label="Close">Close</button>
+                <button type="button" class="btn btn-light w-100" id="customizerclose-btn"
+                    data-bs-dismiss="offcanvas" aria-label="Close">Close</button>
             </div>
             <div class="col-6">
                 <button type="button" class="btn btn-primary w-100" id="reset-layout">Reset</button>
@@ -849,6 +850,9 @@
 
 <!-- App js -->
 <script src="{{ asset('assets/dashboard') }}/js/app.js"></script>
+
+<!-- materialdesign icon js-->
+<script src="{{ asset('assets/dashboard') }}/js/pages/remix-icons-listing.js"></script>
 </body>
 
 </html>

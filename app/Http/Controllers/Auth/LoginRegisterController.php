@@ -12,7 +12,7 @@ class LoginRegisterController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest')->except(['logout', 'dashboard', 'uploadAvatar', 'roles']);
+        $this->middleware('guest')->except(['logout', 'lockscreen', 'unlock']);
     }
 
     public function register()
@@ -78,33 +78,38 @@ class LoginRegisterController extends Controller
         }
     }
 
-    public function dashboard(Request $request)
-    {
-        return Auth::check()
-            ? view('dashboard.dashboard')
-            : redirect()->route('login')->withErrors(['email' => 'Please login to access the dashboard.'])->onlyInput('email');
+    function lockscreen() {
+        if(session('user_data') == null){
+            $data = [
+                'email' => Auth::user()->email,
+                'profile_photo_url' => Auth::user()->profile_photo_url,
+                'profile_photo_path' => Auth::user()->profile_photo_path,
+                'name' => Auth::user()->name,
+            ];
+            session(['user_data' => $data]);
+        }
+        Auth::logout();
+        return view('auth.lockscreen');
     }
 
-    public function uploadAvatar(Request $request)
+    public function unlock(Request $request)
     {
         $request->validate([
-            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'password' => 'required|string|min:8',
+            'email' => 'required|email|max:250'
         ]);
 
-        User::where('id', Auth::user()->id)->update(['avatar' => $request->file('avatar')->store('avatars', 'public')]);
-        return redirect()->route('dashboard')->withSuccess('You have successfully uploaded your avatar!');
-    }
-
-    public function roles()
-    {
-        if(Auth::user()->role == 'Student'){
-            User::where('id', Auth::user()->id)->update(['role' => 'Instructor']);
-            Auth::user()->update(['role' => 'Instructor']);
-            return redirect()->route('dashboard')->withSuccess('You have successfully changed your role to Instructor!');
-        }else{
-            User::where('id', Auth::user()->id)->update(['role' => 'Student']);
-            Auth::user()->update(['role' => 'Student']);
-            return redirect()->route('dashboard')->withSuccess('You have successfully changed your role to Student!');
+        if (User::where('email', $request->email)->exists()) {
+            $user = User::where('email', $request->email)->first();
+            if (Hash::check($request->password, $user->password)) {
+                session()->forget('user_data');
+                Auth::login($user);
+                return redirect()->route('dashboard')->withSuccess('You have successfully unlocked your account!');
+            } else {
+                return redirect()->route('lockscreen')->withErrors(['password' => 'Password is invalid']);
+            }
+        } else {
+            return redirect()->route('lockscreen')->withErrors(['email' => 'Invalid email or password']);
         }
     }
 

@@ -8,3 +8,4 @@
 </div>
 <!-- END wrapper -->
 @include('dashboard.common.footer')
+@yield('scripts')

@@ -35,6 +35,13 @@
                     <li class="menu-title"><span data-key="t-menu">Menu</span></li>
 
                     <li class="nav-item">
+                        <a class="nav-link menu-link" href="{{ route('category') }}" target="_self"
+                            role="button" aria-expanded="false" aria-controls="sidebarLayouts">
+                            <i class="las la-tachometer-alt"></i> <span data-key="t-layouts">Category</span>
+                        </a>
+                    </li>
+
+                    {{-- <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse"
                             role="button" aria-expanded="false" aria-controls="sidebarLayouts">
                             <i class="las la-tachometer-alt"></i> <span data-key="t-layouts">Dashboard</span> <span
@@ -43,16 +50,16 @@
                         <div class="collapse menu-dropdown" id="sidebarLayouts">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="layouts-horizontal.html" target="_blank" class="nav-link"
+                                    <a href="{{route('website.courses')}}" target="_self" class="nav-link"
                                         data-key="t-horizontal">Courses</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="layouts-detached.html" target="_blank" class="nav-link"
+                                    <a href="javascript:void(0)" target="_self" class="nav-link"
                                         data-key="t-detached">Become a Teacher</a>
                                 </li>
                             </ul>
                         </div>
-                    </li> <!-- end Dashboard Menu -->
+                    </li> <!-- end Dashboard Menu --> --}}
 
                 </ul>
             </div>
