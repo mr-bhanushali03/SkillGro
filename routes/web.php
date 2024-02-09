@@ -56,6 +56,9 @@ Route::middleware([
     Route::get('roles', [DashboardController::class,'roles'])->name('roles');
     Route::get('icons', [CategoryController::class,'icons'])->name('icons');
     Route::post('addCategory', [CategoryController::class,'addCategory'])->name('addCategory');
+    Route::post('updateCategory', [CategoryController::class,'updateCategory'])->name('updateCategory');
+    Route::get('deleteCategory/{id}', [CategoryController::class,'deleteCategory'])->name('deleteCategory');
+    Route::get('deleteAll',[CategoryController::class,'deleteAll'])->name('deleteAll');
 });
 
 Route::controller(GoogleController::class)->group(function(){
