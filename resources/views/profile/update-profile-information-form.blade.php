@@ -111,7 +111,8 @@
         <!-- Mobile Number -->
         <div class="col-span-6 sm:col-span-4">
             <x-label for="mobile" value="{{ __('Mobile Number') }}" />
-            <x-input id="mobile" type="tel" class="mt-1 block w-full" wire:model="state.mobile" placeholder="8347XXXXXX" required />
+            <x-input id="mobile" type="tel" class="mt-1 block w-full" wire:model="state.mobile"
+                placeholder="8347XXXXXX" required />
             <x-input-error for="mobile" class="mt-2" />
         </div>
 
@@ -139,6 +140,38 @@
                     placeholder="E.g., Company Name, Office Location" required />
                 <p class="mt-2 text-sm text-black-600">You are currently working at which place.</p>
                 <x-input-error for="workplace" class="mt-2" />
+            </div>
+
+            <!-- YouTube Link -->
+            <div class="col-span-6 sm:col-span-4">
+                <x-label for="youtube" value="{{ __('YouTube Link') }}" />
+                <x-input id="youtube" type="url" class="mt-1 block w-full" wire:model="state.youtube"
+                    placeholder="E.g., https://www.youtube.com/user/yourusername" />
+                <x-input-error for="youtube" class="mt-2" />
+            </div>
+
+            <!-- Instagram Link -->
+            <div class="col-span-6 sm:col-span-4">
+                <x-label for="instagram" value="{{ __('Instagram Link') }}" />
+                <x-input id="instagram" type="url" class="mt-1 block w-full" wire:model="state.instagram"
+                    placeholder="E.g., https://www.instagram.com/yourusername" />
+                <x-input-error for="instagram" class="mt-2" />
+            </div>
+
+            <!-- LinkedIn Link -->
+            <div class="col-span-6 sm:col-span-4">
+                <x-label for="linkedin" value="{{ __('LinkedIn Link') }}" />
+                <x-input id="linkedin" type="url" class="mt-1 block w-full" wire:model="state.linkedin"
+                    placeholder="E.g., https://www.linkedin.com/in/yourusername" />
+                <x-input-error for="linkedin" class="mt-2" />
+            </div>
+
+            <!-- Twitter Link -->
+            <div class="col-span-6 sm:col-span-4">
+                <x-label for="twitter" value="{{ __('Twitter Link') }}" />
+                <x-input id="twitter" type="url" class="mt-1 block w-full" wire:model="state.twitter"
+                    placeholder="E.g., https://twitter.com/yourusername" />
+                <x-input-error for="twitter" class="mt-2" />
             </div>
         @endif
     </x-slot>

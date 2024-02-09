@@ -17,7 +17,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
      */
     public function update(User $user, array $input): void
     {
-        if (isset($input['profession']) && isset($input['qualification']) && isset($input['workplace'])) {
+        if (isset($input['profession']) && isset($input['qualification']) && isset($input['workplace']) && isset($input['youtube']) && isset($input['instagram']) && isset($input['linkedin']) && isset($input['twitter'])){
             Validator::make($input, [
                 'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
@@ -27,6 +27,10 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'profession' => 'required|string|max:255',
                 'qualification' => 'required|string|max:255',
                 'workplace' => 'required|string|max:255',
+                'youtube' => 'required|string|max:255',
+                'instagram' => 'required|string|max:255',
+                'linkedin' => 'required|string|max:255',
+                'twitter' => 'required|string|max:255',
             ])->validateWithBag('updateProfileInformation');
         } else {
             Validator::make($input, [
@@ -48,7 +52,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         ) {
             $this->updateVerifiedUser($user, $input);
         } else {
-            if(isset($input['profession']) && isset($input['qualification']) && isset($input['workplace'])) {
+            if(isset($input['profession']) && isset($input['qualification']) && isset($input['workplace']) && isset($input['youtube']) && isset($input['instagram']) && isset($input['linkedin']) && isset($input['twitter'])){
                 $user->forceFill([
                     'name' => $input['name'],
                     'email' => $input['email'],
@@ -57,6 +61,11 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                     'profession' => $input['profession'],
                     'qualification' => $input['qualification'],
                     'workplace' => $input['workplace'],
+                    'youtube' => $input['youtube'],
+                    'instagram' => $input['instagram'],
+                    'linkedin' => $input['linkedin'],
+                    'twitter' => $input['twitter'],
+                    'profile_photo_url' => $input['profile_photo_url'],
                 ])->save();
             } else {
                 $user->forceFill([
@@ -64,6 +73,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                     'email' => $input['email'],
                     'dob' => $input['dob'],
                     'mobile' => $input['mobile'],
+                    'profile_photo_url' => $input['profile_photo_url'],
                 ])->save();
             }
         }
@@ -76,7 +86,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
      */
     protected function updateVerifiedUser(User $user, array $input): void
     {
-        if(isset($input['profession']) && isset($input['qualification']) && isset($input['workplace'])) {
+        if(isset($input['profession']) && isset($input['qualification']) && isset($input['workplace']) && isset($input['youtube']) && isset($input['instagram']) && isset($input['linkedin']) && isset($input['twitter'])){
             $user->forceFill([
                 'name' => $input['name'],
                 'email' => $input['email'],
@@ -85,6 +95,11 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'profession' => $input['profession'],
                 'qualification' => $input['qualification'],
                 'workplace' => $input['workplace'],
+                'youtube' => $input['youtube'],
+                'instagram' => $input['instagram'],
+                'linkedin' => $input['linkedin'],
+                'twitter' => $input['twitter'],
+                'profile_photo_url' => $input['profile_photo_url'],
             ])->save();
         } else {
             $user->forceFill([
@@ -92,6 +107,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'email' => $input['email'],
                 'dob' => $input['dob'],
                 'mobile' => $input['mobile'],
+                'profile_photo_url' => $input['profile_photo_url'],
             ])->save();
         }
 

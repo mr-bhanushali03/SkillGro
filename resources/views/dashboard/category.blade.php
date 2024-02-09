@@ -160,11 +160,11 @@
                                     </div>
                                     <div class="ms-3 flex-grow-1 d-flex justify-content-start align-items-center">
                                         <a href="javascript:void(0)">
-                                            <h5 class="mb-1">{{ $Category->category }}</h5>
+                                            <h5 class="mt-1">{{ $Category->category }}</h5>
                                         </a>
                                     </div>
                                     <div>
-                                        <div class="dropdown float-end">
+                                        <div class="dropdown float-end mt-1">
                                             <button class="btn btn-ghost-primary btn-icon dropdown" type="button"
                                                 data-bs-toggle="dropdown" aria-expanded="false">
                                                 <i class="ri-more-fill align-middle fs-16"></i>

@@ -21,11 +21,16 @@ return new class extends Migration
             $table->string('profession')->nullable();
             $table->string('qualification')->nullable();
             $table->string('workplace')->nullable();
+            $table->string('youtube')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('profile_photo_url', 2048)->nullable();
+            $table->string('profile_photo_path', 2048)->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->string('role')->default('Student');
             $table->foreignId('current_team_id')->nullable();
-            $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
         });
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -40,7 +41,8 @@ class HomeController extends Controller
     }
 
     function instructors() {
-        return view('website.instructors');
+        $Instructor = User::where('role', 'Instructor')->paginate(9);
+        return view('website.instructors', compact('Instructor'));
     }
 
     function instructorDetail() {

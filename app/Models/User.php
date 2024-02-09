@@ -32,6 +32,12 @@ class User extends Authenticatable
         'profession',
         'qualification',
         'workplace',
+        'youtube',
+        'instagram',
+        'linkedin',
+        'twitter',
+        'profile_photo_path',
+        'profile_photo_url',
         'role',
         'google_id',
         // 'avatar'

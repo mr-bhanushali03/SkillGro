@@ -39,239 +39,42 @@
     <section class="instructor__area">
         <div class="container">
             <div class="row">
-                <div class="col-xl-4 col-sm-6">
-                    <div class="instructor__item">
-                        <div class="instructor__thumb">
-                            <a href="{{ url('instructorDetail') }}"><img
-                                    src="{{ asset('storage/website') }}/img/instructor/instructor01.png" alt="img"></a>
-                        </div>
-                        <div class="instructor__content">
-                            <h2 class="title"><a href="{{ url('instructorDetail') }}">Mark Jukarberg</a></h2>
-                            <span class="designation">UX Design Lead</span>
-                            <p class="avg-rating">
-                                <i class="fas fa-star"></i>
-                                (4.8 Ratings)
-                            </p>
-                            <div class="instructor__social">
-                                <ul class="list-wrap">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                </ul>
+                @foreach ($Instructor as $instructor)
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="instructor__item">
+                            <div class="instructor__thumb">
+                                <a href="{{ url('instructorDetail') }}">
+                                    @if ($instructor->profile_photo_path == null)
+                                        <img src="{{ $instructor->profile_photo_url }}" alt="img" class="rounded-circle" style="height: 180px; width: 200px;">
+                                    @else
+                                        <img src="{{ asset('storage') }}/{{ $instructor->profile_photo_path }}" alt="img" class="rounded-circle" style="height: 180px; width: 200px;">
+                                    @endif
+                                </a>                                
+                            </div>
+                            <div class="instructor__content">
+                                <h2 class="title"><a href="{{ url('instructorDetail') }}">{{ $instructor->name }}</a>
+                                </h2>
+                                <span class="designation">{{ $instructor->profession }}</span>
+                                <p class="avg-rating">
+                                    <i class="fas fa-star"></i>
+                                    (4.8 Ratings)
+                                </p>
+                                <div class="instructor__social">
+                                    <ul class="list-wrap">
+                                        <li><a href="{{ $instructor->youtube }}"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="{{ $instructor->linkedin }}"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href="{{ $instructor->instagram }}"><i class="fab fa-whatsapp"></i></a></li>
+                                        <li><a href="{{ $instructor->twitter }}"><i class="fab fa-instagram"></i></a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-4 col-sm-6">
-                    <div class="instructor__item">
-                        <div class="instructor__thumb">
-                            <a href="{{ url('instructorDetail') }}"><img
-                                    src="{{ asset('storage/website') }}/img/instructor/instructor02.png"
-                                    alt="img"></a>
-                        </div>
-                        <div class="instructor__content">
-                            <h2 class="title"><a href="{{ url('instructorDetail') }}">Olivia Mia</a></h2>
-                            <span class="designation">Web Design</span>
-                            <p class="avg-rating">
-                                <i class="fas fa-star"></i>
-                                (4.8 Ratings)
-                            </p>
-                            <div class="instructor__social">
-                                <ul class="list-wrap">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-sm-6">
-                    <div class="instructor__item">
-                        <div class="instructor__thumb">
-                            <a href="{{ url('instructorDetail') }}"><img
-                                    src="{{ asset('storage/website') }}/img/instructor/instructor03.png"
-                                    alt="img"></a>
-                        </div>
-                        <div class="instructor__content">
-                            <h2 class="title"><a href="{{ url('instructorDetail') }}">Sophia Ava</a></h2>
-                            <span class="designation">Digital Marketing</span>
-                            <p class="avg-rating">
-                                <i class="fas fa-star"></i>
-                                (4.8 Ratings)
-                            </p>
-                            <div class="instructor__social">
-                                <ul class="list-wrap">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-sm-6">
-                    <div class="instructor__item">
-                        <div class="instructor__thumb">
-                            <a href="{{ url('instructorDetail') }}"><img
-                                    src="{{ asset('storage/website') }}/img/instructor/instructor04.png"
-                                    alt="img"></a>
-                        </div>
-                        <div class="instructor__content">
-                            <h2 class="title"><a href="{{ url('instructorDetail') }}">William Hope</a></h2>
-                            <span class="designation">Web Development</span>
-                            <p class="avg-rating">
-                                <i class="fas fa-star"></i>
-                                (4.8 Ratings)
-                            </p>
-                            <div class="instructor__social">
-                                <ul class="list-wrap">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-sm-6">
-                    <div class="instructor__item">
-                        <div class="instructor__thumb">
-                            <a href="{{ url('instructorDetail') }}"><img
-                                    src="{{ asset('storage/website') }}/img/instructor/instructor05.png"
-                                    alt="img"></a>
-                        </div>
-                        <div class="instructor__content">
-                            <h2 class="title"><a href="{{ url('instructorDetail') }}">Ronald S. Staton</a></h2>
-                            <span class="designation">Web Design</span>
-                            <p class="avg-rating">
-                                <i class="fas fa-star"></i>
-                                (4.8 Ratings)
-                            </p>
-                            <div class="instructor__social">
-                                <ul class="list-wrap">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-sm-6">
-                    <div class="instructor__item">
-                        <div class="instructor__thumb">
-                            <a href="{{ url('instructorDetail') }}"><img
-                                    src="{{ asset('storage/website') }}/img/instructor/instructor06.png"
-                                    alt="img"></a>
-                        </div>
-                        <div class="instructor__content">
-                            <h2 class="title"><a href="{{ url('instructorDetail') }}">Dennis L. Turner</a></h2>
-                            <span class="designation">UX Design Lead</span>
-                            <p class="avg-rating">
-                                <i class="fas fa-star"></i>
-                                (4.8 Ratings)
-                            </p>
-                            <div class="instructor__social">
-                                <ul class="list-wrap">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-sm-6">
-                    <div class="instructor__item">
-                        <div class="instructor__thumb">
-                            <a href="{{ url('instructorDetail') }}"><img
-                                    src="{{ asset('storage/website') }}/img/instructor/instructor07.png"
-                                    alt="img"></a>
-                        </div>
-                        <div class="instructor__content">
-                            <h2 class="title"><a href="{{ url('instructorDetail') }}">Timothy S. Reed</a></h2>
-                            <span class="designation">Digital Marketing</span>
-                            <p class="avg-rating">
-                                <i class="fas fa-star"></i>
-                                (4.8 Ratings)
-                            </p>
-                            <div class="instructor__social">
-                                <ul class="list-wrap">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-sm-6">
-                    <div class="instructor__item">
-                        <div class="instructor__thumb">
-                            <a href="{{ url('instructorDetail') }}"><img
-                                    src="{{ asset('storage/website') }}/img/instructor/instructor08.png"
-                                    alt="img"></a>
-                        </div>
-                        <div class="instructor__content">
-                            <h2 class="title"><a href="{{ url('instructorDetail') }}">Barbara D. Rice</a></h2>
-                            <span class="designation">Web Development</span>
-                            <p class="avg-rating">
-                                <i class="fas fa-star"></i>
-                                (4.8 Ratings)
-                            </p>
-                            <div class="instructor__social">
-                                <ul class="list-wrap">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-sm-6">
-                    <div class="instructor__item">
-                        <div class="instructor__thumb">
-                            <a href="{{ url('instructorDetail') }}"><img
-                                    src="{{ asset('storage/website') }}/img/instructor/instructor09.png"
-                                    alt="img"></a>
-                        </div>
-                        <div class="instructor__content">
-                            <h2 class="title"><a href="{{ url('instructorDetail') }}">Sandy J. Rankin</a></h2>
-                            <span class="designation">Web Development</span>
-                            <p class="avg-rating">
-                                <i class="fas fa-star"></i>
-                                (4.8 Ratings)
-                            </p>
-                            <div class="instructor__social">
-                                <ul class="list-wrap">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
-            <nav class="pagination__wrap mt-30">
-                <ul class="list-wrap">
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="{{ url('instructors') }}">2</a></li>
-                    <li><a href="{{ url('instructors') }}">3</a></li>
-                    <li><a href="{{ url('instructors') }}">4</a></li>
-                </ul>
-            </nav>
+            <div class="mt-30">
+                    {{ $Instructor->links('pagination::bootstrap-5') }}
+            </div>
         </div>
     </section>
     <!-- instructor-area-end -->
