@@ -171,6 +171,8 @@
 <script>
     SVGInject(document.querySelectorAll("img.injectable"));
 </script>
+<!-- materialdesign icon js-->
+<script src="{{ asset('assets/dashboard') }}/js/pages/remix-icons-listing.js"></script>
 </body>
 
 </html>

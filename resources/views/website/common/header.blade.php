@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="{{ asset('assets/website') }}/css/spacing.css" />
     <link rel="stylesheet" href="{{ asset('assets/website') }}/css/tg-cursor.css" />
     <link rel="stylesheet" href="{{ asset('assets/website') }}/css/main.css" />
+    <!-- Icons Css -->
+    <link href="{{ asset('assets/dashboard') }}/css/icons.min.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -103,11 +105,10 @@
                                             <select class="form-select" id="course-cat"
                                                 aria-label="Default select example" style="width: 150px">
                                                 <option selected disabled>Categories</option>
-                                                <option value="1">BCA</option>
-                                                <option value="2">B.Com</option>
-                                                <option value="3">BBA</option>
-                                                <option value="4">B.Sc</option>
-                                                <option value="5">B.Tech</option>
+                                                @foreach ($Categories as $category)
+                                                    <option value="{{ $category->id }}">{{ $category->category }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="input-grp">

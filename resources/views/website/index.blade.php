@@ -294,83 +294,19 @@
                     <div class="categories__wrap">
                         <div class="swiper categories-active">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="categories__item">
-                                        <a href="{{ url('courses') }}">
-                                            <div class="icon">
-                                                <i class="flaticon-graphic-design"></i>
-                                            </div>
-                                            <span class="name">Graphic Design</span>
-                                            <span class="courses">(22)</span>
-                                        </a>
+                                @foreach ($Categories as $category)
+                                    <div class="swiper-slide">
+                                        <div class="categories__item">
+                                            <a href="{{ url('courses') }}">
+                                                <div class="icon text-dark">
+                                                    <i class="{{ $category->icon }}"></i>
+                                                </div>
+                                                <span class="name">{{ $category->category }}</span>
+                                                <span class="courses">(22)</span>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="categories__item">
-                                        <a href="{{ url('courses') }}">
-                                            <div class="icon">
-                                                <i class="flaticon-investment"></i>
-                                            </div>
-                                            <span class="name">Finance</span>
-                                            <span class="courses">(41)</span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="categories__item">
-                                        <a href="{{ url('courses') }}">
-                                            <div class="icon">
-                                                <i class="flaticon-coding"></i>
-                                            </div>
-                                            <span class="name">Development</span>
-                                            <span class="courses">(29)</span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="categories__item">
-                                        <a href="{{ url('courses') }}">
-                                            <div class="icon">
-                                                <i class="flaticon-email"></i>
-                                            </div>
-                                            <span class="name">Marketing</span>
-                                            <span class="courses">(31)</span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="categories__item">
-                                        <a href="{{ url('courses') }}">
-                                            <div class="icon">
-                                                <i class="flaticon-fashion"></i>
-                                            </div>
-                                            <span class="name">Life Style</span>
-                                            <span class="courses">(23)</span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="categories__item">
-                                        <a href="{{ url('courses') }}">
-                                            <div class="icon">
-                                                <i class="flaticon-interaction"></i>
-                                            </div>
-                                            <span class="name">Management</span>
-                                            <span class="courses">(19)</span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="categories__item">
-                                        <a href="{{ url('courses') }}">
-                                            <div class="icon">
-                                                <i class="flaticon-web-design"></i>
-                                            </div>
-                                            <span class="name">App Design</span>
-                                            <span class="courses">(18)</span>
-                                        </a>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                         <div class="categories__nav">

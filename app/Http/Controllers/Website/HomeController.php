@@ -3,69 +3,91 @@
 namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    function Categories() {
+        return Category::all();
+    }
+
     function index() {
-        return view('website.index');
+        $Categories = $this->Categories();
+        return view('website.index',compact('Categories'));
     }
 
     function about() {
-        return view('website.about');
+        $Categories = $this->Categories();
+        return view('website.about',compact('Categories'));
     }
 
     function blogs() {
-        return view('website.blog');
+        $Categories = $this->Categories();
+        return view('website.blog',compact('Categories'));
     }
 
     function blogDetail() {
-        return view('website.blog-details');
+        $Categories = $this->Categories();
+        return view('website.blog-details',compact('Categories'));
     }
 
     function courses() {
-        return view('website.courses');
+        $Categories = $this->Categories();
+        return view('website.courses',compact('Categories'));
     }
 
     function courseDetail() {
-        return view('website.courseDetail');
+        $Categories = $this->Categories();
+        return view('website.courseDetail',compact('Categories'));
     }
 
     function events() {
-        return view('website.events');
+        $Categories = $this->Categories();
+        return view('website.events',compact('Categories'));
     }
 
     function eventDetail() {
-        return view('website.eventDetail');
+        $Categories = $this->Categories();
+        return view('website.eventDetail',compact('Categories'));
     }
 
     function instructors() {
-        $Instructor = User::where('role', 'Instructor')->paginate(9);
-        return view('website.instructors', compact('Instructor'));
+        $data = [
+            'Instructor' => User::where('role', 'Instructor')->paginate(9),
+            'Categories' => $this->Categories(),
+        ];
+        return view('website.instructors', $data);
     }
 
     function instructorDetail() {
-        return view('website.instructorDetail');
+        $Categories = $this->Categories();
+        return view('website.instructorDetail',compact('Categories'));
     }
 
     function contact() {
-        return view('website.contact');
+        $Categories = $this->Categories();
+        return view('website.contact',compact('Categories'));
     }
 
     function privacy() {
-        return view('website.privacy');
+        $Categories = $this->Categories();
+        return view('website.privacy',compact('Categories'));
     }
 
     function support() {
-        return view('website.support');
+        $Categories = $this->Categories();
+        return view('website.support',compact('Categories'));
     }
 
     function terms() {
-        return view('website.terms');
+        $Categories = $this->Categories();
+        return view('website.terms',compact('Categories'));
     }
 
     function cart() {
-        return view('website.cart');
+        $Categories = $this->Categories();
+        return view('website.cart',compact('Categories'));
     }
 }
