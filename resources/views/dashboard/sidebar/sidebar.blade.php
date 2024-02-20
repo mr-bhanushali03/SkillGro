@@ -37,7 +37,14 @@
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="{{ route('category') }}" target="_self"
                             role="button" aria-expanded="false" aria-controls="sidebarLayouts">
-                            <i class="las la-tachometer-alt"></i> <span data-key="t-layouts">Category</span>
+                            <i class="las la-chart-pie"></i> <span data-key="t-layouts">Category</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="{{ route('course') }}" target="_self"
+                            role="button" aria-expanded="false" aria-controls="sidebarLayouts">
+                            <i class=" ri-git-repository-fill"></i> <span data-key="t-layouts">Course</span>
                         </a>
                     </li>
 

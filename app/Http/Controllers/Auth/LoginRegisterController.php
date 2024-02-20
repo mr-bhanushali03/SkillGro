@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -15,9 +16,15 @@ class LoginRegisterController extends Controller
         $this->middleware('guest')->except(['logout', 'lockscreen', 'unlock']);
     }
 
+    function Categories()
+    {
+        return Category::all();
+    }
+
     public function register()
     {
-        return view('auth.register');
+        $Categories = $this->Categories();
+        return view('auth.register',compact('Categories'));
     }
 
     public function store(Request $request)
@@ -42,7 +49,8 @@ class LoginRegisterController extends Controller
 
     public function login()
     {
-        return view('auth.login');
+        $Categories = $this->Categories();
+        return view('auth.login',compact('Categories'));
     }
 
     public function authenticate(Request $request)
@@ -78,8 +86,9 @@ class LoginRegisterController extends Controller
         }
     }
 
-    function lockscreen() {
-        if(session('user_data') == null){
+    function lockscreen()
+    {
+        if (session('user_data') == null) {
             $data = [
                 'email' => Auth::user()->email,
                 'profile_photo_url' => Auth::user()->profile_photo_url,

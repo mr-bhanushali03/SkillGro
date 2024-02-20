@@ -5,6 +5,7 @@ use App\Http\Controllers\Website\HomeController;
 use App\Http\Controllers\Auth\LoginRegisterController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Dashboard\CategoryController;
+use App\Http\Controllers\Dashboard\CourseController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use Illuminate\Support\Facades\Auth;
 
@@ -59,6 +60,7 @@ Route::middleware([
     Route::post('updateCategory', [CategoryController::class,'updateCategory'])->name('updateCategory');
     Route::get('deleteCategory/{id}', [CategoryController::class,'deleteCategory'])->name('deleteCategory');
     Route::get('deleteAll',[CategoryController::class,'deleteAll'])->name('deleteAll');
+    Route::get('course', [CourseController::class,'courses'])->name('course');
 });
 
 Route::controller(GoogleController::class)->group(function(){

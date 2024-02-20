@@ -853,6 +853,9 @@
 
 <!-- materialdesign icon js-->
 <script src="{{ asset('assets/dashboard') }}/js/pages/remix-icons-listing.js"></script>
+
+<!-- Courses js -->
+<script src="{{ asset('assets/dashboard') }}/js/pages/sellers.init.js"></script>
 </body>
 
 </html>
