@@ -8,12 +8,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Sellers</h4>
+                        <h4 class="mb-sm-0">{{ $Title }}</h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
-                                <li class="breadcrumb-item active">Sellers</li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+                                <li class="breadcrumb-item active">{{ $Title }}</li>
                             </ol>
                         </div>
 
@@ -23,40 +23,58 @@
             <!-- end page title -->
             <div class="card">
                 <div class="card-header border-0 rounded">
-                    <div class="row g-2">
-                        <div class="col-xl-3">
+                    <div class="row g-2 align-items-center">
+                        <div class="col-lg-2 col-md-6 col-sm-6 col-6"> 
                             <div class="search-box">
                                 <input type="text" class="form-control" autocomplete="off" id="searchResultList"
-                                    placeholder="Search for sellers & owner name or something..."> <i
-                                    class="ri-search-line search-icon"></i>
+                                    placeholder="Search for course & category or something..."> 
+                                <i class="ri-search-line search-icon"></i>
                             </div>
                         </div>
-                        <!--end col-->
-                        <div class="col-xxl-3 ms-auto">
-                            <div>
-                                <select class="form-control" id="category-select">
-                                    <option value="All">Select Categories</option>
-                                    <option value="All">All</option>
-                                    <option value="Retailer">Retailer</option>
-                                    <option value="Health & Medicine">Health & Medicine</option>
-                                    <option value="Manufacturer">Manufacturer</option>
-                                    <option value="Food Service">Food Service</option>
-                                    <option value="Computers & Electronics">Computers & Electronics</option>
-                                </select>
-                            </div>
+                        <div class="col-lg-2 col-md-6 col-sm-6 col-6">
+                            <select class="form-control" id="total-student">
+                                <option value="All">All</option>
+                                <option value="500">500</option>
+                                <option value="1k">1k</option>
+                                <option value="2k">2k</option>
+                                <option value="3k">3k</option>
+                                <option value="4k">4k</option>
+                                <option value="5k">5k</option>
+                            </select>
                         </div>
-                        <!--end col-->
-                        <div class="col-lg-auto col-sm-12">
+                        <div class="col-lg-2 col-md-6 col-sm-6 col-6">
+                            <select class="form-control" id="total-ratings">
+                                <option value="All">All</option>
+                                <option value="1 star">1 Star</option>
+                                <option value="2 star">2 star</option>
+                                <option value="3 star">3 star</option>
+                                <option value="4 star">4 star</option>
+                                <option value="5 star">5 star</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-2 col-md-6 col-sm-6 col-6">
+                            <select class="form-control" id="category-select">
+                                <option value="All">All</option>
+                                @foreach ($Categories as $Category)
+                                    <option value="{{ $Category->category }}">{{ $Category->category }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-lg-2 col-md-6 col-sm-6 col-6">
                             <div class="hstack gap-2">
-                                <button type="button" class="btn btn-danger col-sm-6 w-50"><i class="ri-delete-bin-2-line me-1 align-bottom"></i> Delete All</button>
-                                <button class="btn btn-success col-sm-6 w-50" data-bs-toggle="modal" data-bs-target="#addSeller"><i class="ri-add-fill me-1 align-bottom"></i> Add Seller</button>
+                                <button type="button" class="btn btn-danger w-100"><i
+                                        class="ri-delete-bin-2-line me-1 align-bottom"></i> Delete All</button>
                             </div>
-                        </div>                  
-                        <!--end col-->
+                        </div>
+                        <div class="col-lg-2 col-md-6 col-sm-6 col-6">
+                            <div class="hstack gap-2">
+                                <button class="btn btn-success w-100" data-bs-toggle="modal"
+                                    data-bs-target="#addcourse"><i class="ri-add-fill me-1 align-bottom"></i> Add Course</button>
+                            </div>
+                        </div>
                     </div>
-                    <!--end row-->
                 </div>
-            </div>
+            </div>            
 
             <div class="row mt-4" id="seller-list"></div>
             <!--end row-->
@@ -95,12 +113,12 @@
             </div>
 
             <!-- Modal -->
-            <div class="modal fade zoomIn" id="addSeller" tabindex="-1" aria-labelledby="addSellerLabel"
+            <div class="modal fade zoomIn" id="addcourse" tabindex="-1" aria-labelledby="addSellerLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="addSellerLabel">Add Seller</h5>
+                            <h5 class="modal-title" id="addSellerLabel">Add Course</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-content border-0 mt-3">
@@ -126,9 +144,9 @@
                             </ul>
                         </div>
                         <div class="modal-body">
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="personalDetails" role="tabpanel">
-                                    <form action="#">
+                            <form action="javascript:void(0)">
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="personalDetails" role="tabpanel">
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
@@ -213,21 +231,20 @@
                                             <!--end col-->
                                             <div class="col-lg-12">
                                                 <div class="hstack gap-2 justify-content-end">
-                                                    <button
-                                                        class="btn btn-link link-success text-decoration-none fw-medium"
-                                                        data-bs-dismiss="modal"><i
+                                                    <button class="btn btn-secondary" data-bs-dismiss="modal"><i
                                                             class="ri-close-line me-1 align-middle"></i> Close</button>
-                                                    <button type="submit" class="btn btn-primary"><i
-                                                            class="ri-save-3-line align-bottom me-1"></i> Save</button>
+                                                    <button class="btn btn-primary" data-bs-toggle="tab"
+                                                        onclick="showTab('businessDetails', event)" role="tab"
+                                                        aria-selected="false">Next<i
+                                                            class="ri-arrow-right-line align-bottom ms-1"></i>
+                                                    </button>
                                                 </div>
                                             </div>
                                             <!--end col-->
                                         </div>
                                         <!--end row-->
-                                    </form>
-                                </div>
-                                <div class="tab-pane" id="businessDetails" role="tabpanel">
-                                    <form action="#">
+                                    </div>
+                                    <div class="tab-pane" id="businessDetails" role="tabpanel">
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="mb-3">
@@ -302,21 +319,21 @@
                                             <!--end col-->
                                             <div class="col-lg-12">
                                                 <div class="hstack gap-2 justify-content-end">
-                                                    <button
-                                                        class="btn btn-link link-success text-decoration-none fw-medium"
-                                                        data-bs-dismiss="modal"><i
-                                                            class="ri-close-line me-1 align-middle"></i> Close</button>
-                                                    <button type="submit" class="btn btn-primary"><i
-                                                            class="ri-save-3-line align-bottom me-1"></i> Save</button>
+                                                    <button class="btn btn-secondary" data-bs-toggle="tab"
+                                                        onclick="showTab('personalDetails', event)" role="tab"
+                                                        aria-selected="false"><i
+                                                            class="ri-arrow-left-line align-bottom me-1"></i> Prev</button>
+                                                    <button class="btn btn-primary" data-bs-toggle="tab"
+                                                        onclick="showTab('bankDetails', event)" role="tab"
+                                                        aria-selected="false">Next<i
+                                                            class="ri-arrow-right-line align-bottom ms-1"></i></button>
                                                 </div>
                                             </div>
                                             <!--end col-->
                                         </div>
                                         <!--end row-->
-                                    </form>
-                                </div>
-                                <div class="tab-pane" id="bankDetails" role="tabpanel">
-                                    <form action="#">
+                                    </div>
+                                    <div class="tab-pane" id="bankDetails" role="tabpanel">
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
@@ -362,20 +379,20 @@
                                             <!--end col-->
                                             <div class="col-lg-12">
                                                 <div class="hstack gap-2 justify-content-end">
-                                                    <button
-                                                        class="btn btn-link link-success text-decoration-none fw-medium"
-                                                        data-bs-dismiss="modal"><i
-                                                            class="ri-close-line me-1 align-middle"></i> Close</button>
-                                                    <button type="submit" class="btn btn-primary"><i
-                                                            class="ri-save-3-line align-bottom me-1"></i> Save</button>
+                                                    <button class="btn btn-secondary prev-tab" data-bs-toggle="tab"
+                                                        onclick="showTab('businessDetails', event)" role="tab"
+                                                        aria-selected="false"><i
+                                                            class="ri-arrow-left-line align-bottom me-1"></i> Prev</button>
+                                                    <button class="btn btn-primary" type="submit">Save<i
+                                                            class="ri-save-3-line align-bottom ms-1"></i></button>
                                                 </div>
                                             </div>
                                             <!--end col-->
                                         </div>
                                         <!--end row-->
-                                    </form>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -386,4 +403,46 @@
         <!-- container-fluid -->
     </div>
     <!-- End Page-content -->
+@endsection
+@section('scripts')
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const tabButtons = document.querySelectorAll('.hstack button[data-bs-toggle="tab"]');
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function(event) {
+                    const targetTabId = this.getAttribute('href').substring(1);
+                    showTab(targetTabId, event);
+                });
+            });
+        });
+
+        function showTab(tabId, event) {
+            const tabs = document.querySelectorAll('.tab-pane');
+            const tabLinks = document.querySelectorAll('.nav-link');
+
+            tabs.forEach(tab => {
+                if (tab.id === tabId) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+
+            tabLinks.forEach(link => {
+                const linkHref = link.getAttribute('href');
+                const cleanLinkHref = linkHref.startsWith('#') ? linkHref.substring(1) : linkHref;
+
+                if (cleanLinkHref === tabId) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+
+            // Prevent the default behavior of the link (e.g., navigating to a new URL)
+            if (event) {
+                event.preventDefault();
+            }
+        }
+    </script>
 @endsection

@@ -396,10 +396,10 @@ function loadSellerList(e, t) {
                 "</div>" +
                 '<div class="mt-4">' +
                 '<a href="apps-ecommerce-course-details.html" class="btn btn-light w-100 mb-2 d-flex justify-content-center"><i class="ri-eye-fill me-2"></i>View Details</a>' +
-                '<div class="d-flex gap-2 justify-content-center">'+
-                '<button class="btn btn-warning w-50 mb-2"><i class="ri-pencil-fill me-1"></i>Edit</button>' +
-                '<button class="btn btn-danger w-50 mb-2"><i class=" ri-delete-back-2-fill me-1">Delete</button>' +
-                '</div>' +
+                '<div class="d-flex gap-2 justify-content-center">' +
+                '<button class="btn btn-warning w-50 mb-1"><i class="ri-pencil-fill align-bottom me-1"></i>Edit</button>' +
+                '<button class="btn btn-danger w-50 mb-1"><i class="ri-delete-back-2-fill align-bottom me-1"></i>Delete</button>' +
+                "</div>" +
                 "</div>" +
                 "</div>" +
                 "</div>" +
@@ -500,39 +500,75 @@ getJSON("seller-list.json", function (e, t) {
         : (loadSellerList((sellerListData = t), currentPage),
           sortElementsById());
 });
-var searchResultList = document.getElementById("searchResultList"),
-    categoryInput =
-        (searchResultList.addEventListener("keyup", function () {
-            var t,
-                e = searchResultList.value.toLowerCase();
-            (t = e),
-                loadSellerList(
-                    sellerListData.filter(function (e) {
-                        return (
-                            -1 !==
-                                e.shop[0].name
-                                    .toLowerCase()
-                                    .indexOf(t.toLowerCase()) ||
-                            -1 !==
-                                e.seller.toLowerCase().indexOf(t.toLowerCase())
-                        );
-                    }),
-                    currentPage
-                );
-        }),
-        new Choices(document.getElementById("category-select"), {
-            searchEnabled: !1,
-        }));
-categoryInput.passedElement.element.addEventListener(
-    "change",
-    function (e) {
-        var t = e.detail.value;
+document.addEventListener("DOMContentLoaded", function () {
+    var searchResultList = document.getElementById("searchResultList");
+    var categorySelect = new Choices(document.getElementById("category-select"), {
+        searchEnabled: false,
+    });
+    var totalStudent = new Choices(document.getElementById("total-student"), {
+        searchEnabled: false,
+    });
+    var totalRatings = new Choices(document.getElementById("total-ratings"), {
+        searchEnabled: false,
+    });
+
+    // Event listener for search input
+    searchResultList.addEventListener("keyup", function () {
+        var searchTerm = searchResultList.value.toLowerCase();
         loadSellerList(
-            "All" != e.detail.value
-                ? sellerListData.filter((e) => e.category == t)
-                : sellerListData,
+            sellerListData.filter(function (item) {
+                return (
+                    item.course[0].name.toLowerCase().includes(searchTerm) ||
+                    item.category.toLowerCase().includes(searchTerm)
+                );
+            }),
             currentPage
         );
-    },
-    !1
-);
+    });
+
+    // Event listener for category dropdown
+    categorySelect.passedElement.element.addEventListener(
+        "change",
+        function (event) {
+            var selectedCategory = event.detail.value;
+            var selectedStudent = totalStudent.getValue(true); // Get selected students
+            var selectedRatings = totalRatings.getValue(true); // Get selected ratings
+            filterAndLoadList(selectedCategory, currentPage, selectedStudent, selectedRatings);
+        }
+    );
+
+    // Event listener for total student dropdown
+    totalStudent.passedElement.element.addEventListener(
+        "change",
+        function (event) {
+            var selectedStudent = event.detail.value;
+            var selectedCategory = categorySelect.getValue(true); // Get selected categories
+            var selectedRatings = totalRatings.getValue(true); // Get selected ratings
+            filterAndLoadList(selectedCategory, currentPage, selectedStudent, selectedRatings);
+        }
+    );
+
+    // Event listener for total ratings dropdown
+    totalRatings.passedElement.element.addEventListener(
+        "change",
+        function (event) {
+            var selectedRatings = event.detail.value;
+            var selectedCategory = categorySelect.getValue(true); // Get selected categories
+            var selectedStudent = totalStudent.getValue(true); // Get selected students
+            filterAndLoadList(selectedCategory, currentPage, selectedStudent, selectedRatings);
+        }
+    );
+
+    function filterAndLoadList(selectedCategory, currentPage, selectedStudent, selectedRatings) {
+        var filteredData = sellerListData.filter(function (item) {
+            var categoryCondition = (selectedCategory.includes("All") || selectedCategory.includes(item.category));
+            var studentCondition = (selectedStudent.includes("All") || selectedStudent.includes(item.Student));
+            var ratingsCondition = (selectedRatings.includes("All") || selectedRatings.includes(item.Ratings));
+
+            return (categoryCondition && studentCondition && ratingsCondition);
+        });
+
+        loadSellerList(filteredData, currentPage);
+    }
+});
+

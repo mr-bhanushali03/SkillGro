@@ -35,18 +35,18 @@
                     <li class="menu-title"><span data-key="t-menu">Menu</span></li>
 
                     <li class="nav-item">
-                        <a class="nav-link menu-link" href="{{ route('category') }}" target="_self"
-                            role="button" aria-expanded="false" aria-controls="sidebarLayouts">
+                        <a class="nav-link menu-link {{ request()->is('category*') ? 'active' : '' }}" href="{{ route('category') }}"
+                            target="_self" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
                             <i class="las la-chart-pie"></i> <span data-key="t-layouts">Category</span>
                         </a>
                     </li>
-
+                    
                     <li class="nav-item">
-                        <a class="nav-link menu-link" href="{{ route('course') }}" target="_self"
-                            role="button" aria-expanded="false" aria-controls="sidebarLayouts">
-                            <i class=" ri-git-repository-fill"></i> <span data-key="t-layouts">Course</span>
+                        <a class="nav-link menu-link {{ request()->is('course*') ? 'active' : '' }}" href="{{ route('course') }}"
+                            target="_self" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
+                            <i class="ri-git-repository-fill"></i> <span data-key="t-layouts">Course</span>
                         </a>
-                    </li>
+                    </li>                    
 
                     {{-- <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse"

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 
 class CourseController extends Controller
 {
@@ -12,10 +13,15 @@ class CourseController extends Controller
         $this->middleware('auth');
     }
 
+    function Categories() {
+        return Category::all();
+    }
+
     public function courses()
     {
         $data = [
-            'Title' => 'Courses'
+            'Title' => 'Courses',
+            'Categories' => $this->Categories(),
         ];
         return view('dashboard.courses', $data);
     }
