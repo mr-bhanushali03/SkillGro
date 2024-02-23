@@ -135,19 +135,19 @@
                                 <li class="nav-item">
                                     <a class="nav-link active" data-bs-toggle="tab" href="#courseDetails" role="tab"
                                         aria-selected="true">
-                                        Course Details
+                                        Course 
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" data-bs-toggle="tab" href="#curriculumDetails" role="tab"
                                         aria-selected="false">
-                                        Curriculum Details
+                                        Curriculum 
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" data-bs-toggle="tab" href="#tutorialsDetails" role="tab"
                                         aria-selected="false">
-                                        Tutorials Details
+                                        Tutorials 
                                     </a>
                                 </li>
                             </ul>
@@ -304,7 +304,7 @@
                                                                 id="flushOne" data-bs-toggle="collapse"
                                                                 data-bs-target="#flush-collapseOne" aria-expanded="true"
                                                                 aria-controls="flush-collapseOne">
-                                                                 Curriculum Tutorial Section
+                                                                Curriculum Tutorial Section
                                                             </button>
                                                         </h2>
                                                         <div id="flush-collapseOne"
@@ -316,7 +316,8 @@
                                                                     <div class="col-lg-12">
                                                                         <div class="mb-3">
                                                                             <label for="tutorialsTitle"
-                                                                                class="form-label text-dark">Video Title</label>
+                                                                                class="form-label text-dark">Video
+                                                                                Title</label>
                                                                             <input type="text" class="form-control"
                                                                                 id="tutorialsTitle"
                                                                                 placeholder="Enter your video title">
@@ -481,7 +482,11 @@
                     checkbox.style.cssText = 'float: right; transform: translate3d(22px, -34px, 10px);';
                     checkbox.classList.add('form-check-input');
                     document.getElementById(serverId).append(checkbox);
-                    document.getElementById(serverId).style.width = '97%';
+                    if (window.innerWidth <= 768) {
+                        document.getElementById(serverId).style.width = '94%';
+                    } else {
+                        document.getElementById(serverId).style.width = '97%';
+                    }
                 }
             }
 
@@ -510,7 +515,11 @@
                 checkbox.style.cssText = 'float: right; transform: translate3d(22px, -34px, 10px);';
                 checkbox.classList.add('form-check-input');
                 document.getElementById(serverId).append(checkbox);
-                document.getElementById(serverId).style.width = '97%';
+                if (window.innerWidth <= 768) {
+                    document.getElementById(serverId).style.width = '94%';
+                } else {
+                    document.getElementById(serverId).style.width = '97%';
+                }
             }
         });
     </script>
