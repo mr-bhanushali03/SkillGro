@@ -24,15 +24,17 @@
             <div class="card">
                 <div class="card-header border-0 rounded">
                     <div class="row g-2 align-items-center">
-                        <div class="col-lg-2 col-md-6 col-sm-6 col-6"> 
+                        <div class="col-lg-2 col-md-6 col-sm-6 col-6">
                             <div class="search-box">
+                                <label class="form-label" for="searchResultList">Search</label>
                                 <input type="text" class="form-control" autocomplete="off" id="searchResultList"
-                                    placeholder="Search for course & category or something..."> 
-                                <i class="ri-search-line search-icon"></i>
+                                    placeholder="Search for course & category or something...">
+                                <i class="ri-search-line search-icon mb-1 mt-3"></i>
                             </div>
                         </div>
                         <div class="col-lg-2 col-md-6 col-sm-6 col-6">
-                            <select class="form-control" id="total-student">
+                            <label for="students" class="form-label">Students</label>
+                            <select class="form-control" id="total-student" data-choices>
                                 <option value="All">All</option>
                                 <option value="500">500</option>
                                 <option value="1k">1k</option>
@@ -43,7 +45,8 @@
                             </select>
                         </div>
                         <div class="col-lg-2 col-md-6 col-sm-6 col-6">
-                            <select class="form-control" id="total-ratings">
+                            <label for="ratings" class="form-label">Ratings</label>
+                            <select class="form-control" id="total-ratings" data-choices>
                                 <option value="All">All</option>
                                 <option value="1 star">1 Star</option>
                                 <option value="2 star">2 star</option>
@@ -53,7 +56,8 @@
                             </select>
                         </div>
                         <div class="col-lg-2 col-md-6 col-sm-6 col-6">
-                            <select class="form-control" id="category-select">
+                            <label for="category-select" class="form-label">Category</label>
+                            <select class="form-control" id="category-select" data-choices>
                                 <option value="All">All</option>
                                 @foreach ($Categories as $Category)
                                     <option value="{{ $Category->category }}">{{ $Category->category }}</option>
@@ -61,20 +65,24 @@
                             </select>
                         </div>
                         <div class="col-lg-2 col-md-6 col-sm-6 col-6">
-                            <div class="hstack gap-2">
-                                <button type="button" class="btn btn-danger w-100"><i
-                                        class="ri-delete-bin-2-line me-1 align-bottom"></i> Delete All</button>
+                            <div class="hstack gap-2 mt-lg-n3">
+                                <button type="button" class="btn btn-danger w-100 mt-lg-5">
+                                    <i class="ri-delete-bin-2-line me-1 align-bottom"></i> Delete All
+                                </button>
                             </div>
                         </div>
+
                         <div class="col-lg-2 col-md-6 col-sm-6 col-6">
-                            <div class="hstack gap-2">
-                                <button class="btn btn-success w-100" data-bs-toggle="modal"
-                                    data-bs-target="#addcourse"><i class="ri-add-fill me-1 align-bottom"></i> Add Course</button>
+                            <div class="hstack gap-2 mt-lg-n3">
+                                <button class="btn btn-success w-100 mt-lg-5" data-bs-toggle="modal"
+                                    data-bs-target="#addcourse">
+                                    <i class="ri-add-fill me-1 align-bottom"></i> Add Course
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>            
+            </div>
 
             <div class="row mt-4" id="seller-list"></div>
             <!--end row-->
@@ -119,122 +127,125 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="addSellerLabel">Add Course</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
                         </div>
                         <div class="modal-content border-0 mt-3">
                             <ul class="nav nav-tabs nav-tabs-custom nav-success p-2 pb-0 bg-light" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" data-bs-toggle="tab" href="#personalDetails" role="tab"
+                                    <a class="nav-link active" data-bs-toggle="tab" href="#courseDetails" role="tab"
                                         aria-selected="true">
-                                        Personal Details
+                                        Course Details
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#businessDetails" role="tab"
+                                    <a class="nav-link" data-bs-toggle="tab" href="#curriculumDetails" role="tab"
                                         aria-selected="false">
-                                        Business Details
+                                        Curriculum Details
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#bankDetails" role="tab"
+                                    <a class="nav-link" data-bs-toggle="tab" href="#tutorialsDetails" role="tab"
                                         aria-selected="false">
-                                        Bank Details
+                                        Tutorials Details
                                     </a>
                                 </li>
                             </ul>
                         </div>
                         <div class="modal-body">
-                            <form action="javascript:void(0)">
+                            <form action="javascript:void(0)" method="POST" enctype="multipart/form-data">
+                                @csrf
                                 <div class="tab-content">
-                                    <div class="tab-pane active" id="personalDetails" role="tabpanel">
+                                    <div class="tab-pane active" id="courseDetails" role="tabpanel">
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="firstnameInput" class="form-label">First Name</label>
-                                                    <input type="text" class="form-control" id="firstnameInput"
-                                                        placeholder="Enter your firstname">
+                                                    <label for="coursetitleInput" class="form-label">Course Title</label>
+                                                    <input type="text" class="form-control" id="coursetitleInput"
+                                                        placeholder="Enter course title">
                                                 </div>
                                             </div>
                                             <!--end col-->
+
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="lastnameInput" class="form-label">Last Name</label>
-                                                    <input type="text" class="form-control" id="lastnameInput"
-                                                        placeholder="Enter your lastname">
+                                                    <label for="courselevelDropdown" class="form-label">Course
+                                                        Level</label>
+                                                    <select class="form-control" id="courselevelDropdown" data-choices
+                                                        data-choices-search-false>
+                                                        <option value="Beginner">Beginner</option>
+                                                        <option value="Intermediate">Intermediate</option>
+                                                        <option value="Advanced">Advanced</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <!--end col-->
+
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="contactnumberInput" class="form-label">Contact
-                                                        Number</label>
-                                                    <input type="number" class="form-control" id="contactnumberInput"
-                                                        placeholder="Enter your number">
+                                                    <label for="totalfeesInput" class="form-label">Actual Price</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-text" id="basic-addon1">&#8377;</span>
+                                                        <input type="number" class="form-control" id="totalfeesInput"
+                                                            placeholder="Actual Price">
+                                                    </div>
                                                 </div>
                                             </div>
                                             <!--end col-->
+
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="phonenumberInput" class="form-label">Phone Number</label>
-                                                    <input type="number" class="form-control" id="phonenumberInput"
-                                                        placeholder="Enter your number">
+                                                    <label for="subtotalfeesInput" class="form-label">Selling
+                                                        Price</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-text" id="basic-addon1">&#8377;</span>
+                                                        <input type="number" class="form-control" id="subtotalfeesInput"
+                                                            placeholder="Selling Price">
+                                                    </div>
                                                 </div>
                                             </div>
                                             <!--end col-->
+
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="emailidInput" class="form-label">Email</label>
-                                                    <input type="email" class="form-control" id="emailidInput"
-                                                        placeholder="Enter your email">
+                                                    <label for="categoryDropdown" class="form-label">Category</label>
+                                                    <select class="form-control" id="categoryDropdown" data-choices>
+                                                        <option value="Choose Category" disabled readonly selected>Choose
+                                                            Category</option>
+                                                        @foreach ($Categories as $Category)
+                                                            <option value="{{ $Category->category }}">
+                                                                {{ $Category->category }}</option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                             </div>
                                             <!--end col-->
+
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="birthdayidInput" class="form-label">Date of Birth</label>
-                                                    <input type="text" id="birthdayidInput" class="form-control"
-                                                        data-provider="flatpickr" placeholder="Enter your date of birth">
+                                                    <label for="courseimageInput" class="form-label">Banner
+                                                    </label>
+                                                    <input type="file" class="form-control" id="courseimageInput"
+                                                        accept="image/*">
                                                 </div>
                                             </div>
                                             <!--end col-->
-                                            <div class="col-lg-4">
-                                                <div class="mb-3">
-                                                    <label for="cityidInput" class="form-label">City</label>
-                                                    <input type="text" class="form-control" id="cityidInput"
-                                                        placeholder="Enter your city">
-                                                </div>
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-lg-4">
-                                                <div class="mb-3">
-                                                    <label for="countryidInput" class="form-label">Country</label>
-                                                    <input type="text" class="form-control" id="countryidInput"
-                                                        placeholder="Enter your country">
-                                                </div>
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-lg-4">
-                                                <div class="mb-3">
-                                                    <label for="zipcodeidInput" class="form-label">Zip Code</label>
-                                                    <input type="text" class="form-control" id="zipcodeidInput"
-                                                        placeholder="Enter your zipcode">
-                                                </div>
-                                            </div>
-                                            <!--end col-->
+
                                             <div class="col-lg-12">
                                                 <div class="mb-3">
-                                                    <label for="exampleFormControlTextarea1"
-                                                        class="form-label">Description</label>
-                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter description"></textarea>
+                                                    <label for="coursedescriptionInput" class="form-label">Course
+                                                        Description</label>
+                                                    <div class="snow-editor" style="height: 100px;"></div>
                                                 </div>
                                             </div>
                                             <!--end col-->
+
                                             <div class="col-lg-12">
                                                 <div class="hstack gap-2 justify-content-end">
                                                     <button class="btn btn-secondary" data-bs-dismiss="modal"><i
                                                             class="ri-close-line me-1 align-middle"></i> Close</button>
                                                     <button class="btn btn-primary" data-bs-toggle="tab"
-                                                        onclick="showTab('businessDetails', event)" role="tab"
+                                                        onclick="showTab('curriculumDetails', event)" role="tab"
                                                         aria-selected="false">Next<i
                                                             class="ri-arrow-right-line align-bottom ms-1"></i>
                                                     </button>
@@ -244,87 +255,33 @@
                                         </div>
                                         <!--end row-->
                                     </div>
-                                    <div class="tab-pane" id="businessDetails" role="tabpanel">
+                                    <div class="tab-pane" id="curriculumDetails" role="tabpanel">
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="mb-3">
-                                                    <label for="companynameInput" class="form-label">Company Name</label>
-                                                    <input type="text" class="form-control" id="companynameInput"
-                                                        placeholder="Enter your company name">
+                                                    <label for="curriculumTitle" class="form-label">Curriculum
+                                                        Title</label>
+                                                    <input type="text" class="form-control" id="curriculumTitle"
+                                                        placeholder="Enter your curriculum title">
                                                 </div>
                                             </div>
                                             <!--end col-->
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-12">
                                                 <div class="mb-3">
-                                                    <label for="choices-single-default" class="form-label">Company
-                                                        Type</label>
-                                                    <select class="form-control" data-trigger
-                                                        name="choices-single-default" id="choices-single-default">
-                                                        <option value="">Select type</option>
-                                                        <option value="All" selected>All</option>
-                                                        <option value="Merchandising">Merchandising</option>
-                                                        <option value="Manufacturing">Manufacturing</option>
-                                                        <option value="Partnership">Partnership</option>
-                                                        <option value="Corporation">Corporation</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    <label for="pancardInput" class="form-label">Pan Card Number</label>
-                                                    <input type="text" class="form-control" id="pancardInput"
-                                                        placeholder="Enter your pan-card number">
-                                                </div>
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-lg-4">
-                                                <div class="mb-3">
-                                                    <label for="websiteInput" class="form-label">Website</label>
-                                                    <input type="url" class="form-control" id="websiteInput"
-                                                        placeholder="Enter your URL">
-                                                </div>
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-lg-4">
-                                                <div class="mb-3">
-                                                    <label for="faxInput" class="form-label">Fax</label>
-                                                    <input type="text" class="form-control" id="faxInput"
-                                                        placeholder="Enter your fax">
-                                                </div>
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-lg-4">
-                                                <div class="mb-3">
-                                                    <label for="companyemailInput" class="form-label">Email</label>
-                                                    <input type="email" class="form-control" id="companyemailInput"
-                                                        placeholder="Enter your email">
-                                                </div>
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    <label for="worknumberInput" class="form-label">Number</label>
-                                                    <input type="number" class="form-control" id="worknumberInput"
-                                                        placeholder="Enter your number">
-                                                </div>
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    <label for="companylogoInput" class="form-label">Company Logo</label>
-                                                    <input type="file" class="form-control" id="companylogoInput">
+                                                    <label for="curriculumDescription" class="form-label">Curriculum
+                                                        Description</label>
+                                                    <div class="snow-editor" style="height: 100px;"></div>
                                                 </div>
                                             </div>
                                             <!--end col-->
                                             <div class="col-lg-12">
                                                 <div class="hstack gap-2 justify-content-end">
                                                     <button class="btn btn-secondary" data-bs-toggle="tab"
-                                                        onclick="showTab('personalDetails', event)" role="tab"
+                                                        onclick="showTab('courseDetails', event)" role="tab"
                                                         aria-selected="false"><i
                                                             class="ri-arrow-left-line align-bottom me-1"></i> Prev</button>
                                                     <button class="btn btn-primary" data-bs-toggle="tab"
-                                                        onclick="showTab('bankDetails', event)" role="tab"
+                                                        onclick="showTab('tutorialsDetails', event)" role="tab"
                                                         aria-selected="false">Next<i
                                                             class="ri-arrow-right-line align-bottom ms-1"></i></button>
                                                 </div>
@@ -333,65 +290,78 @@
                                         </div>
                                         <!--end row-->
                                     </div>
-                                    <div class="tab-pane" id="bankDetails" role="tabpanel">
+                                    <div class="tab-pane" id="tutorialsDetails" role="tabpanel">
+                                        <button id="addAccordion" class="btn btn-primary align-end mb-2">Add Tutorials
+                                        </button>
+                                        <button id="removeAccordion" class="btn btn-danger align-end mb-2">Remove
+                                            Tutorials</button>
                                         <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    <label for="banknameInput" class="form-label">Bank Name</label>
-                                                    <input type="text" class="form-control" id="banknameInput"
-                                                        placeholder="Enter your bank name">
+                                            <div class="live-preview">
+                                                <div class="accordion accordion-flush mb-3" id="accordionFlushExample">
+                                                    <div class="accordion-item">
+                                                        <h2 class="accordion-header" id="flush-headingOne">
+                                                            <button class="accordion-button" type="button"
+                                                                id="flushOne" data-bs-toggle="collapse"
+                                                                data-bs-target="#flush-collapseOne" aria-expanded="true"
+                                                                aria-controls="flush-collapseOne">
+                                                                 Curriculum Tutorial Section
+                                                            </button>
+                                                        </h2>
+                                                        <div id="flush-collapseOne"
+                                                            class="accordion-collapse collapse show"
+                                                            aria-labelledby="flush-headingOne"
+                                                            data-bs-parent="#accordionFlushExample">
+                                                            <div class="accordion-body">
+                                                                <div class="row">
+                                                                    <div class="col-lg-12">
+                                                                        <div class="mb-3">
+                                                                            <label for="tutorialsTitle"
+                                                                                class="form-label text-dark">Video Title</label>
+                                                                            <input type="text" class="form-control"
+                                                                                id="tutorialsTitle"
+                                                                                placeholder="Enter your video title">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--end col-->
+
+                                                                    <div class="col-lg-12">
+                                                                        <div class="mb-3">
+                                                                            <label for="addTutorial"
+                                                                                class="form-label text-dark">Add
+                                                                                Videos</label>
+                                                                            <span class="d-block mb-2">You can add multiple
+                                                                                videos and uncheck the checkbox
+                                                                                to provide a video-free experience</span>
+                                                                            <input type="file" id="filepond"
+                                                                                class="filepond" multiple name="filepond"
+                                                                                data-allow-reorder="true"
+                                                                                data-max-file-size="500MB"
+                                                                                accept="video/*">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--end col-->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    <label for="branchInput" class="form-label">Branch</label>
-                                                    <input type="text" class="form-control" id="branchInput"
-                                                        placeholder="Branch">
+
+                                                <div class="col-lg-12">
+                                                    <div class="hstack gap-2 justify-content-end">
+                                                        <button class="btn btn-secondary prev-tab" data-bs-toggle="tab"
+                                                            onclick="showTab('curriculumDetails', event)" role="tab"
+                                                            aria-selected="false"><i
+                                                                class="ri-arrow-left-line align-bottom me-1"></i>
+                                                            Prev</button>
+                                                        <button class="btn btn-primary" type="submit">Save<i
+                                                                class="ri-save-3-line align-bottom ms-1"></i></button>
+                                                    </div>
                                                 </div>
+                                                <!--end col-->
                                             </div>
-                                            <!--end col-->
-                                            <div class="col-lg-12">
-                                                <div class="mb-3">
-                                                    <label for="accountnameInput" class="form-label">Account Holder
-                                                        Name</label>
-                                                    <input type="text" class="form-control" id="accountnameInput"
-                                                        placeholder="Enter account holder name">
-                                                </div>
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    <label for="accountnumberInput" class="form-label">Account
-                                                        Number</label>
-                                                    <input type="number" class="form-control" id="accountnumberInput"
-                                                        placeholder="Enter account number">
-                                                </div>
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    <label for="ifscInput" class="form-label">IFSC</label>
-                                                    <input type="number" class="form-control" id="ifscInput"
-                                                        placeholder="IFSC">
-                                                </div>
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-lg-12">
-                                                <div class="hstack gap-2 justify-content-end">
-                                                    <button class="btn btn-secondary prev-tab" data-bs-toggle="tab"
-                                                        onclick="showTab('businessDetails', event)" role="tab"
-                                                        aria-selected="false"><i
-                                                            class="ri-arrow-left-line align-bottom me-1"></i> Prev</button>
-                                                    <button class="btn btn-primary" type="submit">Save<i
-                                                            class="ri-save-3-line align-bottom ms-1"></i></button>
-                                                </div>
-                                            </div>
-                                            <!--end col-->
+                                            <!--end row-->
                                         </div>
-                                        <!--end row-->
                                     </div>
-                                </div>
                             </form>
                         </div>
                     </div>
@@ -444,5 +414,104 @@
                 event.preventDefault();
             }
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            FilePond.registerPlugin(FilePondPluginFileValidateSize);
+            const accordionItem = document.querySelector('.accordion-item').cloneNode(true);
+            const filePondConfig = {
+                allowMultiple: true,
+                maxFileSize: '500MB',
+                labelMaxFileSizeExceeded: 'File is too large',
+                labelMaxFileSize: 'Maximum file size is 500MB',
+                labelIdle: 'Drag & Drop your files or <span class="filepond--label-action">Browse</span>',
+                server: {
+                    process: (fieldName, file, metadata, load) => load(file),
+                }
+            };
+            const filePond = FilePond.create(document.querySelector('#filepond'), filePondConfig);
+
+            document.getElementById('addAccordion').addEventListener('click', addAccordionSection);
+            document.getElementById('removeAccordion').addEventListener('click', removeLastAccordionSection);
+
+            function addAccordionSection() {
+
+                for (let i = 0; i < accordionItem.children.length; i++) {
+                    const collapseElement = accordionItem.querySelector('.accordion-collapse');
+                    const buttonElement = accordionItem.querySelector('.accordion-button');
+
+                    if (collapseElement && buttonElement) {
+                        collapseElement.id = `flush-collapse${i}`;
+                        collapseElement.classList.remove('show');
+
+                        buttonElement.setAttribute('data-bs-target', `#flush-collapse${i}`);
+                        buttonElement.setAttribute('aria-controls', `#flush-collapse${i}`);
+                        buttonElement.id = `flush${i}`;
+                    }
+                }
+
+                document.querySelector('.accordion').appendChild(accordionItem);
+
+                const acordianFileConfig = {
+                    allowMultiple: true,
+                    maxFileSize: '500MB',
+                    labelMaxFileSizeExceeded: 'File is too large',
+                    labelMaxFileSize: 'Maximum file size is 500MB',
+                    labelIdle: 'Drag & Drop your files or <span class="filepond--label-action">Browse</span>',
+                    server: {
+                        process: (fieldName, file, metadata, load) => load(file),
+                    }
+                };
+                const accordianFilePond = FilePond.create(accordionItem.querySelector('.filepond'),
+                    acordianFileConfig);
+
+                accordianFilePond.on('processfiles', (error, file) => {
+                    accordionItem.querySelectorAll('.filepond--list li').forEach(li => {
+                        const serverId = li.id;
+                        const text = li.querySelector('.filepond--file-wrapper legend').innerText;
+                        addCheckbox(serverId, text, file, true);
+                    });
+                });
+
+                function addCheckbox(serverId, text, file, checked) {
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.name = 'tutorials';
+                    checkbox.value = text;
+                    checkbox.checked = checked;
+                    checkbox.style.cssText = 'float: right; transform: translate3d(22px, -34px, 10px);';
+                    checkbox.classList.add('form-check-input');
+                    document.getElementById(serverId).append(checkbox);
+                    document.getElementById(serverId).style.width = '97%';
+                }
+            }
+
+            function removeLastAccordionSection() {
+                const accordionItems = document.querySelectorAll('.accordion-item');
+                if (accordionItems.length > 1) {
+                    const lastAccordionItem = accordionItems[accordionItems.length - 1];
+                    lastAccordionItem.remove();
+                }
+            }
+
+            filePond.on('processfiles', (error, file) => {
+                document.querySelectorAll('.filepond--list li').forEach(li => {
+                    const serverId = li.id;
+                    const text = li.querySelector('.filepond--file-wrapper legend').innerText;
+                    addCheckbox(serverId, text, file, true);
+                });
+            });
+
+            function addCheckbox(serverId, text, file, checked) {
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.name = 'tutorials';
+                checkbox.value = text;
+                checkbox.checked = checked;
+                checkbox.style.cssText = 'float: right; transform: translate3d(22px, -34px, 10px);';
+                checkbox.classList.add('form-check-input');
+                document.getElementById(serverId).append(checkbox);
+                document.getElementById(serverId).style.width = '97%';
+            }
+        });
     </script>
 @endsection

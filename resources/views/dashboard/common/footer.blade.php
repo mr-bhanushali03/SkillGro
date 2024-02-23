@@ -856,6 +856,20 @@
 
 <!-- Courses js -->
 <script src="{{ asset('assets/dashboard') }}/js/pages/sellers.init.js"></script>
+
+<!-- quill js -->
+<script src="{{ asset('assets/dashboard') }}/libs/quill/quill.min.js"></script>
+
+<!-- init js -->
+<script src="{{ asset('assets/dashboard') }}/js/pages/form-editor.init.js"></script>
+
+<!-- ck editor -->
+<script src="{{ asset('assets/dashboard') }}/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
+
+<!-- FilePond Scripts -->
+<script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+<script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
+
 </body>
 
 </html>
