@@ -31,7 +31,7 @@
                     </button>
 
                     <!-- Delete All Button -->
-                    <a class="btn btn-secondary" id="deleteMultiple" href="{{route('deleteAll')}}">
+                    <a class="btn btn-secondary" id="deleteMultiple" href="{{ route('deleteAll') }}">
                         <i class="ri-delete-bin-2-line align-bottom me-1"></i> Delete All
                     </a>
                 </div>
@@ -56,7 +56,7 @@
                     </button>
 
                     <!-- Delete All Button -->
-                    <a class="btn btn-secondary ms-2" id="deleteMultiple" href="{{route('deleteAll')}}">
+                    <a class="btn btn-secondary ms-2" id="deleteMultiple" href="{{ route('deleteAll') }}">
                         <i class="ri-delete-bin-2-line"></i>
                     </a>
 

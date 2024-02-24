@@ -29,10 +29,6 @@
     <link href="{{ asset('assets/dashboard') }}/css/app.min.css" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
     <link href="{{ asset('assets/dashboard') }}/css/custom.min.css" rel="stylesheet" type="text/css" />
-    <!-- quill css -->
-    <link href="{{ asset('assets/dashboard') }}/libs/quill/quill.core.css" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/dashboard') }}/libs/quill/quill.bubble.css" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/dashboard') }}/libs/quill/quill.snow.css" rel="stylesheet" type="text/css" />
     <!-- FilePond Styles -->
     <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
     <!-- Jquery Js -->

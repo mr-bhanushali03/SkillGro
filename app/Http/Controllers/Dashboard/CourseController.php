@@ -26,11 +26,7 @@ class CourseController extends Controller
         return view('dashboard.courses', $data);
     }
 
-    public function courseDetail()
-    {
-        $data = [
-            'Title' => 'Course Detail'
-        ];
-        return view('dashboard.courseDetail', $data);
+    function addCourse(Request $request) {
+        dd($request->all());
     }
 }

@@ -857,14 +857,8 @@
 <!-- Courses js -->
 <script src="{{ asset('assets/dashboard') }}/js/pages/sellers.init.js"></script>
 
-<!-- quill js -->
-<script src="{{ asset('assets/dashboard') }}/libs/quill/quill.min.js"></script>
-
-<!-- init js -->
-<script src="{{ asset('assets/dashboard') }}/js/pages/form-editor.init.js"></script>
-
-<!-- ck editor -->
-<script src="{{ asset('assets/dashboard') }}/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
+<!-- ckeditor Editor Scripts -->
+<script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
 
 <!-- FilePond Scripts -->
 <script src="https://unpkg.com/filepond/dist/filepond.js"></script>

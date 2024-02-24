@@ -135,44 +135,45 @@
                                 <li class="nav-item">
                                     <a class="nav-link active" data-bs-toggle="tab" href="#courseDetails" role="tab"
                                         aria-selected="true">
-                                        Course 
+                                        Course
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" data-bs-toggle="tab" href="#curriculumDetails" role="tab"
                                         aria-selected="false">
-                                        Curriculum 
+                                        Curriculum
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" data-bs-toggle="tab" href="#tutorialsDetails" role="tab"
                                         aria-selected="false">
-                                        Tutorials 
+                                        Tutorials
                                     </a>
                                 </li>
                             </ul>
                         </div>
                         <div class="modal-body">
-                            <form action="javascript:void(0)" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('addCourse') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="courseDetails" role="tabpanel">
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="coursetitleInput" class="form-label">Course Title</label>
-                                                    <input type="text" class="form-control" id="coursetitleInput"
-                                                        placeholder="Enter course title">
+                                                    <label for="title" class="form-label">Course Title</label>
+                                                    <input type="text" class="form-control" id="title"
+                                                        placeholder="Enter course title" name="title"
+                                                        autocomplete="off" required>
                                                 </div>
                                             </div>
                                             <!--end col-->
 
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="courselevelDropdown" class="form-label">Course
+                                                    <label for="level" class="form-label">Course
                                                         Level</label>
-                                                    <select class="form-control" id="courselevelDropdown" data-choices
-                                                        data-choices-search-false>
+                                                    <select class="form-control" id="level" name="level"
+                                                        data-choices data-choices-search-false>
                                                         <option value="Beginner">Beginner</option>
                                                         <option value="Intermediate">Intermediate</option>
                                                         <option value="Advanced">Advanced</option>
@@ -183,11 +184,12 @@
 
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="totalfeesInput" class="form-label">Actual Price</label>
+                                                    <label for="actualPrice" class="form-label">Actual Price</label>
                                                     <div class="input-group">
                                                         <span class="input-group-text" id="basic-addon1">&#8377;</span>
-                                                        <input type="number" class="form-control" id="totalfeesInput"
-                                                            placeholder="Actual Price">
+                                                        <input type="number" class="form-control" id="actualPrice"
+                                                            placeholder="Actual Price" name="actualPrice"
+                                                            autocomplete="off" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -195,12 +197,13 @@
 
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="subtotalfeesInput" class="form-label">Selling
+                                                    <label for="sellingPrice" class="form-label">Selling
                                                         Price</label>
                                                     <div class="input-group">
                                                         <span class="input-group-text" id="basic-addon1">&#8377;</span>
-                                                        <input type="number" class="form-control" id="subtotalfeesInput"
-                                                            placeholder="Selling Price">
+                                                        <input type="number" class="form-control" id="sellingPrice"
+                                                            placeholder="Selling Price" name="sellingPrice"
+                                                            autocomplete="off" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -208,8 +211,9 @@
 
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="categoryDropdown" class="form-label">Category</label>
-                                                    <select class="form-control" id="categoryDropdown" data-choices>
+                                                    <label for="category" class="form-label">Category</label>
+                                                    <select class="form-control" id="category" name="category"
+                                                        data-choices required>
                                                         <option value="Choose Category" disabled readonly selected>Choose
                                                             Category</option>
                                                         @foreach ($Categories as $Category)
@@ -223,19 +227,20 @@
 
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="courseimageInput" class="form-label">Banner
+                                                    <label for="banner" class="form-label">Banner
                                                     </label>
-                                                    <input type="file" class="form-control" id="courseimageInput"
-                                                        accept="image/*">
+                                                    <input type="file" class="form-control" name="banner"
+                                                        id="banner" accept="image/*" required>
                                                 </div>
                                             </div>
                                             <!--end col-->
 
                                             <div class="col-lg-12">
                                                 <div class="mb-3">
-                                                    <label for="coursedescriptionInput" class="form-label">Course
+                                                    <label for="description" class="form-label">Course
                                                         Description</label>
-                                                    <div class="snow-editor" style="height: 100px;"></div>
+                                                    <textarea class="description" name="description">
+                                                    </textarea>
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -261,8 +266,9 @@
                                                 <div class="mb-3">
                                                     <label for="curriculumTitle" class="form-label">Curriculum
                                                         Title</label>
-                                                    <input type="text" class="form-control" id="curriculumTitle"
-                                                        placeholder="Enter your curriculum title">
+                                                    <input type="text" class="form-control" name="curriculumTitle"
+                                                        id="curriculumTitle" placeholder="Enter your curriculum title"
+                                                        autocomplete="off" required>
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -270,7 +276,7 @@
                                                 <div class="mb-3">
                                                     <label for="curriculumDescription" class="form-label">Curriculum
                                                         Description</label>
-                                                    <div class="snow-editor" style="height: 100px;"></div>
+                                                    <textarea class="curriculumdescription" name="curriculumDescription"></textarea>
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -319,8 +325,10 @@
                                                                                 class="form-label text-dark">Video
                                                                                 Title</label>
                                                                             <input type="text" class="form-control"
-                                                                                id="tutorialsTitle"
-                                                                                placeholder="Enter your video title">
+                                                                                id="tutorialsTitle" name="tutorialsTitle"
+                                                                                autocomplete="off"
+                                                                                placeholder="Enter your video title"
+                                                                                required>
                                                                         </div>
                                                                     </div>
                                                                     <!--end col-->
@@ -334,10 +342,11 @@
                                                                                 videos and uncheck the checkbox
                                                                                 to provide a video-free experience</span>
                                                                             <input type="file" id="filepond"
-                                                                                class="filepond" multiple name="filepond"
+                                                                                class="filepond" multiple
+                                                                                name="tutorials[]"
                                                                                 data-allow-reorder="true"
-                                                                                data-max-file-size="500MB"
-                                                                                accept="video/*">
+                                                                                data-max-file-size="100MB"
+                                                                                accept="video/*" required>
                                                                         </div>
                                                                     </div>
                                                                     <!--end col-->
@@ -347,18 +356,17 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-lg-12">
-                                                    <div class="hstack gap-2 justify-content-end">
-                                                        <button class="btn btn-secondary prev-tab" data-bs-toggle="tab"
-                                                            onclick="showTab('curriculumDetails', event)" role="tab"
-                                                            aria-selected="false"><i
-                                                                class="ri-arrow-left-line align-bottom me-1"></i>
-                                                            Prev</button>
-                                                        <button class="btn btn-primary" type="submit">Save<i
-                                                                class="ri-save-3-line align-bottom ms-1"></i></button>
-                                                    </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="hstack gap-2 justify-content-end">
+                                                    <button class="btn btn-secondary prev-tab" data-bs-toggle="tab"
+                                                        onclick="showTab('curriculumDetails', event)" role="tab"
+                                                        aria-selected="false"><i
+                                                            class="ri-arrow-left-line align-bottom me-1"></i>
+                                                        Prev</button>
+                                                    <button class="btn btn-primary" type="submit">Save<i
+                                                            class="ri-save-3-line align-bottom ms-1"></i></button>
                                                 </div>
-                                                <!--end col-->
                                             </div>
                                             <!--end row-->
                                         </div>
@@ -377,6 +385,10 @@
 @endsection
 @section('scripts')
     <script>
+        ClassicEditor.create(document.querySelector('.description'))
+        ClassicEditor.create(document.querySelector('.curriculumdescription'))
+
+
         document.addEventListener("DOMContentLoaded", function() {
             const tabButtons = document.querySelectorAll('.hstack button[data-bs-toggle="tab"]');
             tabButtons.forEach(button => {
@@ -421,7 +433,7 @@
             const accordionItem = document.querySelector('.accordion-item').cloneNode(true);
             const filePondConfig = {
                 allowMultiple: true,
-                maxFileSize: '500MB',
+                maxFileSize: '100MB',
                 labelMaxFileSizeExceeded: 'File is too large',
                 labelMaxFileSize: 'Maximum file size is 500MB',
                 labelIdle: 'Drag & Drop your files or <span class="filepond--label-action">Browse</span>',
@@ -454,7 +466,7 @@
 
                 const acordianFileConfig = {
                     allowMultiple: true,
-                    maxFileSize: '500MB',
+                    maxFileSize: '100MB',
                     labelMaxFileSizeExceeded: 'File is too large',
                     labelMaxFileSize: 'Maximum file size is 500MB',
                     labelIdle: 'Drag & Drop your files or <span class="filepond--label-action">Browse</span>',
@@ -468,7 +480,8 @@
                 accordianFilePond.on('processfiles', (error, file) => {
                     accordionItem.querySelectorAll('.filepond--list li').forEach(li => {
                         const serverId = li.id;
-                        const text = li.querySelector('.filepond--file-wrapper legend').innerText;
+                        const text = li.querySelector('.filepond--file-wrapper legend')
+                            .innerText;
                         addCheckbox(serverId, text, file, true);
                     });
                 });
@@ -476,7 +489,7 @@
                 function addCheckbox(serverId, text, file, checked) {
                     const checkbox = document.createElement('input');
                     checkbox.type = 'checkbox';
-                    checkbox.name = 'tutorials';
+                    checkbox.name = 'type';
                     checkbox.value = text;
                     checkbox.checked = checked;
                     checkbox.style.cssText = 'float: right; transform: translate3d(22px, -34px, 10px);';
@@ -509,7 +522,7 @@
             function addCheckbox(serverId, text, file, checked) {
                 const checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
-                checkbox.name = 'tutorials';
+                checkbox.name = 'type';
                 checkbox.value = text;
                 checkbox.checked = checked;
                 checkbox.style.cssText = 'float: right; transform: translate3d(22px, -34px, 10px);';
