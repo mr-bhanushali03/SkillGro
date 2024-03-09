@@ -860,10 +860,6 @@
 <!-- ckeditor Editor Scripts -->
 <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
 
-<!-- FilePond Scripts -->
-<script src="https://unpkg.com/filepond/dist/filepond.js"></script>
-<script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
-
 </body>
 
 </html>

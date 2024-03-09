@@ -163,7 +163,7 @@
                                                     <label for="title" class="form-label">Course Title</label>
                                                     <input type="text" class="form-control" id="title"
                                                         placeholder="Enter course title" name="title"
-                                                        autocomplete="off" required>
+                                                        value="{{ old('title') }}" autocomplete="off" required>
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -173,7 +173,7 @@
                                                     <label for="level" class="form-label">Course
                                                         Level</label>
                                                     <select class="form-control" id="level" name="level"
-                                                        data-choices data-choices-search-false>
+                                                        value="{{ old('level') }}" data-choices data-choices-search-false>
                                                         <option value="Beginner">Beginner</option>
                                                         <option value="Intermediate">Intermediate</option>
                                                         <option value="Advanced">Advanced</option>
@@ -189,7 +189,7 @@
                                                         <span class="input-group-text" id="basic-addon1">&#8377;</span>
                                                         <input type="number" class="form-control" id="actualPrice"
                                                             placeholder="Actual Price" name="actualPrice"
-                                                            autocomplete="off" required>
+                                                            value="{{ old('actualPrice') }}" autocomplete="off" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -203,7 +203,7 @@
                                                         <span class="input-group-text" id="basic-addon1">&#8377;</span>
                                                         <input type="number" class="form-control" id="sellingPrice"
                                                             placeholder="Selling Price" name="sellingPrice"
-                                                            autocomplete="off" required>
+                                                            value="{{ old('sellingPrice') }}" autocomplete="off" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -213,7 +213,7 @@
                                                 <div class="mb-3">
                                                     <label for="category" class="form-label">Category</label>
                                                     <select class="form-control" id="category" name="category"
-                                                        data-choices required>
+                                                        value="{{ old('category') }}" data-choices required>
                                                         <option value="Choose Category" disabled readonly selected>Choose
                                                             Category</option>
                                                         @foreach ($Categories as $Category)
@@ -230,7 +230,8 @@
                                                     <label for="banner" class="form-label">Banner
                                                     </label>
                                                     <input type="file" class="form-control" name="banner"
-                                                        id="banner" accept="image/*" required>
+                                                        value="{{ old('banner') }}" id="banner" accept="image/*"
+                                                        required>
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -239,7 +240,7 @@
                                                 <div class="mb-3">
                                                     <label for="description" class="form-label">Course
                                                         Description</label>
-                                                    <textarea class="description" name="description">
+                                                    <textarea class="description" name="description" value="{{ old('description') }}">
                                                     </textarea>
                                                 </div>
                                             </div>
@@ -267,8 +268,9 @@
                                                     <label for="curriculumTitle" class="form-label">Curriculum
                                                         Title</label>
                                                     <input type="text" class="form-control" name="curriculumTitle"
-                                                        id="curriculumTitle" placeholder="Enter your curriculum title"
-                                                        autocomplete="off" required>
+                                                        value="{{ old('curriculumTitle') }}" id="curriculumTitle"
+                                                        placeholder="Enter your curriculum title" autocomplete="off"
+                                                        required>
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -276,7 +278,7 @@
                                                 <div class="mb-3">
                                                     <label for="curriculumDescription" class="form-label">Curriculum
                                                         Description</label>
-                                                    <textarea class="curriculumdescription" name="curriculumDescription"></textarea>
+                                                    <textarea class="curriculumdescription" name="curriculumDescription" value="{{ old('curriculumDescription') }}"></textarea>
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -304,13 +306,13 @@
                                         <div class="row">
                                             <div class="live-preview">
                                                 <div class="accordion accordion-flush mb-3" id="accordionFlushExample">
-                                                    <div class="accordion-item">
+                                                    <div class="accordion-item" id="accordionItem1">
                                                         <h2 class="accordion-header" id="flush-headingOne">
                                                             <button class="accordion-button" type="button"
-                                                                id="flushOne" data-bs-toggle="collapse"
+                                                                data-bs-toggle="collapse"
                                                                 data-bs-target="#flush-collapseOne" aria-expanded="true"
                                                                 aria-controls="flush-collapseOne">
-                                                                Curriculum Tutorial Section
+                                                                Curriculum Tutorial Section 1
                                                             </button>
                                                         </h2>
                                                         <div id="flush-collapseOne"
@@ -325,31 +327,31 @@
                                                                                 class="form-label text-dark">Video
                                                                                 Title</label>
                                                                             <input type="text" class="form-control"
-                                                                                id="tutorialsTitle" name="tutorialsTitle"
-                                                                                autocomplete="off"
+                                                                                id="tutorialsTitle1"
+                                                                                value="{{ old('tutorialsTitle1') }}"
+                                                                                name="tutorialsTitle1" autocomplete="off"
                                                                                 placeholder="Enter your video title"
                                                                                 required>
                                                                         </div>
                                                                     </div>
-                                                                    <!--end col-->
-
                                                                     <div class="col-lg-12">
                                                                         <div class="mb-3">
-                                                                            <label for="addTutorial"
+                                                                            <label for="videos1"
                                                                                 class="form-label text-dark">Add
-                                                                                Videos</label>
-                                                                            <span class="d-block mb-2">You can add multiple
-                                                                                videos and uncheck the checkbox
-                                                                                to provide a video-free experience</span>
-                                                                            <input type="file" id="filepond"
-                                                                                class="filepond" multiple
-                                                                                name="tutorials[]"
-                                                                                data-allow-reorder="true"
-                                                                                data-max-file-size="100MB"
-                                                                                accept="video/*" required>
+                                                                                Multiple Videos</label>
+                                                                            <p class="text-muted">Use <code>multiple</code>
+                                                                                videos within the same time to select
+                                                                                multiple
+                                                                                files.</p>
+                                                                            <input class="form-control tutorialsInput"
+                                                                                type="file" name="tutorials1[]"
+                                                                                value="{{ old('tutorials1') }}" multiple
+                                                                                data-allow-reorder="true" accept="video/*"
+                                                                                required>
+                                                                            <ul class="list-group mt-3 tutorialsList1">
+                                                                            </ul>
                                                                         </div>
                                                                     </div>
-                                                                    <!--end col-->
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -389,150 +391,160 @@
         ClassicEditor.create(document.querySelector('.curriculumdescription'))
 
 
-        document.addEventListener("DOMContentLoaded", function() {
-            const tabButtons = document.querySelectorAll('.hstack button[data-bs-toggle="tab"]');
-            tabButtons.forEach(button => {
-                button.addEventListener('click', function(event) {
-                    const targetTabId = this.getAttribute('href').substring(1);
-                    showTab(targetTabId, event);
-                });
+        $(document).ready(function() {
+            $('.hstack button[data-bs-toggle="tab"]').on('click', function(event) {
+                const targetTabId = $(this).attr('href').substring(1);
+                showTab(targetTabId, event);
             });
         });
 
         function showTab(tabId, event) {
-            const tabs = document.querySelectorAll('.tab-pane');
-            const tabLinks = document.querySelectorAll('.nav-link');
-
-            tabs.forEach(tab => {
-                if (tab.id === tabId) {
-                    tab.classList.add('active');
-                } else {
-                    tab.classList.remove('active');
-                }
-            });
-
-            tabLinks.forEach(link => {
-                const linkHref = link.getAttribute('href');
-                const cleanLinkHref = linkHref.startsWith('#') ? linkHref.substring(1) : linkHref;
-
-                if (cleanLinkHref === tabId) {
-                    link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
-                }
-            });
-
-            // Prevent the default behavior of the link (e.g., navigating to a new URL)
+            $('.tab-pane').removeClass('active').filter(`#${tabId}`).addClass('active');
+            $('.nav-link').removeClass('active').filter(`[href="#${tabId}"]`).addClass('active');
             if (event) {
                 event.preventDefault();
             }
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            FilePond.registerPlugin(FilePondPluginFileValidateSize);
-            const accordionItem = document.querySelector('.accordion-item').cloneNode(true);
-            const filePondConfig = {
-                allowMultiple: true,
-                maxFileSize: '100MB',
-                labelMaxFileSizeExceeded: 'File is too large',
-                labelMaxFileSize: 'Maximum file size is 500MB',
-                labelIdle: 'Drag & Drop your files or <span class="filepond--label-action">Browse</span>',
-                server: {
-                    process: (fieldName, file, metadata, load) => load(file),
+        $(document).ready(function() {
+            var accordionCounter = 1;
+
+            $('#accordionFlushExample').on('change', '.tutorialsInput', function() {
+                var files = this.files;
+                var accordionIndex = $(this).closest('.accordion-item').attr('id').replace('accordionItem',
+                    '');
+                var $fileList = $(`.tutorialsList${accordionIndex}`);
+                var $fileInput = $(this);
+
+                // Retrieve existing files from the tutorials[] array
+                var existingFiles = $fileInput.data('existing-files') || [];
+
+                // Combine existing files with newly selected files
+                var allFiles = existingFiles.concat(Array.from(files));
+
+                // Store the updated tutorials[] array in the data attribute
+                $fileInput.data('existing-files', allFiles);
+
+                $fileList.empty();
+
+                for (var i = 0; i < allFiles.length; i++) {
+                    var file = allFiles[i];
+                    var fileName = file.name;
+                    var fileSize = formatBytes(file.size);
+
+                    var listItem = $(
+                        '<li class="list-group-item d-flex justify-content-between align-items-center">' +
+                        '<div class="form-check">' +
+                        '<input class="form-check-input" type="checkbox" id="checkbox' + i +
+                        '" data-filename="' + fileName + '" name="checkbox' + i + '">' +
+                        '<label class="form-check-label" for="checkbox' + i + '">' + fileName +
+                        '</label>' +
+                        '</div>' +
+                        '<span class="badge badge-primary badge-pill">' + fileSize + '</span>' +
+                        '<button type="button" class="btn btn-danger btn-sm delete" data-index="' + i +
+                        '"><i class="bx bxs-trash"></i></button>' +
+                        '</li>'
+                    );
+
+                    $fileList.append(listItem);
                 }
-            };
-            const filePond = FilePond.create(document.querySelector('#filepond'), filePondConfig);
-
-            document.getElementById('addAccordion').addEventListener('click', addAccordionSection);
-            document.getElementById('removeAccordion').addEventListener('click', removeLastAccordionSection);
-
-            function addAccordionSection() {
-
-                for (let i = 0; i < accordionItem.children.length; i++) {
-                    const collapseElement = accordionItem.querySelector('.accordion-collapse');
-                    const buttonElement = accordionItem.querySelector('.accordion-button');
-
-                    if (collapseElement && buttonElement) {
-                        collapseElement.id = `flush-collapse${i}`;
-                        collapseElement.classList.remove('show');
-
-                        buttonElement.setAttribute('data-bs-target', `#flush-collapse${i}`);
-                        buttonElement.setAttribute('aria-controls', `#flush-collapse${i}`);
-                        buttonElement.id = `flush${i}`;
-                    }
-                }
-
-                document.querySelector('.accordion').appendChild(accordionItem);
-
-                const acordianFileConfig = {
-                    allowMultiple: true,
-                    maxFileSize: '100MB',
-                    labelMaxFileSizeExceeded: 'File is too large',
-                    labelMaxFileSize: 'Maximum file size is 500MB',
-                    labelIdle: 'Drag & Drop your files or <span class="filepond--label-action">Browse</span>',
-                    server: {
-                        process: (fieldName, file, metadata, load) => load(file),
-                    }
-                };
-                const accordianFilePond = FilePond.create(accordionItem.querySelector('.filepond'),
-                    acordianFileConfig);
-
-                accordianFilePond.on('processfiles', (error, file) => {
-                    accordionItem.querySelectorAll('.filepond--list li').forEach(li => {
-                        const serverId = li.id;
-                        const text = li.querySelector('.filepond--file-wrapper legend')
-                            .innerText;
-                        addCheckbox(serverId, text, file, true);
-                    });
-                });
-
-                function addCheckbox(serverId, text, file, checked) {
-                    const checkbox = document.createElement('input');
-                    checkbox.type = 'checkbox';
-                    checkbox.name = 'type';
-                    checkbox.value = text;
-                    checkbox.checked = checked;
-                    checkbox.style.cssText = 'float: right; transform: translate3d(22px, -34px, 10px);';
-                    checkbox.classList.add('form-check-input');
-                    document.getElementById(serverId).append(checkbox);
-                    if (window.innerWidth <= 768) {
-                        document.getElementById(serverId).style.width = '94%';
-                    } else {
-                        document.getElementById(serverId).style.width = '97%';
-                    }
-                }
-            }
-
-            function removeLastAccordionSection() {
-                const accordionItems = document.querySelectorAll('.accordion-item');
-                if (accordionItems.length > 1) {
-                    const lastAccordionItem = accordionItems[accordionItems.length - 1];
-                    lastAccordionItem.remove();
-                }
-            }
-
-            filePond.on('processfiles', (error, file) => {
-                document.querySelectorAll('.filepond--list li').forEach(li => {
-                    const serverId = li.id;
-                    const text = li.querySelector('.filepond--file-wrapper legend').innerText;
-                    addCheckbox(serverId, text, file, true);
-                });
             });
 
-            function addCheckbox(serverId, text, file, checked) {
-                const checkbox = document.createElement('input');
-                checkbox.type = 'checkbox';
-                checkbox.name = 'type';
-                checkbox.value = text;
-                checkbox.checked = checked;
-                checkbox.style.cssText = 'float: right; transform: translate3d(22px, -34px, 10px);';
-                checkbox.classList.add('form-check-input');
-                document.getElementById(serverId).append(checkbox);
-                if (window.innerWidth <= 768) {
-                    document.getElementById(serverId).style.width = '94%';
+            $('#file-list' + accordionCounter + '').on('change', '.form-check-input', function() {
+                var filename = $(this).data('filename');
+                var paidStatus = $(this).prop('checked') ? 'paid' : 'free';
+
+                // Find the file in the array and update its paid status
+                var fileIndex = fileList.findIndex(function(item) {
+                    return item.filename === filename;
+                });
+
+                if (fileIndex !== -1) {
+                    fileList[fileIndex].paidStatus = paidStatus;
                 } else {
-                    document.getElementById(serverId).style.width = '97%';
+                    // If the file is not found, add it to the array
+                    fileList.push({
+                        filename: filename,
+                        paidStatus: paidStatus
+                    });
                 }
+            });
+
+
+
+            $('#accordionFlushExample').on('click', '.delete', function() {
+                var index = $(this).data('index');
+                var accordionIndex = $(this).closest('.accordion-item').attr('id').replace('accordionItem',
+                    '');
+                var input = $(`.tutorialsInput${accordionIndex}`);
+
+                input.val(function(_, value) {
+                    var files = value.split(',');
+                    files.splice(index, 1);
+                    return files.join(',');
+                });
+
+                $(this).parent().remove();
+            });
+
+            $('#addAccordion').click(function() {
+                accordionCounter++;
+                var accordionItem = createAccordionItem(accordionCounter);
+                $('#accordionFlushExample').append(accordionItem);
+            });
+
+            $('#removeAccordion').click(function() {
+                var $accordionItems = $('#accordionFlushExample').children('.accordion-item');
+
+                if ($accordionItems.length > 1) {
+                    $accordionItems.last().remove();
+                    accordionCounter--;
+                }
+            });
+
+            function createAccordionItem(counter) {
+                return $(`
+        <div class="accordion-item" id="accordionItem${counter}">
+            <h2 class="accordion-header" id="flush-heading${counter}">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapse${counter}" aria-expanded="true" aria-controls="flush-collapse${counter}">
+                    Curriculum Tutorial Section ${counter}
+                </button>
+            </h2>
+            <div id="flush-collapse${counter}" class="accordion-collapse collapse show"
+                aria-labelledby="flush-heading${counter}" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="mb-3">
+                                <label for="tutorialsTitle${counter}" class="form-label text-dark">Video Title</label>
+                                <input type="text" class="form-control" id="tutorialsTitle${counter}" value="{{ old('tutorialsTitle${counter}') }}"
+                                    name="tutorialsTitle${counter}" autocomplete="off" placeholder="Enter your video title" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="mb-3">
+                                <label for="videos${counter}" class="form-label">Add Multiple Videos</label>
+                                <p class="text-muted">Use <code>multiple</code> videos within the same time to select multiple files.</p>
+                                <input class="form-control tutorialsInput" type="file" name="tutorials${counter}[]" multiple value="{{ old('tutorials${counter}') }}"
+                                    data-allow-reorder="true" accept="video/*" required>
+                                <ul class="list-group mt-3 tutorialsList${counter}"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `);
+            }
+
+            function formatBytes(bytes, decimals = 2) {
+                if (bytes === 0) return '0 Bytes';
+                const k = 1024;
+                const dm = decimals < 0 ? 0 : decimals;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
             }
         });
     </script>
