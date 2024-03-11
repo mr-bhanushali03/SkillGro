@@ -66,5 +66,5 @@ Route::middleware([
 
 Route::controller(GoogleController::class)->group(function(){
     Route::get('authorized/google', 'redirectToGoogle')->name('auth.google');
-    Route::get('authorized/google/callback', 'handleGoogleCallback');
+    Route::get('authorized/google/callback', 'handleGoogleCallback')->name('auth.google.callback');
 });

@@ -60,7 +60,7 @@
                                 <div class="logo">
                                     <a href="{{ route('website.home') }}"><img
                                             src="{{ asset('storage/website') }}/img/logo/logo.svg"
-                                            alt="Logo" /></a>
+                                            alt="Logo" width="120px" /></a>
                                 </div>
                                 <div class="tgmenu__navbar-wrap tgmenu__main-menu d-none d-xl-flex">
                                     <ul class="navigation">
