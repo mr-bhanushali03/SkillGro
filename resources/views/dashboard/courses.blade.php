@@ -410,37 +410,27 @@
             var accordionCounter = 1;
 
             $('#accordionFlushExample').on('change', '.tutorialsInput', function() {
-                var files = this.files;
+                var files = $(this)[0].files;
                 var accordionIndex = $(this).closest('.accordion-item').attr('id').replace('accordionItem',
                     '');
                 var $fileList = $(`.tutorialsList${accordionIndex}`);
-                var $fileInput = $(this);
 
-                // Retrieve existing files from the tutorials[] array
-                var existingFiles = $fileInput.data('existing-files') || [];
+                $fileList.empty(); // Clear existing items before adding new ones
 
-                // Combine existing files with newly selected files
-                var allFiles = existingFiles.concat(Array.from(files));
-
-                // Store the updated tutorials[] array in the data attribute
-                $fileInput.data('existing-files', allFiles);
-
-                $fileList.empty();
-
-                for (var i = 0; i < allFiles.length; i++) {
-                    var file = allFiles[i];
+                for (var i = 0; i < files.length; i++) {
+                    var file = files[i];
                     var fileName = file.name;
                     var fileSize = formatBytes(file.size);
 
                     var listItem = $(
                         '<li class="list-group-item d-flex justify-content-between align-items-center">' +
-                        '<div class="form-check">' +
-                        '<input class="form-check-input" type="checkbox" id="checkbox' + i +
-                        '" data-filename="' + fileName + '" name="checkbox' + i + '">' +
-                        '<label class="form-check-label" for="checkbox' + i + '">' + fileName +
+                        '<div class="form-check ps-0">' +
+                        '<label class="form-check-label" for="checkbox' + accordionCounter + '">' +
+                        fileName +
                         '</label>' +
+                        '<span class="badge badge-primary text-dark badge-pill">(' + fileSize +
+                        ')</span>' +
                         '</div>' +
-                        '<span class="badge badge-primary badge-pill">' + fileSize + '</span>' +
                         '<button type="button" class="btn btn-danger btn-sm delete" data-index="' + i +
                         '"><i class="bx bxs-trash"></i></button>' +
                         '</li>'
@@ -450,41 +440,20 @@
                 }
             });
 
-            $('#file-list' + accordionCounter + '').on('change', '.form-check-input', function() {
-                var filename = $(this).data('filename');
-                var paidStatus = $(this).prop('checked') ? 'paid' : 'free';
-
-                // Find the file in the array and update its paid status
-                var fileIndex = fileList.findIndex(function(item) {
-                    return item.filename === filename;
-                });
-
-                if (fileIndex !== -1) {
-                    fileList[fileIndex].paidStatus = paidStatus;
-                } else {
-                    // If the file is not found, add it to the array
-                    fileList.push({
-                        filename: filename,
-                        paidStatus: paidStatus
-                    });
-                }
-            });
-
-
-
             $('#accordionFlushExample').on('click', '.delete', function() {
                 var index = $(this).data('index');
                 var accordionIndex = $(this).closest('.accordion-item').attr('id').replace('accordionItem',
                     '');
-                var input = $(`.tutorialsInput${accordionIndex}`);
+                var arrayInput = $(`.tutorialsInput[name="tutorials${accordionIndex}[]"]`);
 
-                input.val(function(_, value) {
-                    var files = value.split(',');
-                    files.splice(index, 1);
-                    return files.join(',');
-                });
+                var filesArray = Array.from(arrayInput[0].files);
+                filesArray.splice(index, 1);
 
-                $(this).parent().remove();
+                var newFileList = new DataTransfer();
+                filesArray.forEach(file => newFileList.items.add(file));
+
+                arrayInput[0].files = newFileList.files;
+                arrayInput.trigger('change');
             });
 
             $('#addAccordion').click(function() {
