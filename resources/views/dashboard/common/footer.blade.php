@@ -854,9 +854,6 @@
 <!-- materialdesign icon js-->
 <script src="{{ asset('assets/dashboard') }}/js/pages/remix-icons-listing.js"></script>
 
-<!-- Courses js -->
-<script src="{{ asset('assets/dashboard') }}/js/pages/sellers.init.js"></script>
-
 <!-- ckeditor Editor Scripts -->
 <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
 

@@ -139,7 +139,6 @@
                 </div>
 
                 <script>
-                    // Auto-hide the alert after 3 seconds
                     setTimeout(function() {
                         document.getElementById('alert-container').style.display = 'none';
                     }, 3000);

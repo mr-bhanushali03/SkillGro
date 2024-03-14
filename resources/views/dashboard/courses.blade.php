@@ -34,7 +34,7 @@
                         </div>
                         <div class="col-lg-2 col-md-6 col-sm-6 col-6">
                             <label for="students" class="form-label">Students</label>
-                            <select class="form-control" id="total-student" data-choices>
+                            <select class="form-control filter" id="total-student" data-choices>
                                 <option value="All">All</option>
                                 <option value="500">500</option>
                                 <option value="1k">1k</option>
@@ -46,7 +46,7 @@
                         </div>
                         <div class="col-lg-2 col-md-6 col-sm-6 col-6">
                             <label for="ratings" class="form-label">Ratings</label>
-                            <select class="form-control" id="total-ratings" data-choices>
+                            <select class="form-control filter" id="total-ratings" data-choices>
                                 <option value="All">All</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -57,7 +57,7 @@
                         </div>
                         <div class="col-lg-2 col-md-6 col-sm-6 col-6">
                             <label for="category-select" class="form-label">Category</label>
-                            <select class="form-control" id="category-select" data-choices>
+                            <select class="form-control filter" id="category-select" data-choices>
                                 <option value="All">All</option>
                                 @foreach ($Categories as $Category)
                                     <option value="{{ $Category->category }}">{{ $Category->category }}</option>
@@ -66,12 +66,11 @@
                         </div>
                         <div class="col-lg-2 col-md-6 col-sm-6 col-6">
                             <div class="hstack gap-2 mt-lg-n3">
-                                <button type="button" class="btn btn-danger w-100 mt-lg-5">
+                                <button type="button" class="btn btn-danger w-100 mt-lg-5" id="deleteAllBtn">
                                     <i class="ri-delete-bin-2-line me-1 align-bottom"></i> Delete All
                                 </button>
                             </div>
                         </div>
-
                         <div class="col-lg-2 col-md-6 col-sm-6 col-6">
                             <div class="hstack gap-2 mt-lg-n3">
                                 <button class="btn btn-success w-100 mt-lg-5" data-bs-toggle="modal"
@@ -90,31 +89,62 @@
                         {{ session('success') }}
                     </div>
                 </div>
+                <script>
+                    setTimeout(function() {
+                        document.getElementById('alert-container').style.display = 'none';
+                    }, 3000);
+                </script>
             @endif
 
-            <div class="row mt-4" id="seller-list"></div>
+            <div class="row" id="course-list">
+                @foreach ($courses as $course)
+                    <div class="col-xl-3 col-lg-6 mb-4">
+                        <div class="card ribbon-box right overflow-hidden">
+                            <div class="card-body text-center p-4">
+                                @if ($course->trending)
+                                    <div class="ribbon ribbon-info ribbon-shape trending-ribbon">
+                                        <i class="ri-flashlight-fill text-white align-bottom"></i>
+                                        <span class="trending-ribbon-text">Trending</span>
+                                    </div>
+                                @endif
+                                <img src="{{ str_replace('public', 'storage', asset($course->banner)) }}"
+                                    alt="{{ $course->title }}" class="img-fluid rounded mx-auto d-block"
+                                    style="max-height: 150px; width: auto;">
+                                <h5 class="mb-1 mt-4"><a href="apps-ecommerce-course-details.html"
+                                        class="link-primary card-title">{{ $course->title }}</a></h5>
+                                <div class="row mt-4">
+                                    <div class="col-lg-6 border-end-dashed border-end">
+                                        <h5 class="student">{{ $course->student }}</h5>
+                                        <span class="text-muted">Students</span>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h5 class="rating">{{ $course->rating }} <i
+                                                class="ri-star-fill mt-1 text-warning"></i></h5>
+                                        <span class="text-muted">Ratings</span>
+                                    </div>
+                                </div>
+                                <p class="category d-none">{{ $course->category }}</p>
+                                <div class="mt-4">
+                                    <a href="apps-ecommerce-course-details.html"
+                                        class="btn btn-light w-100 mb-2 d-flex justify-content-center"><i
+                                            class="ri-eye-fill me-2"></i>View Details</a>
+                                    <div class="d-flex gap-2 justify-content-center">
+                                        <button class="btn btn-warning w-50 mb-1"><i
+                                                class="ri-pencil-fill align-bottom me-1"></i>Edit</button>
+                                        <button class="btn btn-danger w-50 mb-1"><i
+                                                class="ri-delete-back-2-fill align-bottom me-1"></i>Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
             <!--end row-->
 
-            <div class="row align-items-center mb-4 text-center text-sm-start" id="pagination-element">
-                <div class="col-sm">
-                    <div class="text-muted">
-                        Showing 1 to 8 of 12 entries
-                    </div>
-                </div>
-                <div class="col-sm-auto  mt-3 mt-sm-0">
-                    <div
-                        class="pagination-block pagination pagination-separated justify-content-center justify-content-sm-end mb-sm-0">
-                        <div class="page-item">
-                            <a href="javascript:void(0);" class="page-link" id="page-prev"><i
-                                    class="mdi mdi-chevron-left"></i></a>
-                        </div>
-                        <span id="page-num" class="pagination"></span>
-                        <div class="page-item">
-                            <a href="javascript:void(0);" class="page-link" id="page-next"><i
-                                    class="mdi mdi-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
+            <div class="mt-30">
+                {{ $courses->links('pagination::bootstrap-5') }}
             </div>
             <!-- pagination-element -->
 
@@ -185,7 +215,8 @@
                                                     <label for="level" class="form-label">Course
                                                         Level</label>
                                                     <select class="form-control" id="level" name="level"
-                                                        value="{{ old('level') }}" data-choices data-choices-search-false>
+                                                        value="{{ old('level') }}" data-choices
+                                                        data-choices-search-false>
                                                         <option value="Beginner">Beginner</option>
                                                         <option value="Intermediate">Intermediate</option>
                                                         <option value="Advanced">Advanced</option>
@@ -551,6 +582,20 @@
                 const i = Math.floor(Math.log(bytes) / Math.log(k));
                 return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
             }
+        });
+
+        $(document).ready(function() {
+            $('.filter').change(function() {
+                alert('Filter changed');
+            });
+
+            $('#searchResultList').keyup(function() {
+                alert('Search result list changed');
+            });
+
+            $('#deleteAllBtn').click(function() {
+                console.log('Deleting all courses...');
+            });
         });
     </script>
 @endsection

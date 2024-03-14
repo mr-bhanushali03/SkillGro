@@ -25,24 +25,9 @@ class CourseController extends Controller
         $data = [
             'Title' => 'Courses',
             'Categories' => $this->Categories(),
+            'courses' => Course::where('user_id', auth()->user()->id)
+                ->paginate(8),
         ];
-        $courses = Course::where('user_id', auth()->user()->id)
-            ->get(['id', 'title', 'banner', 'category', 'student', 'rating', 'trending'])
-            ->map(function ($course) {
-                return [
-                    'id' => $course->id,
-                    'title' => $course->title,
-                    'banner' => str_replace('public/', '', $course->banner),
-                    'img_alt' => str_replace('public/tutorial_banners/', '', $course->banner),
-                    'category' => $course->category,
-                    'student' => $course->student,
-                    'rating' => $course->rating,
-                    'trending' => (bool) $course->trending,
-                ];
-            });
-
-        $path = 'assets/dashboard/json/seller-list.json';
-        file_put_contents($path, $courses->toJson());
         return view('dashboard.courses', $data);
     }
 
