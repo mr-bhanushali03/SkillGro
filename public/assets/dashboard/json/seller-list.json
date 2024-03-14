@@ -1,14 +1,1 @@
-[
-    {
-        "id": 1,
-        "course": [{
-            "img": "storage/dashboard/images/companies/img-8.png",
-            "img_alt": "img-8.png",
-            "name": "Zoetic Fashion"
-        }],
-        "Student": "1k",
-        "Ratings": "5 star",
-        "trending": true,
-        "category": "Managment"
-    }
-]
+[{"id":1,"title":"Laravel","banner":"tutorial_banners\/jpg_44-2.jpg","img_alt":"jpg_44-2.jpg","category":"Development","student":500,"rating":5,"trending":false}]

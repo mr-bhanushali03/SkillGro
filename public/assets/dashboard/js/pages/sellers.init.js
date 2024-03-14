@@ -372,24 +372,24 @@ function loadSellerList(e, t) {
                 '<div class="card ribbon-box right overflow-hidden">' +
                 '<div class="card-body text-center p-4">' +
                 a + // Your existing content (if any)
-                '<img src="' +
-                e[s].course[0].img +
+                '<img src="storage/' +
+                e[s].banner +
                 '" alt="' +
-                e[s].course[0].img_alt +
-                '" height="200" width="200">' +
+                e[s].img_alt +
+                '" class="img-fluid rounded mx-auto d-block" style="max-height: 150px; width: auto;">' +
                 '<h5 class="mb-1 mt-4"><a href="apps-ecommerce-course-details.html" class="link-primary">' +
-                e[s].course[0].name +
+                e[s].title +
                 "</a></h5>" +
                 '<div class="row mt-4">' +
                 '<div class="col-lg-6 border-end-dashed border-end">' +
                 "<h5>" +
-                e[s].Student +
+                e[s].student +
                 "</h5>" +
                 '<span class="text-muted">Students</span>' +
                 "</div>" +
                 '<div class="col-lg-6">' +
                 "<h5>" +
-                e[s].Ratings +
+                e[s].rating +
                 "</h5>" +
                 '<span class="text-muted">Ratings</span>' +
                 "</div>" +
@@ -518,7 +518,7 @@ document.addEventListener("DOMContentLoaded", function () {
         loadSellerList(
             sellerListData.filter(function (item) {
                 return (
-                    item.course[0].name.toLowerCase().includes(searchTerm) ||
+                    item.title.toLowerCase().includes(searchTerm) ||
                     item.category.toLowerCase().includes(searchTerm)
                 );
             }),
@@ -562,13 +562,12 @@ document.addEventListener("DOMContentLoaded", function () {
     function filterAndLoadList(selectedCategory, currentPage, selectedStudent, selectedRatings) {
         var filteredData = sellerListData.filter(function (item) {
             var categoryCondition = (selectedCategory.includes("All") || selectedCategory.includes(item.category));
-            var studentCondition = (selectedStudent.includes("All") || selectedStudent.includes(item.Student));
-            var ratingsCondition = (selectedRatings.includes("All") || selectedRatings.includes(item.Ratings));
-
+            var studentCondition = (selectedStudent.includes("All") || selectedStudent.includes(item.student));
+            var ratingsCondition = (selectedRatings.includes("All") || selectedRatings.includes(item.rating));
+    
             return (categoryCondition && studentCondition && ratingsCondition);
         });
-
+    
         loadSellerList(filteredData, currentPage);
-    }
+    }    
 });
-

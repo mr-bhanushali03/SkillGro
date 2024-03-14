@@ -48,11 +48,11 @@
                             <label for="ratings" class="form-label">Ratings</label>
                             <select class="form-control" id="total-ratings" data-choices>
                                 <option value="All">All</option>
-                                <option value="1 star">1 Star</option>
-                                <option value="2 star">2 star</option>
-                                <option value="3 star">3 star</option>
-                                <option value="4 star">4 star</option>
-                                <option value="5 star">5 star</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
                             </select>
                         </div>
                         <div class="col-lg-2 col-md-6 col-sm-6 col-6">
@@ -83,6 +83,14 @@
                     </div>
                 </div>
             </div>
+
+            @if (session('success'))
+                <div id="alert-container" class="text-center mx-auto" style="width: 50%;">
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                </div>
+            @endif
 
             <div class="row mt-4" id="seller-list"></div>
             <!--end row-->
@@ -155,6 +163,7 @@
                         <div class="modal-body">
                             <form action="{{ route('addCourse') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
+                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="courseDetails" role="tabpanel">
                                         <div class="row">
@@ -164,6 +173,9 @@
                                                     <input type="text" class="form-control" id="title"
                                                         placeholder="Enter course title" name="title"
                                                         value="{{ old('title') }}" autocomplete="off" required>
+                                                    @error('title')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -178,6 +190,9 @@
                                                         <option value="Intermediate">Intermediate</option>
                                                         <option value="Advanced">Advanced</option>
                                                     </select>
+                                                    @error('level')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -191,6 +206,9 @@
                                                             placeholder="Actual Price" name="actualPrice"
                                                             value="{{ old('actualPrice') }}" autocomplete="off" required>
                                                     </div>
+                                                    @error('actualPrice')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -203,8 +221,12 @@
                                                         <span class="input-group-text" id="basic-addon1">&#8377;</span>
                                                         <input type="number" class="form-control" id="sellingPrice"
                                                             placeholder="Selling Price" name="sellingPrice"
-                                                            value="{{ old('sellingPrice') }}" autocomplete="off" required>
+                                                            value="{{ old('sellingPrice') }}" autocomplete="off"
+                                                            required>
                                                     </div>
+                                                    @error('sellingPrice')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -221,6 +243,9 @@
                                                                 {{ $Category->category }}</option>
                                                         @endforeach
                                                     </select>
+                                                    @error('category')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -232,6 +257,9 @@
                                                     <input type="file" class="form-control" name="banner"
                                                         value="{{ old('banner') }}" id="banner" accept="image/*"
                                                         required>
+                                                    @error('banner')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -242,6 +270,9 @@
                                                         Description</label>
                                                     <textarea class="description" name="description" value="{{ old('description') }}">
                                                     </textarea>
+                                                    @error('description')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -271,6 +302,9 @@
                                                         value="{{ old('curriculumTitle') }}" id="curriculumTitle"
                                                         placeholder="Enter your curriculum title" autocomplete="off"
                                                         required>
+                                                    @error('curriculumTitle')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -279,6 +313,9 @@
                                                     <label for="curriculumDescription" class="form-label">Curriculum
                                                         Description</label>
                                                     <textarea class="curriculumdescription" name="curriculumDescription" value="{{ old('curriculumDescription') }}"></textarea>
+                                                    @error('curriculumDescription')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -357,7 +394,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </div>
                                             <div class="col-lg-12">
                                                 <div class="hstack gap-2 justify-content-end">

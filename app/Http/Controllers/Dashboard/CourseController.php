@@ -26,6 +26,23 @@ class CourseController extends Controller
             'Title' => 'Courses',
             'Categories' => $this->Categories(),
         ];
+        $courses = Course::where('user_id', auth()->user()->id)
+            ->get(['id', 'title', 'banner', 'category', 'student', 'rating', 'trending'])
+            ->map(function ($course) {
+                return [
+                    'id' => $course->id,
+                    'title' => $course->title,
+                    'banner' => str_replace('public/', '', $course->banner),
+                    'img_alt' => str_replace('public/tutorial_banners/', '', $course->banner),
+                    'category' => $course->category,
+                    'student' => $course->student,
+                    'rating' => $course->rating,
+                    'trending' => (bool) $course->trending,
+                ];
+            });
+
+        $path = 'assets/dashboard/json/seller-list.json';
+        file_put_contents($path, $courses->toJson());
         return view('dashboard.courses', $data);
     }
 
@@ -41,6 +58,7 @@ class CourseController extends Controller
             'banner' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'curriculumTitle' => 'required|string|max:250',
             'curriculumDescription' => 'required|string',
+            'user_id' => 'required|numeric',
         ]);
 
         // Validate tutorial titles
@@ -71,10 +89,9 @@ class CourseController extends Controller
 
                 // Check if the numeric part of the collection key matches the current key
                 if ($titleNumeric == $fileNumeric) {
-
                     // Move the file to the public storage folder
                     foreach ($file as $index => $uploadedFile) {
-                        $path = $uploadedFile->store($uploadedFile->getClientOriginalName(), 'tutorial_files');
+                        $path = $uploadedFile->storeAs('public/tutorial_files', $uploadedFile->getClientOriginalName());
                         $tutorialData[$collectionKey] = $path;
                     }
                 }
@@ -82,22 +99,26 @@ class CourseController extends Controller
 
             // Assign the tutorial title and its corresponding files to the data array
             $data['tutorials'][$key] = ['title' => $title, 'files' => $tutorialData];
+            $jsonData = json_encode($data);
         }
 
         // Merge tutorial data with other request data
-        $data = array_merge($data, [
+        $data = [
             'title' => $request->title,
             'level' => $request->level,
             'actualPrice' => $request->actualPrice,
             'sellingPrice' => $request->sellingPrice,
             'category' => $request->category,
             'description' => $request->description,
-            'banner' => $request->file('banner')->store($request->file('banner')->getClientOriginalName(), 'tutorial_banners'),
+            'banner' => $request->file('banner')->storeAs('public/tutorial_banners', $request->file('banner')->getClientOriginalName()),
             'curriculumTitle' => $request->curriculumTitle,
             'curriculumDescription' => $request->curriculumDescription,
-        ]);
+            'user_id' => $request->user_id,
+            'tutorials' => $jsonData,
+        ];
 
         // Now $data contains all merged data, including tutorial titles, files, and other request data
-        dd($data);
+        Course::create($data);
+        return redirect()->route('course')->withSuccess('You have successfully added a new Course!');
     }
 }

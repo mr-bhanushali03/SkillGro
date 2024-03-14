@@ -13,6 +13,20 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('level');
+            $table->decimal('actualPrice', 8, 2);
+            $table->decimal('sellingPrice', 8, 2);
+            $table->string('category');
+            $table->text('description');
+            $table->string('banner');
+            $table->string('curriculumTitle');
+            $table->text('curriculumDescription');
+            $table->json('tutorials');
+            $table->string('user_id');
+            $table->integer('student')->default(0);
+            $table->integer('rating')->default(0);
+            $table->boolean('trending')->default(false);
             $table->timestamps();
         });
     }
