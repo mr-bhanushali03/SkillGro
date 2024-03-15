@@ -106,4 +106,14 @@ class CourseController extends Controller
         Course::create($data);
         return redirect()->route('course')->withSuccess('You have successfully added a new Course!');
     }
+
+    function delete($id) {
+        Course::where('id', $id)->delete();
+        return redirect()->route('course')->withSuccess('You have successfully deleted a Course!');
+    }
+
+    function deleteAll() {
+        Course::where('user_id', auth()->user()->id)->delete();
+        return redirect()->route('course')->withSuccess('You have successfully deleted all Courses!');
+    }
 }

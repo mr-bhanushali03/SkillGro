@@ -24,7 +24,7 @@ return new class extends Migration
             $table->text('curriculumDescription');
             $table->json('tutorials');
             $table->string('user_id');
-            $table->integer('student')->default(0);
+            $table->string('student')->default(0);
             $table->integer('rating')->default(0);
             $table->boolean('trending')->default(false);
             $table->timestamps();

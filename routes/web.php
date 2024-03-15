@@ -62,6 +62,8 @@ Route::middleware([
     Route::get('deleteAll',[CategoryController::class,'deleteAll'])->name('deleteAll');
     Route::get('course', [CourseController::class,'courses'])->name('course');
     Route::post('addCourse',[CourseController::class,'addCourse'])->name('addCourse');
+    Route::get('delete/{id}',[CourseController::class,'delete'])->name('delete');
+    Route::get('deleteAllCourses',[CourseController::class,'deleteAll'])->name('deleteAllCourses');
 });
 
 Route::controller(GoogleController::class)->group(function(){

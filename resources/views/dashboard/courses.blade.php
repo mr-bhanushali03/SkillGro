@@ -48,11 +48,11 @@
                             <label for="ratings" class="form-label">Ratings</label>
                             <select class="form-control filter" id="total-ratings" data-choices>
                                 <option value="All">All</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
+                                <option value="1">1&#9733;</option>
+                                <option value="2">2&#9733;&#9733;</option>
+                                <option value="3">3&#9733;&#9733;&#9733;</option>
+                                <option value="4">4&#9733;&#9733;&#9733;&#9733;</option>
+                                <option value="5">5&#9733;&#9733;&#9733;&#9733;&#9733;</option>
                             </select>
                         </div>
                         <div class="col-lg-2 col-md-6 col-sm-6 col-6">
@@ -66,9 +66,9 @@
                         </div>
                         <div class="col-lg-2 col-md-6 col-sm-6 col-6">
                             <div class="hstack gap-2 mt-lg-n3">
-                                <button type="button" class="btn btn-danger w-100 mt-lg-5" id="deleteAllBtn">
+                                <a href="{{ route('deleteAllCourses') }}" class="btn btn-danger w-100 mt-lg-5" id="deleteAllBtn">
                                     <i class="ri-delete-bin-2-line me-1 align-bottom"></i> Delete All
-                                </button>
+                                </a>
                             </div>
                         </div>
                         <div class="col-lg-2 col-md-6 col-sm-6 col-6">
@@ -98,7 +98,7 @@
 
             <div class="row" id="course-list">
                 @foreach ($courses as $course)
-                    <div class="col-xl-3 col-lg-6 mb-4">
+                    <div class="col-xl-3 col-lg-6 mb-4 course">
                         <div class="card ribbon-box right overflow-hidden">
                             <div class="card-body text-center p-4">
                                 @if ($course->trending)
@@ -131,8 +131,10 @@
                                     <div class="d-flex gap-2 justify-content-center">
                                         <button class="btn btn-warning w-50 mb-1"><i
                                                 class="ri-pencil-fill align-bottom me-1"></i>Edit</button>
-                                        <button class="btn btn-danger w-50 mb-1"><i
-                                                class="ri-delete-back-2-fill align-bottom me-1"></i>Delete</button>
+                                        <a href="{{ route('delete', ['id' => $course->id]) }}"
+                                            class="btn btn-danger w-50 mb-1">
+                                            <i class="ri-delete-back-2-fill align-bottom me-1"></i>Delete
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -586,11 +588,48 @@
 
         $(document).ready(function() {
             $('.filter').change(function() {
-                alert('Filter changed');
+                var totalStudent = $('#total-student').val();
+                var totalRatings = $('#total-ratings').val();
+                var category = $('#category-select').val();
+
+                $('#course-list .course').each(function() {
+                    var student = parseInt($(this).find('.student').text());
+                    var rating = parseInt($(this).find('.rating').text());
+                    var courseCategory = $(this).find('.category').text();
+
+                    if ((totalStudent === 'All' || student === parseInt(totalStudent)) &&
+                        (totalRatings === 'All' || rating === parseInt(totalRatings)) &&
+                        (category === 'All' || courseCategory === category)) {
+                        $('#noresult').addClass('d-none');
+                        $(this).show();
+                    } else {
+                        $('#noresult').removeClass('d-none');
+                        $(this).hide();
+                    }
+                });
             });
 
             $('#searchResultList').keyup(function() {
-                alert('Search result list changed');
+                var search = $(this).val().toLowerCase();
+
+                $('#course-list .course').each(function() {
+                    var courseTitle = $(this).find('.card-title').text().toLowerCase();
+
+                    if (search === '' || courseTitle.includes(search)) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+
+                var anyResults = $('#course-list .course:visible').length > 0;
+                if (anyResults || search === '') {
+                    $('#noresult').addClass('d-none');
+                    $('#course-list').css('display', 'flex');
+                } else {
+                    $('#noresult').removeClass('d-none');
+                    $('#course-list').css('display', 'none');
+                }
             });
 
             $('#deleteAllBtn').click(function() {
