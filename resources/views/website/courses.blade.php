@@ -45,118 +45,19 @@
                             <h4 class="widget-title">Categories</h4>
                             <div class="courses-cat-list">
                                 <ul class="list-wrap">
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="cat_1">
-                                            <label class="form-check-label" for="cat_1">Art & Design (8)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="cat_2">
-                                            <label class="form-check-label" for="cat_2">Business (12)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="cat_3">
-                                            <label class="form-check-label" for="cat_3">Data Science (7)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="cat_4">
-                                            <label class="form-check-label" for="cat_4">Development (10)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="cat_5">
-                                            <label class="form-check-label" for="cat_5">Finance (8)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="cat_6">
-                                            <label class="form-check-label" for="cat_6">Health & Fitness (8)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="cat_7">
-                                            <label class="form-check-label" for="cat_7">Lifestyle (9)</label>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div class="show-more">
-                                    <a href="#">Show More +</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="courses-widget">
-                            <h4 class="widget-title">Language</h4>
-                            <div class="courses-cat-list">
-                                <ul class="list-wrap">
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="lang_1">
-                                            <label class="form-check-label" for="lang_1">All Language</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="lang_2">
-                                            <label class="form-check-label" for="lang_2">Arabic (11)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="lang_3">
-                                            <label class="form-check-label" for="lang_3">English (53)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="lang_4">
-                                            <label class="form-check-label" for="lang_4">Spanish (22)</label>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="show-more">
-                                <a href="#">Show More +</a>
-                            </div>
-                        </div>
-                        <div class="courses-widget">
-                            <h4 class="widget-title">Price</h4>
-                            <div class="courses-cat-list">
-                                <ul class="list-wrap">
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="price_1">
-                                            <label class="form-check-label" for="price_1">All Price</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="price_2">
-                                            <label class="form-check-label" for="price_2">Free</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="price_3">
-                                            <label class="form-check-label" for="price_3">Paid</label>
-                                        </div>
-                                    </li>
-                                </ul>
+                                    @foreach ($Categories as $category)
+                                        <li>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="{{ $category->id }}"
+                                                    id="{{ $category->id }}">
+                                                <label class="form-check-label d-flex align-items-center"
+                                                    for="{{ $category->id }}">
+                                                    {{ $category->category }}
+                                                    <i class="{{ $category->icon }} ms-2"></i>
+                                                </label>
+                                            </div>
+                                        </li>
+                                    @endforeach
                             </div>
                         </div>
                         <div class="courses-widget">
@@ -165,30 +66,21 @@
                                 <ul class="list-wrap">
                                     <li>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="difficulty_1">
-                                            <label class="form-check-label" for="difficulty_1">All Skills</label>
+                                            <input class="form-check-input" type="checkbox" value="" id="Beginner">
+                                            <label class="form-check-label" for="Beginner">Beginner</label>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" value=""
-                                                id="difficulty_2">
-                                            <label class="form-check-label" for="difficulty_2">Beginner (55)</label>
+                                                id="Intermediate">
+                                            <label class="form-check-label" for="Intermediate">Intermediate</label>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="difficulty_3">
-                                            <label class="form-check-label" for="difficulty_3">Intermediate (22)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="difficulty_4">
-                                            <label class="form-check-label" for="difficulty_4">High (42)</label>
+                                            <input class="form-check-input" type="checkbox" value="" id="Advanced">
+                                            <label class="form-check-label" for="Advanced">Advanced</label>
                                         </div>
                                     </li>
                                 </ul>
@@ -198,38 +90,20 @@
                             <h4 class="widget-title">Instructors</h4>
                             <div class="courses-cat-list">
                                 <ul class="list-wrap">
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="ins_1">
-                                            <label class="form-check-label" for="ins_1">David Millar (10)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="ins_2">
-                                            <label class="form-check-label" for="ins_2">Wade Warren (13)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="ins_3">
-                                            <label class="form-check-label" for="ins_3">Jenny Wilson (22)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="ins_4">
-                                            <label class="form-check-label" for="ins_4">Jacob Jones (42)</label>
-                                        </div>
-                                    </li>
+                                    @foreach ($Instructors as $instructor)
+                                        <li>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="{{ $instructor->name }}">
+                                                <label class="form-check-label"
+                                                    for="{{ $instructor->name }}">{{ $instructor->name }}</label>
+                                            </div>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                             <div class="show-more">
-                                <a href="#">Show More +</a>
+                                <a href="{{ route('website.instructors') }}">Show More +</a>
                             </div>
                         </div>
                         <div class="courses-widget">
@@ -247,7 +121,6 @@
                                                     <li><i class="fas fa-star"></i></li>
                                                     <li><i class="fas fa-star"></i></li>
                                                 </ul>
-                                                <span>(42)</span>
                                             </div>
                                         </div>
                                     </li>
@@ -262,7 +135,6 @@
                                                     <li><i class="fas fa-star"></i></li>
                                                     <li class="delete"><i class="fas fa-star"></i></li>
                                                 </ul>
-                                                <span>(23)</span>
                                             </div>
                                         </div>
                                     </li>
@@ -277,7 +149,6 @@
                                                     <li class="delete"><i class="fas fa-star"></i></li>
                                                     <li class="delete"><i class="fas fa-star"></i></li>
                                                 </ul>
-                                                <span>(11)</span>
                                             </div>
                                         </div>
                                     </li>
@@ -292,7 +163,6 @@
                                                     <li class="delete"><i class="fas fa-star"></i></li>
                                                     <li class="delete"><i class="fas fa-star"></i></li>
                                                 </ul>
-                                                <span>(7)</span>
                                             </div>
                                         </div>
                                     </li>
@@ -307,7 +177,6 @@
                                                     <li class="delete"><i class="fas fa-star"></i></li>
                                                     <li class="delete"><i class="fas fa-star"></i></li>
                                                 </ul>
-                                                <span>(3)</span>
                                             </div>
                                         </div>
                                     </li>
@@ -321,24 +190,12 @@
                         <div class="row align-items-center">
                             <div class="col-md-5">
                                 <div class="courses-top-left">
-                                    <p>Showing 250 total results</p>
+                                    <p>Showing {{ $AllCourses->count() }} total results</p>
                                 </div>
                             </div>
                             <div class="col-md-7">
                                 <div
                                     class="d-flex justify-content-center justify-content-md-end align-items-center flex-wrap">
-                                    <div class="courses-top-right m-0 ms-md-auto">
-                                        <span class="sort-by">Sort By:</span>
-                                        <div class="courses-top-right-select">
-                                            <select name="orderby" class="orderby">
-                                                <option value="Most Popular">Most Popular</option>
-                                                <option value="popularity">popularity</option>
-                                                <option value="average rating">average rating</option>
-                                                <option value="latest">latest</option>
-                                                <option value="latest">latest</option>
-                                            </select>
-                                        </div>
-                                    </div>
                                     <ul class="nav nav-tabs courses__nav-tabs" id="myTab" role="tablist">
                                         <li class="nav-item" role="presentation">
                                             <button class="nav-link active" id="grid-tab" data-bs-toggle="tab"
@@ -417,255 +274,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col">
-                                    <div class="courses__item shine__animate-item">
-                                        <div class="courses__item-thumb">
-                                            <a href="{{ url('courseDetail') }}" class="shine__animate-link">
-                                                <img src="{{ asset('storage/website') }}/img/courses/course_thumb02.jpg"
-                                                    alt="img">
-                                            </a>
-                                        </div>
-                                        <div class="courses__item-content">
-                                            <ul class="courses__item-meta list-wrap">
-                                                <li class="courses__item-tag">
-                                                    <a href="{{ url('courses') }}">Design</a>
-                                                </li>
-                                                <li class="avg-rating"><i class="fas fa-star"></i> (4.5 Reviews)</li>
-                                            </ul>
-                                            <h5 class="title"><a href="{{ url('courseDetail') }}">The Complete Graphic
-                                                    Design for Beginners</a></h5>
-                                            <p class="author">By <a href="#">Jenny Wilson</a></p>
-                                            <div class="courses__item-bottom">
-                                                <div class="button">
-                                                    <a href="{{ url('courseDetail') }}">
-                                                        <span class="text">Enroll Now</span>
-                                                        <i class="flaticon-arrow-right"></i>
-                                                    </a>
-                                                </div>
-                                                <h5 class="price">$19.00</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="courses__item shine__animate-item">
-                                        <div class="courses__item-thumb">
-                                            <a href="{{ url('courseDetail') }}" class="shine__animate-link">
-                                                <img src="{{ asset('storage/website') }}/img/courses/course_thumb03.jpg"
-                                                    alt="img">
-                                            </a>
-                                        </div>
-                                        <div class="courses__item-content">
-                                            <ul class="courses__item-meta list-wrap">
-                                                <li class="courses__item-tag">
-                                                    <a href="{{ url('courses') }}">Marketing</a>
-                                                </li>
-                                                <li class="avg-rating"><i class="fas fa-star"></i> (4.3 Reviews)</li>
-                                            </ul>
-                                            <h5 class="title"><a href="{{ url('courseDetail') }}">Learning Digital
-                                                    Marketing on Facebook</a></h5>
-                                            <p class="author">By <a href="#">Wade Warren</a></p>
-                                            <div class="courses__item-bottom">
-                                                <div class="button">
-                                                    <a href="{{ url('courseDetail') }}">
-                                                        <span class="text">Enroll Now</span>
-                                                        <i class="flaticon-arrow-right"></i>
-                                                    </a>
-                                                </div>
-                                                <h5 class="price">$24.00</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="courses__item shine__animate-item">
-                                        <div class="courses__item-thumb">
-                                            <a href="{{ url('courseDetail') }}" class="shine__animate-link">
-                                                <img src="{{ asset('storage/website') }}/img/courses/course_thumb04.jpg"
-                                                    alt="img">
-                                            </a>
-                                        </div>
-                                        <div class="courses__item-content">
-                                            <ul class="courses__item-meta list-wrap">
-                                                <li class="courses__item-tag">
-                                                    <a href="{{ url('courses') }}">Business</a>
-                                                </li>
-                                                <li class="avg-rating"><i class="fas fa-star"></i> (4.8 Reviews)</li>
-                                            </ul>
-                                            <h5 class="title"><a href="{{ url('courseDetail') }}">Financial Analyst
-                                                    Training & Investing Course</a></h5>
-                                            <p class="author">By <a href="#">Robert Fox</a></p>
-                                            <div class="courses__item-bottom">
-                                                <div class="button">
-                                                    <a href="{{ url('courseDetail') }}">
-                                                        <span class="text">Enroll Now</span>
-                                                        <i class="flaticon-arrow-right"></i>
-                                                    </a>
-                                                </div>
-                                                <h5 class="price">$12.00</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="courses__item shine__animate-item">
-                                        <div class="courses__item-thumb">
-                                            <a href="{{ url('courseDetail') }}" class="shine__animate-link">
-                                                <img src="{{ asset('storage/website') }}/img/courses/course_thumb05.jpg"
-                                                    alt="img">
-                                            </a>
-                                        </div>
-                                        <div class="courses__item-content">
-                                            <ul class="courses__item-meta list-wrap">
-                                                <li class="courses__item-tag">
-                                                    <a href="{{ url('courses') }}">Data Science</a>
-                                                </li>
-                                                <li class="avg-rating"><i class="fas fa-star"></i> (4.5 Reviews)</li>
-                                            </ul>
-                                            <h5 class="title"><a href="{{ url('courseDetail') }}">Data Analysis &
-                                                    Visualization Masterclass</a></h5>
-                                            <p class="author">By <a href="#">Guy Hawkins</a></p>
-                                            <div class="courses__item-bottom">
-                                                <div class="button">
-                                                    <a href="{{ url('courseDetail') }}">
-                                                        <span class="text">Enroll Now</span>
-                                                        <i class="flaticon-arrow-right"></i>
-                                                    </a>
-                                                </div>
-                                                <h5 class="price">$27.00</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="courses__item shine__animate-item">
-                                        <div class="courses__item-thumb">
-                                            <a href="{{ url('courseDetail') }}" class="shine__animate-link">
-                                                <img src="{{ asset('storage/website') }}/img/courses/course_thumb06.jpg"
-                                                    alt="img">
-                                            </a>
-                                        </div>
-                                        <div class="courses__item-content">
-                                            <ul class="courses__item-meta list-wrap">
-                                                <li class="courses__item-tag">
-                                                    <a href="{{ url('courses') }}">Mathematic</a>
-                                                </li>
-                                                <li class="avg-rating"><i class="fas fa-star"></i> (4.7 Reviews)</li>
-                                            </ul>
-                                            <h5 class="title"><a href="{{ url('courseDetail') }}">Master the
-                                                    Fundamentals of Math</a></h5>
-                                            <p class="author">By <a href="#">Sawpawlo Mark</a></p>
-                                            <div class="courses__item-bottom">
-                                                <div class="button">
-                                                    <a href="{{ url('courseDetail') }}">
-                                                        <span class="text">Enroll Now</span>
-                                                        <i class="flaticon-arrow-right"></i>
-                                                    </a>
-                                                </div>
-                                                <h5 class="price">$10.00</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="courses__item shine__animate-item">
-                                        <div class="courses__item-thumb">
-                                            <a href="{{ url('courseDetail') }}" class="shine__animate-link">
-                                                <img src="{{ asset('storage/website') }}/img/courses/course_thumb07.jpg"
-                                                    alt="img">
-                                            </a>
-                                        </div>
-                                        <div class="courses__item-content">
-                                            <ul class="courses__item-meta list-wrap">
-                                                <li class="courses__item-tag">
-                                                    <a href="{{ url('courses') }}">Business</a>
-                                                </li>
-                                                <li class="avg-rating"><i class="fas fa-star"></i> (4.8 Reviews)</li>
-                                            </ul>
-                                            <h5 class="title"><a href="{{ url('courseDetail') }}">How To Build A
-                                                    Localized Website With Hugo And Strapi</a></h5>
-                                            <p class="author">By <a href="#">David Millar</a></p>
-                                            <div class="courses__item-bottom">
-                                                <div class="button">
-                                                    <a href="{{ url('courseDetail') }}">
-                                                        <span class="text">Enroll Now</span>
-                                                        <i class="flaticon-arrow-right"></i>
-                                                    </a>
-                                                </div>
-                                                <h5 class="price">$11.00</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="courses__item shine__animate-item">
-                                        <div class="courses__item-thumb">
-                                            <a href="{{ url('courseDetail') }}" class="shine__animate-link">
-                                                <img src="{{ asset('storage/website') }}/img/courses/course_thumb08.jpg"
-                                                    alt="img">
-                                            </a>
-                                        </div>
-                                        <div class="courses__item-content">
-                                            <ul class="courses__item-meta list-wrap">
-                                                <li class="courses__item-tag">
-                                                    <a href="{{ url('courses') }}">Desing</a>
-                                                </li>
-                                                <li class="avg-rating"><i class="fas fa-star"></i> (4.5 Reviews)</li>
-                                            </ul>
-                                            <h5 class="title"><a href="{{ url('courseDetail') }}">Designing Effective
-                                                    Pricing Plans UX</a></h5>
-                                            <p class="author">By <a href="#">Sawpawlo Mark</a></p>
-                                            <div class="courses__item-bottom">
-                                                <div class="button">
-                                                    <a href="{{ url('courseDetail') }}">
-                                                        <span class="text">Enroll Now</span>
-                                                        <i class="flaticon-arrow-right"></i>
-                                                    </a>
-                                                </div>
-                                                <h5 class="price">$17.00</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="courses__item shine__animate-item">
-                                        <div class="courses__item-thumb">
-                                            <a href="{{ url('courseDetail') }}" class="shine__animate-link">
-                                                <img src="{{ asset('storage/website') }}/img/courses/course_thumb09.jpg"
-                                                    alt="img">
-                                            </a>
-                                        </div>
-                                        <div class="courses__item-content">
-                                            <ul class="courses__item-meta list-wrap">
-                                                <li class="courses__item-tag">
-                                                    <a href="{{ url('courses') }}">Language</a>
-                                                </li>
-                                                <li class="avg-rating"><i class="fas fa-star"></i> (4.6 Reviews)</li>
-                                            </ul>
-                                            <h5 class="title"><a href="{{ url('courseDetail') }}">Accelerating UX
-                                                    Maturity With A Breakthrough Project</a></h5>
-                                            <p class="author">By <a href="#">David Millar</a></p>
-                                            <div class="courses__item-bottom">
-                                                <div class="button">
-                                                    <a href="{{ url('courseDetail') }}">
-                                                        <span class="text">Enroll Now</span>
-                                                        <i class="flaticon-arrow-right"></i>
-                                                    </a>
-                                                </div>
-                                                <h5 class="price">$22.00</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
-                            <nav class="pagination__wrap mt-30">
-                                <ul class="list-wrap">
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li><a href="{{ url('courses') }}">2</a></li>
-                                    <li><a href="{{ url('courses') }}">3</a></li>
-                                    <li><a href="{{ url('courses') }}">4</a></li>
-                                </ul>
-                            </nav>
                         </div>
                         <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="list-tab">
                             <div class="row courses__list-wrap row-cols-1">
@@ -703,152 +312,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col">
-                                    <div class="courses__item courses__item-three shine__animate-item">
-                                        <div class="courses__item-thumb">
-                                            <a href="{{ url('courseDetail') }}" class="shine__animate-link">
-                                                <img src="{{ asset('storage/website') }}/img/courses/course_thumb02.jpg"
-                                                    alt="img">
-                                            </a>
-                                        </div>
-                                        <div class="courses__item-content">
-                                            <ul class="courses__item-meta list-wrap">
-                                                <li class="courses__item-tag">
-                                                    <a href="{{ url('courses') }}">Design</a>
-                                                    <div class="avg-rating">
-                                                        <i class="fas fa-star"></i> (4.5 Reviews)
-                                                    </div>
-                                                </li>
-                                                <li class="price">$41.00</li>
-                                            </ul>
-                                            <h5 class="title"><a href="{{ url('courseDetail') }}">Powerful Image
-                                                    Optimization Tools for this year</a></h5>
-                                            <p class="author">By <a href="#">Jenny Wilson</a></p>
-                                            <p class="info">when an unknown printer took a galley of type and scrambled
-                                                type specimen book It has survived not only.</p>
-                                            <div class="courses__item-bottom">
-                                                <div class="button">
-                                                    <a href="{{ url('courseDetail') }}">
-                                                        <span class="text">Enroll Now</span>
-                                                        <i class="flaticon-arrow-right"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="courses__item courses__item-three shine__animate-item">
-                                        <div class="courses__item-thumb">
-                                            <a href="{{ url('courseDetail') }}" class="shine__animate-link">
-                                                <img src="{{ asset('storage/website') }}/img/courses/course_thumb03.jpg"
-                                                    alt="img">
-                                            </a>
-                                        </div>
-                                        <div class="courses__item-content">
-                                            <ul class="courses__item-meta list-wrap">
-                                                <li class="courses__item-tag">
-                                                    <a href="{{ url('courses') }}">Marketing</a>
-                                                    <div class="avg-rating">
-                                                        <i class="fas fa-star"></i> (4.6 Reviews)
-                                                    </div>
-                                                </li>
-                                                <li class="price"><del>$24.00</del>$12.00</li>
-                                            </ul>
-                                            <h5 class="title"><a href="{{ url('courseDetail') }}">Learning JavaScript
-                                                    With Imagination</a></h5>
-                                            <p class="author">By <a href="#">Wade Warren</a></p>
-                                            <p class="info">when an unknown printer took a galley of type and scrambled
-                                                type specimen book It has survived not only.</p>
-                                            <div class="courses__item-bottom">
-                                                <div class="button">
-                                                    <a href="{{ url('courseDetail') }}">
-                                                        <span class="text">Enroll Now</span>
-                                                        <i class="flaticon-arrow-right"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="courses__item courses__item-three shine__animate-item">
-                                        <div class="courses__item-thumb">
-                                            <a href="{{ url('courseDetail') }}" class="shine__animate-link">
-                                                <img src="{{ asset('storage/website') }}/img/courses/course_thumb04.jpg"
-                                                    alt="img">
-                                            </a>
-                                        </div>
-                                        <div class="courses__item-content">
-                                            <ul class="courses__item-meta list-wrap">
-                                                <li class="courses__item-tag">
-                                                    <a href="{{ url('courses') }}">Finance</a>
-                                                    <div class="avg-rating">
-                                                        <i class="fas fa-star"></i> (4.9 Reviews)
-                                                    </div>
-                                                </li>
-                                                <li class="price"><del>$32.00</del>$19.00</li>
-                                            </ul>
-                                            <h5 class="title"><a href="{{ url('courseDetail') }}">Resolving Conflicts
-                                                    Between Designers And Engineers</a></h5>
-                                            <p class="author">By <a href="#">Robert Fox</a></p>
-                                            <p class="info">when an unknown printer took a galley of type and scrambled
-                                                type specimen book It has survived not only.</p>
-                                            <div class="courses__item-bottom">
-                                                <div class="button">
-                                                    <a href="{{ url('courseDetail') }}">
-                                                        <span class="text">Enroll Now</span>
-                                                        <i class="flaticon-arrow-right"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="courses__item courses__item-three shine__animate-item">
-                                        <div class="courses__item-thumb">
-                                            <a href="{{ url('courseDetail') }}" class="shine__animate-link">
-                                                <img src="{{ asset('storage/website') }}/img/courses/course_thumb05.jpg"
-                                                    alt="img">
-                                            </a>
-                                        </div>
-                                        <div class="courses__item-content">
-                                            <ul class="courses__item-meta list-wrap">
-                                                <li class="courses__item-tag">
-                                                    <a href="{{ url('courses') }}">Data Science</a>
-                                                    <div class="avg-rating">
-                                                        <i class="fas fa-star"></i> (4.7 Reviews)
-                                                    </div>
-                                                </li>
-                                                <li class="price"><del>$50.00</del>$40.00</li>
-                                            </ul>
-                                            <h5 class="title"><a href="{{ url('courseDetail') }}">A Look At Remix And
-                                                    The Differences With Next.js</a></h5>
-                                            <p class="author">By <a href="#">Guy Hawkins</a></p>
-                                            <p class="info">when an unknown printer took a galley of type and scrambled
-                                                type specimen book It has survived not only.</p>
-                                            <div class="courses__item-bottom">
-                                                <div class="button">
-                                                    <a href="{{ url('courseDetail') }}">
-                                                        <span class="text">Enroll Now</span>
-                                                        <i class="flaticon-arrow-right"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
-                            <nav class="pagination__wrap mt-30">
-                                <ul class="list-wrap">
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li><a href="{{ url('courses') }}">2</a></li>
-                                    <li><a href="{{ url('courses') }}">3</a></li>
-                                    <li><a href="{{ url('courses') }}">4</a></li>
-                                </ul>
-                            </nav>
                         </div>
+                        <nav class="pagination__wrap mt-30">
+                            <ul class="list-wrap">
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="{{ url('courses') }}">2</a></li>
+                                <li><a href="{{ url('courses') }}">3</a></li>
+                                <li><a href="{{ url('courses') }}">4</a></li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>

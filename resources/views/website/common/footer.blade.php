@@ -16,8 +16,8 @@
                             </p>
                             <ul class="list-wrap">
                                 <li>
-                                    <a href="https://maps.google.com?q=463+7th+Ave,+NY+10018,+USA" target="_blank"
-                                        style="color: #949bb1">
+                                    <a href="https://www.google.com/maps/place/Command+Sector/@20.3661579,72.9170436,17z/data=!3m1!4b1!4m6!3m5!1s0x3be0cf71b5d10e4b:0xcd8c9e84a0c22bc!8m2!3d20.3661579!4d72.9196185!16s%2Fg%2F11m44ykcy7?entry=ttu"
+                                        target="_blank" style="color: #949bb1">
                                         <i class="fa fa-map-marker"></i> Amit Sales Agency
                                         Near Command Sector,
                                         Behind Indian Bank,

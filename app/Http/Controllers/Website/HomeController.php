@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Course;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -34,8 +35,13 @@ class HomeController extends Controller
     }
 
     function courses() {
-        $Categories = $this->Categories();
-        return view('website.courses',compact('Categories'));
+        $data = [
+            'Courses' => Course::orderBy('id','desc')->paginate(9),
+            'AllCourses' => Course::orderBy('id','desc')->get(),
+            'Categories' => $this->Categories(),
+            'Instructors' => User::where('role', 'Instructor')->orderBy('id','desc')->take(10)->get(),
+        ];
+        return view('website.courses')->with($data);
     }
 
     function courseDetail() {

@@ -45,9 +45,9 @@
                             <div class="instructor__thumb">
                                 <a href="{{ url('instructorDetail') }}">
                                     @if ($instructor->profile_photo_path == null)
-                                        <img src="{{ $instructor->profile_photo_url }}" alt="img" class="rounded-circle" style="height: 180px; width: 200px;">
+                                        <img src="{{ $instructor->profile_photo_url }}" alt="img" class="rounded-circle" style="height: 180px; width: 180px;">
                                     @else
-                                        <img src="{{ asset('storage') }}/{{ $instructor->profile_photo_path }}" alt="img" class="rounded-circle" style="height: 180px; width: 200px;">
+                                        <img src="{{ asset('storage') }}/{{ $instructor->profile_photo_path }}" alt="img" class="rounded-circle" style="height: 180px; width: 180px;">
                                     @endif
                                 </a>                                
                             </div>
