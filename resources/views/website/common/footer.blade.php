@@ -18,18 +18,22 @@
                                 <li>
                                     <a href="https://maps.google.com?q=463+7th+Ave,+NY+10018,+USA" target="_blank"
                                         style="color: #949bb1">
-                                        <i class="fa fa-map-marker"></i> 463 7th Ave, NY 10018,
-                                        USA
+                                        <i class="fa fa-map-marker"></i> Amit Sales Agency
+                                        Near Command Sector,
+                                        Behind Indian Bank,
+                                        Char Rasta,
+                                        Vapi,
+                                        India.
                                     </a>
                                 </li>
                                 <li>
                                     <a href="tel:+123889900456" style="color: #949bb1">
-                                        <i class="fa fa-phone"></i> +123 88 9900 456
+                                        <i class="fa fa-phone"></i> +91 75667565368
                                     </a>
                                 </li>
                                 <li>
                                     <a href="mailto:example@email.com" style="color: #949bb1">
-                                        <i class="fa fa-envelope"></i> example@email.com
+                                        <i class="fa fa-envelope"></i> mrbhanushali03@gmail.com
                                     </a>
                                 </li>
                             </ul>
@@ -62,13 +66,13 @@
                                 <li><a href="{{ url('blogs') }}">Blogs</a></li>
                                 <li><a href="{{ url('events') }}">Events</a></li>
                                 <li>
-                                    <a href="{{url('privacy')}}">Privacy</a>
+                                    <a href="{{ url('privacy') }}">Privacy</a>
                                 </li>
                                 <li>
-                                    <a href="{{url('terms')}}">Terms</a>
+                                    <a href="{{ url('terms') }}">Terms</a>
                                 </li>
                                 <li>
-                                    <a href="{{url('support')}}">Support</a>
+                                    <a href="{{ url('support') }}">Support</a>
                                 </li>
                             </ul>
                         </div>

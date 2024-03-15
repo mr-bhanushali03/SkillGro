@@ -66,7 +66,8 @@
                         </div>
                         <div class="col-lg-2 col-md-6 col-sm-6 col-6">
                             <div class="hstack gap-2 mt-lg-n3">
-                                <a href="{{ route('deleteAllCourses') }}" class="btn btn-danger w-100 mt-lg-5" id="deleteAllBtn">
+                                <a href="{{ route('deleteAllCourses') }}" class="btn btn-danger w-100 mt-lg-5"
+                                    id="deleteAllCourses">
                                     <i class="ri-delete-bin-2-line me-1 align-bottom"></i> Delete All
                                 </a>
                             </div>
@@ -108,16 +109,15 @@
                                     </div>
                                 @endif
                                 <img src="{{ str_replace('public', 'storage', asset($course->banner)) }}"
-                                    alt="{{ $course->title }}" class="img-fluid rounded mx-auto d-block"
-                                    style="max-height: 150px; width: auto;">
-                                <h5 class="mb-1 mt-4"><a href="apps-ecommerce-course-details.html"
+                                    alt="{{ $course->title }}" class="img-fluid rounded mx-auto d-block">
+                                <h5 class="mb-1 mt-4 fs-4"><a href="apps-ecommerce-course-details.html"
                                         class="link-primary card-title">{{ $course->title }}</a></h5>
                                 <div class="row mt-4">
-                                    <div class="col-lg-6 border-end-dashed border-end">
+                                    <div class="col-6 border-end-dashed border-end">
                                         <h5 class="student">{{ $course->student }}</h5>
                                         <span class="text-muted">Students</span>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-6">
                                         <h5 class="rating">{{ $course->rating }} <i
                                                 class="ri-star-fill mt-1 text-warning"></i></h5>
                                         <span class="text-muted">Ratings</span>
@@ -155,8 +155,7 @@
                     <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop"
                         colors="primary:#405189,secondary:#0ab39c" style="width:75px;height:75px"></lord-icon>
                     <h5 class="mt-2">Sorry! No Result Found</h5>
-                    <p class="text-muted mb-0">We've searched more than 150+ sellers We did not find any sellers for you
-                        search.</p>
+                    <p class="text-muted mb-0">We're sorry, but the course you are looking for could not be found.</p>
                 </div>
             </div>
 
@@ -603,7 +602,7 @@
                         $('#noresult').addClass('d-none');
                         $(this).show();
                     } else {
-                        $('#noresult').removeClass('d-none');
+                        // $('#noresult').removeClass('d-none');
                         $(this).hide();
                     }
                 });
@@ -630,10 +629,6 @@
                     $('#noresult').removeClass('d-none');
                     $('#course-list').css('display', 'none');
                 }
-            });
-
-            $('#deleteAllBtn').click(function() {
-                console.log('Deleting all courses...');
             });
         });
     </script>
