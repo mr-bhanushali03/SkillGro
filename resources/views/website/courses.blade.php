@@ -204,7 +204,8 @@
                                                         <a href="{{ url('courses') }}">{{ $course->category }}</a>
                                                     </li>
                                                     <li class="avg-rating"><i class="fas fa-star"></i>
-                                                        ({{ $course->rating }} Reviews)</li>
+                                                        ({{ $course->rating }} Reviews)
+                                                    </li>
                                                 </ul>
                                                 <h5 class="title"><a
                                                         href="{{ url('courseDetail') }}">{{ $course->title }}</a></h5>
@@ -233,7 +234,9 @@
                             <div class="row courses__list-wrap row-cols-1">
                                 @foreach ($Courses as $course)
                                     <div class="col">
-                                        <div class="courses__item courses__item-three shine__animate-item">
+                                        <div class="courses__item courses__item-three shine__animate-item"
+                                            data-category="{{ $course->category }}" data-skill="{{ $course->level }}"
+                                            data-instructor="{{ $instructor->id == $course->user_id ? $instructor->name : '' }}">
                                             <div class="courses__item-thumb">
                                                 <a href="{{ url('courseDetail') }}" class="shine__animate-link">
                                                     <img src="{{ str_replace('public', 'storage', asset($course->banner)) }}"
@@ -245,7 +248,7 @@
                                                     <li class="courses__item-tag">
                                                         <a href="{{ url('courses') }}">{{ $course->category }}</a>
                                                         <div class="avg-rating">
-                                                            <i class="fas fa-star"></i> (4.8 Reviews)
+                                                            <i class="fas fa-star"></i> ({{ $course->rating }} Reviews)
                                                         </div>
                                                     </li>
                                                     <li class="price">
