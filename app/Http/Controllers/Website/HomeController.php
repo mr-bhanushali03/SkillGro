@@ -10,56 +10,67 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    function Categories() {
+    function Categories()
+    {
         return Category::all();
     }
 
-    function index() {
+    function index()
+    {
         $Categories = $this->Categories();
-        return view('website.index',compact('Categories'));
+        return view('website.index', compact('Categories'));
     }
 
-    function about() {
+    function about()
+    {
         $Categories = $this->Categories();
-        return view('website.about',compact('Categories'));
+        return view('website.about', compact('Categories'));
     }
 
-    function blogs() {
+    function blogs()
+    {
         $Categories = $this->Categories();
-        return view('website.blog',compact('Categories'));
+        return view('website.blog', compact('Categories'));
     }
 
-    function blogDetail() {
+    function blogDetail()
+    {
         $Categories = $this->Categories();
-        return view('website.blog-details',compact('Categories'));
+        return view('website.blog-details', compact('Categories'));
     }
 
-    function courses() {
-        $data = [
-            'Courses' => Course::orderBy('id','desc')->paginate(9),
-            'AllCourses' => Course::orderBy('id','desc')->get(),
-            'Categories' => $this->Categories(),
-            'Instructors' => User::where('role', 'Instructor')->orderBy('id','desc')->take(10)->get(),
-        ];
+    function courses()
+    {
+        $Courses = Course::orderBy('id', 'desc')->paginate(6);
+        $AllCourses = Course::orderBy('id', 'desc');
+        $Categories = $this->Categories();
+        $Instructors = User::where('role', 'Instructor')->orderBy('id', 'desc')->take(10)->get();
+
+        $data = compact('Courses', 'AllCourses', 'Categories', 'Instructors');
+
         return view('website.courses')->with($data);
     }
 
-    function courseDetail() {
+    function courseDetail()
+    {
         $Categories = $this->Categories();
-        return view('website.courseDetail',compact('Categories'));
+        return view('website.courseDetail', compact('Categories'));
     }
 
-    function events() {
+    function events()
+    {
         $Categories = $this->Categories();
-        return view('website.events',compact('Categories'));
+        return view('website.events', compact('Categories'));
     }
 
-    function eventDetail() {
+    function eventDetail()
+    {
         $Categories = $this->Categories();
-        return view('website.eventDetail',compact('Categories'));
+        return view('website.eventDetail', compact('Categories'));
     }
 
-    function instructors() {
+    function instructors()
+    {
         $data = [
             'Instructor' => User::where('role', 'Instructor')->paginate(9),
             'Categories' => $this->Categories(),
@@ -67,33 +78,39 @@ class HomeController extends Controller
         return view('website.instructors', $data);
     }
 
-    function instructorDetail() {
+    function instructorDetail()
+    {
         $Categories = $this->Categories();
-        return view('website.instructorDetail',compact('Categories'));
+        return view('website.instructorDetail', compact('Categories'));
     }
 
-    function contact() {
+    function contact()
+    {
         $Categories = $this->Categories();
-        return view('website.contact',compact('Categories'));
+        return view('website.contact', compact('Categories'));
     }
 
-    function privacy() {
+    function privacy()
+    {
         $Categories = $this->Categories();
-        return view('website.privacy',compact('Categories'));
+        return view('website.privacy', compact('Categories'));
     }
 
-    function support() {
+    function support()
+    {
         $Categories = $this->Categories();
-        return view('website.support',compact('Categories'));
+        return view('website.support', compact('Categories'));
     }
 
-    function terms() {
+    function terms()
+    {
         $Categories = $this->Categories();
-        return view('website.terms',compact('Categories'));
+        return view('website.terms', compact('Categories'));
     }
 
-    function cart() {
+    function cart()
+    {
         $Categories = $this->Categories();
-        return view('website.cart',compact('Categories'));
+        return view('website.cart', compact('Categories'));
     }
 }

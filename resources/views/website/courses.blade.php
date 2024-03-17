@@ -48,10 +48,11 @@
                                     @foreach ($Categories as $category)
                                         <li>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="{{ $category->id }}"
-                                                    id="{{ $category->id }}">
+                                                <input class="form-check-input category-filter" type="radio"
+                                                    name="category" value="{{ $category->category }}"
+                                                    id="category_{{ $category->id }}">
                                                 <label class="form-check-label d-flex align-items-center"
-                                                    for="{{ $category->id }}">
+                                                    for="category_{{ $category->id }}">
                                                     {{ $category->category }}
                                                     <i class="{{ $category->icon }} ms-2"></i>
                                                 </label>
@@ -64,25 +65,17 @@
                             <h4 class="widget-title">Skill level</h4>
                             <div class="courses-cat-list">
                                 <ul class="list-wrap">
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="Beginner">
-                                            <label class="form-check-label" for="Beginner">Beginner</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="Intermediate">
-                                            <label class="form-check-label" for="Intermediate">Intermediate</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="Advanced">
-                                            <label class="form-check-label" for="Advanced">Advanced</label>
-                                        </div>
-                                    </li>
+                                    @foreach (['Beginner', 'Intermediate', 'Advanced'] as $level)
+                                        <li>
+                                            <div class="form-check">
+                                                <input class="form-check-input skill-filter" type="radio"
+                                                    name="skill_level" value="{{ $level }}"
+                                                    id="{{ strtolower($level) }}">
+                                                <label class="form-check-label"
+                                                    for="{{ strtolower($level) }}">{{ $level }}</label>
+                                            </div>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -93,10 +86,11 @@
                                     @foreach ($Instructors as $instructor)
                                         <li>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                    id="{{ $instructor->name }}">
+                                                <input class="form-check-input instructor-filter" type="radio"
+                                                    name="instructor" value="{{ $instructor->name }}"
+                                                    id="instructor_{{ $instructor->id }}">
                                                 <label class="form-check-label"
-                                                    for="{{ $instructor->name }}">{{ $instructor->name }}</label>
+                                                    for="instructor_{{ $instructor->id }}">{{ $instructor->name }}</label>
                                             </div>
                                         </li>
                                     @endforeach
@@ -110,76 +104,25 @@
                             <h4 class="widget-title">Ratings</h4>
                             <div class="courses-rating-list">
                                 <ul class="list-wrap">
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="">
-                                            <div class="rating">
-                                                <ul class="list-wrap">
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                </ul>
+                                    @foreach (range(5, 1) as $rating)
+                                        <li>
+                                            <div class="form-check">
+                                                <input class="form-check-input rating-filter" type="radio" name="rating"
+                                                    value="{{ $rating }}" id="rating_{{ $rating }}">
+                                                <div class="rating">
+                                                    <ul class="list-wrap">
+                                                        @for ($i = 1; $i <= 5; $i++)
+                                                            @if ($i <= $rating)
+                                                                <li><i class="fas fa-star"></i></li>
+                                                            @else
+                                                                <li class="delete"><i class="fas fa-star"></i></li>
+                                                            @endif
+                                                        @endfor
+                                                    </ul>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="">
-                                            <div class="rating">
-                                                <ul class="list-wrap">
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li class="delete"><i class="fas fa-star"></i></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="">
-                                            <div class="rating">
-                                                <ul class="list-wrap">
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li class="delete"><i class="fas fa-star"></i></li>
-                                                    <li class="delete"><i class="fas fa-star"></i></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="">
-                                            <div class="rating">
-                                                <ul class="list-wrap">
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li class="delete"><i class="fas fa-star"></i></li>
-                                                    <li class="delete"><i class="fas fa-star"></i></li>
-                                                    <li class="delete"><i class="fas fa-star"></i></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="">
-                                            <div class="rating">
-                                                <ul class="list-wrap">
-                                                    <li><i class="fas fa-star"></i></li>
-                                                    <li class="delete"><i class="fas fa-star"></i></li>
-                                                    <li class="delete"><i class="fas fa-star"></i></li>
-                                                    <li class="delete"><i class="fas fa-star"></i></li>
-                                                    <li class="delete"><i class="fas fa-star"></i></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -244,83 +187,95 @@
                             aria-labelledby="grid-tab">
                             <div
                                 class="row courses__grid-wrap row-cols-1 row-cols-xl-3 row-cols-lg-2 row-cols-md-2 row-cols-sm-1">
-                                <div class="col">
-                                    <div class="courses__item shine__animate-item">
-                                        <div class="courses__item-thumb">
-                                            <a href="{{ url('courseDetail') }}" class="shine__animate-link">
-                                                <img src="{{ asset('storage/website') }}/img/courses/course_thumb01.jpg"
-                                                    alt="img">
-                                            </a>
-                                        </div>
-                                        <div class="courses__item-content">
-                                            <ul class="courses__item-meta list-wrap">
-                                                <li class="courses__item-tag">
-                                                    <a href="{{ url('courses') }}">Development</a>
-                                                </li>
-                                                <li class="avg-rating"><i class="fas fa-star"></i> (4.8 Reviews)</li>
-                                            </ul>
-                                            <h5 class="title"><a href="{{ url('courseDetail') }}">Learning JavaScript
-                                                    With Imagination</a></h5>
-                                            <p class="author">By <a href="#">David Millar</a></p>
-                                            <div class="courses__item-bottom">
-                                                <div class="button">
-                                                    <a href="{{ url('courseDetail') }}">
-                                                        <span class="text">Enroll Now</span>
-                                                        <i class="flaticon-arrow-right"></i>
+                                @foreach ($Courses as $course)
+                                    <div class="col">
+                                        <div class="courses__item shine__animate-item"
+                                            data-category="{{ $course->category }}" data-skill="{{ $course->level }}"
+                                            data-instructor="{{ $instructor->id == $course->user_id ? $instructor->name : '' }}">
+                                            <div class="courses__item-thumb">
+                                                <a href="{{ url('courseDetail') }}" class="shine__animate-link">
+                                                    <img src="{{ str_replace('public', 'storage', asset($course->banner)) }}"
+                                                        alt="img">
+                                                </a>
+                                            </div>
+                                            <div class="courses__item-content">
+                                                <ul class="courses__item-meta list-wrap">
+                                                    <li class="courses__item-tag">
+                                                        <a href="{{ url('courses') }}">{{ $course->category }}</a>
+                                                    </li>
+                                                    <li class="avg-rating"><i class="fas fa-star"></i>
+                                                        ({{ $course->rating }} Reviews)</li>
+                                                </ul>
+                                                <h5 class="title"><a
+                                                        href="{{ url('courseDetail') }}">{{ $course->title }}</a></h5>
+                                                <p class="author">By
+                                                    <a href="#">
+                                                        {{ $course->user_id == $instructor->id ? $instructor->name : '' }}
                                                     </a>
+                                                </p>
+                                                <div class="courses__item-bottom">
+                                                    <div class="button">
+                                                        <a href="{{ url('courseDetail') }}">
+                                                            <span class="text">Enroll Now</span>
+                                                            <i class="flaticon-arrow-right"></i>
+                                                        </a>
+                                                    </div>
+                                                    <h5 class="price">${{ $course->sellingPrice }}</h5>
                                                 </div>
-                                                <h5 class="price">$15.00</h5>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
+
                         <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="list-tab">
                             <div class="row courses__list-wrap row-cols-1">
-                                <div class="col">
-                                    <div class="courses__item courses__item-three shine__animate-item">
-                                        <div class="courses__item-thumb">
-                                            <a href="{{ url('courseDetail') }}" class="shine__animate-link">
-                                                <img src="{{ asset('storage/website') }}/img/courses/course_thumb01.jpg"
-                                                    alt="img">
-                                            </a>
-                                        </div>
-                                        <div class="courses__item-content">
-                                            <ul class="courses__item-meta list-wrap">
-                                                <li class="courses__item-tag">
-                                                    <a href="{{ url('courses') }}">Development</a>
-                                                    <div class="avg-rating">
-                                                        <i class="fas fa-star"></i> (4.8 Reviews)
-                                                    </div>
-                                                </li>
-                                                <li class="price"><del>$29.00</del>$15.00</li>
-                                            </ul>
-                                            <h5 class="title"><a href="{{ url('courseDetail') }}">Resolving Conflicts
-                                                    Between Designers And Engineers</a></h5>
-                                            <p class="author">By <a href="#">David Millar</a></p>
-                                            <p class="info">when an unknown printer took a galley of type and scrambled
-                                                type specimen book It has survived not only.</p>
-                                            <div class="courses__item-bottom">
-                                                <div class="button">
-                                                    <a href="{{ url('courseDetail') }}">
-                                                        <span class="text">Enroll Now</span>
-                                                        <i class="flaticon-arrow-right"></i>
+                                @foreach ($Courses as $course)
+                                    <div class="col">
+                                        <div class="courses__item courses__item-three shine__animate-item">
+                                            <div class="courses__item-thumb">
+                                                <a href="{{ url('courseDetail') }}" class="shine__animate-link">
+                                                    <img src="{{ str_replace('public', 'storage', asset($course->banner)) }}"
+                                                        alt="img">
+                                                </a>
+                                            </div>
+                                            <div class="courses__item-content">
+                                                <ul class="courses__item-meta list-wrap">
+                                                    <li class="courses__item-tag">
+                                                        <a href="{{ url('courses') }}">{{ $course->category }}</a>
+                                                        <div class="avg-rating">
+                                                            <i class="fas fa-star"></i> (4.8 Reviews)
+                                                        </div>
+                                                    </li>
+                                                    <li class="price">
+                                                        <del>${{ $course->actualPrice }}</del>${{ $course->sellingPrice }}
+                                                    </li>
+                                                </ul>
+                                                <h5 class="title"><a
+                                                        href="{{ url('courseDetail') }}">{{ $course->title }}</a></h5>
+                                                <p class="author">By
+                                                    <a href="#">
+                                                        {{ $course->user_id == $instructor->id ? $instructor->name : '' }}
                                                     </a>
+                                                </p>
+                                                <p class="info">{!! \Illuminate\Support\Str::limit(strip_tags($course->description), 100) !!}...</p>
+                                                <div class="courses__item-bottom">
+                                                    <div class="button">
+                                                        <a href="{{ url('courseDetail') }}">
+                                                            <span class="text">Enroll Now</span>
+                                                            <i class="flaticon-arrow-right"></i>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
-                        <nav class="pagination__wrap mt-30">
-                            <ul class="list-wrap">
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="{{ url('courses') }}">2</a></li>
-                                <li><a href="{{ url('courses') }}">3</a></li>
-                                <li><a href="{{ url('courses') }}">4</a></li>
-                            </ul>
+                        <nav class="mt-30">
+                            {{ $Courses->links('pagination::bootstrap-5') }}
                         </nav>
                     </div>
                 </div>
@@ -328,4 +283,83 @@
         </div>
     </section>
     <!-- all-courses-end -->
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function() {
+            $('.category-filter').change(function() {
+                var selectedCategory = $(this).val();
+                if (selectedCategory) {
+                    $('.courses__item').hide();
+                    $('.courses__item[data-category="' + selectedCategory + '"]').show();
+                    $('.courses__grid-wrap').each(function() {
+                        $(this).find('.col').each(function(index, col) {
+                            if ($(col).find('.courses__item').is(':visible')) {
+                                $(col).css('order', index);
+                            } else {
+                                $(col).css('order', '9999');
+                            }
+                        });
+                    });
+                }
+            });
+
+            $('.skill-filter').change(function() {
+                var selectedSkill = $(this).val();
+                if (selectedSkill) {
+                    $('.courses__item').hide();
+                    $('.courses__item[data-skill="' + selectedSkill + '"]').show();
+                    $('.courses__grid-wrap').each(function() {
+                        $(this).find('.col').each(function(index, col) {
+                            if ($(col).find('.courses__item').is(':visible')) {
+                                $(col).css('order', index);
+                            } else {
+                                $(col).css('order', '9999');
+                            }
+                        });
+                    });
+                }
+            });
+
+            $('.instructor-filter').change(function() {
+                var selectedInstructor = $(this).val();
+                if (selectedInstructor) {
+                    $('.courses__item').hide();
+                    $('.courses__item[data-instructor="' + selectedInstructor + '"]').show();
+                    $('.courses__grid-wrap').each(function() {
+                        $(this).find('.col').each(function(index, col) {
+                            if ($(col).find('.courses__item').is(':visible')) {
+                                $(col).css('order', index);
+                            } else {
+                                $(col).css('order', '9999');
+                            }
+                        });
+                    });
+                }
+            });
+
+            $('.rating-filter').change(function() {
+                var selectedRating = $(this).val();
+                if (selectedRating) {
+                    $('.courses__item').hide();
+                    $('.courses__item').each(function() {
+                        var rating = $(this).find('.avg-rating').text().match(/\d+/);
+                        if (rating && rating[0] === selectedRating) {
+                            $(this).show();
+                        }
+                    });
+                    $('.courses__grid-wrap').each(function() {
+                        $(this).find('.col').each(function(index, col) {
+                            if ($(col).find('.courses__item').is(':visible')) {
+                                $(col).css('order', index);
+                            } else {
+                                $(col).css('order', '9999');
+                            }
+                        });
+                    });
+                }
+            });
+        });
+    </script>
 @endsection
