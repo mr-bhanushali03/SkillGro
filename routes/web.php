@@ -26,7 +26,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('blogs', 'blogs')->name('website.blogs');
     Route::get('blogDetail', 'blogDetail')->name('website.blogDetail');
     Route::get('courses', 'courses')->name('website.courses');
-    Route::get('courseDetail', 'courseDetail')->name('website.courseDetail');
+    Route::get('courseInDetail/{name}', 'courseInDetail')->name('website.courseInDetail');
     Route::get('events', 'events')->name('website.events');
     Route::get('eventDetail', 'eventDetail')->name('website.eventDetail');
     Route::get('instructors', 'instructors')->name('website.instructors');

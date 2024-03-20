@@ -51,10 +51,14 @@ class HomeController extends Controller
         return view('website.courses')->with($data);
     }
 
-    function courseDetail()
+    function courseInDetail($name)
     {
-        $Categories = $this->Categories();
-        return view('website.courseDetail', compact('Categories'));
+        $data = [
+            'Course' => Course::where('title', decrypt($name))->first(),
+            'Categories' => $this->Categories(),
+            'Instructors' => User::where('role', 'Instructor')->get(),
+        ];
+        return view('website.courseDetail', $data);
     }
 
     function events()

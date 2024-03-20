@@ -18,8 +18,7 @@
                                 <a href="{{ url('courses') }}">Courses</a>
                             </span>
                             <span class="breadcrumb-separator"><i class="fas fa-angle-right"></i></span>
-                            <span property="itemListElement" typeof="ListItem">Resolving Conflicts Between Designers And
-                                Engineers</span>
+                            <span property="itemListElement" typeof="ListItem">{{ $Course->title }}</span>
                         </nav>
                     </div>
                 </div>
@@ -46,26 +45,34 @@
             <div class="row">
                 <div class="col-xl-9 col-lg-8">
                     <div class="courses__details-thumb">
-                        <img src="{{ asset('storage/website') }}/img/courses/courses_details.jpg" alt="img">
+                        <img src="{{ asset(str_replace('public', 'storage', $Course->banner)) }}" alt="img"
+                            height="412px" width="100%">
                     </div>
                     <div class="courses__details-content">
                         <ul class="courses__item-meta list-wrap">
                             <li class="courses__item-tag">
-                                <a href="{{ url('courses') }}">Development</a>
+                                <a href="javascript:void(0)">{{ $Course->category }}</a>
                             </li>
-                            <li class="avg-rating"><i class="fas fa-star"></i> (4.5 Reviews)</li>
+                            <li class="avg-rating"><i class="fas fa-star"></i> ({{ $Course->rating }} Reviews)</li>
                         </ul>
-                        <h2 class="title">Resolving Conflicts Between Designers And Engineers</h2>
+                        <h2 class="title">{{ $Course->title }}</h2>
                         <div class="courses__details-meta">
                             <ul class="list-wrap">
                                 <li class="author-two">
-                                    <img src="{{ asset('storage/website') }}/img/courses/course_author001.png"
-                                        alt="img">
+                                    @if ($Instructors[0]->profile_photo_path == null)
+                                        <img src="{{ $Instructors[0]->profile_photo_url }}" alt="img"
+                                            class="rounded-circle" style="height: 30px; width: 30px;">
+                                    @else
+                                        <img src="{{ asset('storage') }}/{{ $Instructors[0]->profile_photo_path }}"
+                                            alt="img" class="rounded-circle" style="height: 30px; width: 30px;">
+                                    @endif
                                     By
-                                    <a href="#">David Millar</a>
+                                    <a
+                                        href="javascript:void(0)">{{ $Course->user_id == $Instructors[0]->id ? $Instructors[0]->name : '' }}</a>
                                 </li>
-                                <li class="date"><i class="flaticon-calendar"></i>24/07/2024</li>
-                                <li><i class="flaticon-mortarboard"></i>2,250 Students</li>
+                                <li class="date"><i
+                                        class="flaticon-calendar"></i>{{ $Course->created_at->format('Y-m-d') }}</li>
+                                <li><i class="flaticon-mortarboard"></i>{{ $Course->student }} Students</li>
                             </ul>
                         </div>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -95,201 +102,81 @@
                                 aria-labelledby="overview-tab" tabindex="0">
                                 <div class="courses__overview-wrap">
                                     <h3 class="title">Course Description</h3>
-                                    <p>Dorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua Quis ipsum suspendisse ultrices gravida.
-                                        Risus commodo viverra maecenas accumsan lacus vel facilisis.dolor sit amet,
-                                        consectetur adipiscing elited do eiusmod tempor incididunt ut labore et dolore magna
-                                        aliqua.</p>
-                                    <h3 class="title">What you'll learn in this course?</h3>
-                                    <p>Dorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua Quis ipsum suspendisse ultrices gravida.
-                                        Risus commodo viverra maecenas accumsan.</p>
-                                    <ul class="about__info-list list-wrap">
-                                        <li class="about__info-list-item">
-                                            <i class="flaticon-angle-right"></i>
-                                            <p class="content">Work with color & Gradients & Grids</p>
-                                        </li>
-                                        <li class="about__info-list-item">
-                                            <i class="flaticon-angle-right"></i>
-                                            <p class="content">All the useful shortcuts</p>
-                                        </li>
-                                        <li class="about__info-list-item">
-                                            <i class="flaticon-angle-right"></i>
-                                            <p class="content">Be able to create Flyers, Brochures, Advertisements</p>
-                                        </li>
-                                        <li class="about__info-list-item">
-                                            <i class="flaticon-angle-right"></i>
-                                            <p class="content">How to work with Images & Text</p>
-                                        </li>
-                                    </ul>
-                                    <p class="last-info">Morem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                        eiusmod tempor incididunt ut labore et dolore magna aliqua Quis ipsum suspendisse
-                                        ultrices gravida. Risus commodo viverra maecenas accumsan.Dorem ipsum dolor sit
-                                        amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                                        dolore magn.</p>
+                                    <p>{{ strip_tags($Course->description) }}</p>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="curriculum-tab-pane" role="tabpanel"
                                 aria-labelledby="curriculum-tab" tabindex="0">
                                 <div class="courses__curriculum-wrap">
-                                    <h3 class="title">Course Curriculum</h3>
-                                    <p>Dorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua Quis ipsum suspendisse ultrices gravida.
-                                        Risus commodo viverra maecenas accumsan.</p>
+                                    <h3 class="title">{{ $Course->curriculumTitle }}</h3>
+                                    <p>{{ strip_tags($Course->curriculumDescription) }}</p>
                                     <div class="accordion" id="accordionExample">
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header" id="headingOne">
-                                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                                    data-bs-target="#collapseOne" aria-expanded="true"
-                                                    aria-controls="collapseOne">
-                                                    Introduction
-                                                </button>
-                                            </h2>
-                                            <div id="collapseOne" class="accordion-collapse collapse show"
-                                                aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                                <div class="accordion-body">
-                                                    <ul class="list-wrap">
-                                                        <li class="course-item open-item">
-                                                            <a href="https://www.youtube.com/watch?v=b2Az7_lLh3g"
-                                                                class="course-item-link popup-video">
-                                                                <span class="item-name">Course Installation</span>
-                                                                <div class="course-item-meta">
-                                                                    <span class="item-meta duration">03:03</span>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                        <li class="course-item">
-                                                            <a href="#" class="course-item-link">
-                                                                <span class="item-name">Create a Simple React App</span>
-                                                                <div class="course-item-meta">
-                                                                    <span class="item-meta duration">07:48</span>
-                                                                    <span class="item-meta course-item-status">
-                                                                        <img src="{{ asset('storage/website') }}/img/icons/lock.svg"
-                                                                            alt="icon">
-                                                                    </span>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                        <li class="course-item">
-                                                            <a href="#" class="course-item-link">
-                                                                <span class="item-name">React for the Rest of us</span>
-                                                                <div class="course-item-meta">
-                                                                    <span class="item-meta duration">10:48</span>
-                                                                    <span class="item-meta course-item-status">
-                                                                        <img src="{{ asset('storage/website') }}/img/icons/lock.svg"
-                                                                            alt="icon">
-                                                                    </span>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
+                                        @php
+                                            $course = json_decode($Course->tutorials);
+                                        @endphp
+                                        @foreach ($course->tutorials as $tutorial)
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header" id="{{ $loop->index }}">
+                                                    <button class="accordion-button" type="button"
+                                                        data-bs-toggle="collapse"
+                                                        data-bs-target="#{{ str_replace(' ', '-', $tutorial->title) }}"
+                                                        aria-expanded="true"
+                                                        aria-controls="{{ str_replace(' ', '-', $tutorial->title) }}">
+                                                        {{ $tutorial->title }}
+                                                    </button>
+                                                </h2>
+                                                <div id="{{ str_replace(' ', '-', $tutorial->title) }}"
+                                                    class="accordion-collapse collapse"
+                                                    aria-labelledby="{{ $loop->index }}"
+                                                    data-bs-parent="#accordionExample">
+                                                    <div class="accordion-body">
+                                                        <ul class="list-wrap">
+                                                            @foreach ($tutorial->files as $file)
+                                                                <li class="course-item open-item">
+                                                                    <div class="course-item-link popup-video">
+                                                                        <i class="fas fa-play"></i>
+                                                                        <span
+                                                                            class="item-name">{{ str_replace('public/tutorial_files/', '', $file) }}</span>
+                                                                        <div class="course-item-meta">
+                                                                            <span class="video"
+                                                                                style="display: none;">{{ asset(str_replace('public', 'storage', $file)) }}</span>
+                                                                            <span class="item-meta duration">
+                                                                                <i class="fas fa-clock"></i>
+                                                                                <span class="duration-text"></span>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+
+                                                                <script>
+                                                                    document.addEventListener("DOMContentLoaded", function() {
+                                                                        var videoElements = document.querySelectorAll('.video');
+                                                                        videoElements.forEach(function(videoElement) {
+                                                                            var videoPath = videoElement.textContent;
+                                                                            var video = document.createElement('video');
+                                                                            video.preload = "metadata";
+                                                                            video.src = videoPath;
+                                                                            video.addEventListener('loadedmetadata', function() {
+                                                                                var duration = video.duration;
+                                                                                var formattedDuration = formatDuration(duration);
+                                                                                videoElement.nextElementSibling.querySelector('.duration-text').textContent =
+                                                                                    formattedDuration;
+                                                                            });
+                                                                        });
+
+                                                                        function formatDuration(duration) {
+                                                                            var minutes = Math.floor(duration / 60);
+                                                                            var seconds = Math.round(duration % 60);
+                                                                            return minutes + 'm ' + seconds + 's';
+                                                                        }
+                                                                    });
+                                                                </script>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header" id="headingTwo">
-                                                <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-                                                    aria-expanded="false" aria-controls="collapseTwo">
-                                                    Capacitance and Inductance
-                                                </button>
-                                            </h2>
-                                            <div id="collapseTwo" class="accordion-collapse collapse"
-                                                aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                                <div class="accordion-body">
-                                                    <ul class="list-wrap">
-                                                        <li class="course-item">
-                                                            <a href="#" class="course-item-link">
-                                                                <span class="item-name">Course Installation</span>
-                                                                <div class="course-item-meta">
-                                                                    <span class="item-meta duration">07:48</span>
-                                                                    <span class="item-meta course-item-status">
-                                                                        <img src="{{ asset('storage/website') }}/img/icons/lock.svg"
-                                                                            alt="icon">
-                                                                    </span>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                        <li class="course-item">
-                                                            <a href="#" class="course-item-link">
-                                                                <span class="item-name">Create a Simple React App</span>
-                                                                <div class="course-item-meta">
-                                                                    <span class="item-meta duration">07:48</span>
-                                                                    <span class="item-meta course-item-status">
-                                                                        <img src="{{ asset('storage/website') }}/img/icons/lock.svg"
-                                                                            alt="icon">
-                                                                    </span>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                        <li class="course-item">
-                                                            <a href="#" class="course-item-link">
-                                                                <span class="item-name">React for the Rest of us</span>
-                                                                <div class="course-item-meta">
-                                                                    <span class="item-meta duration">10:48</span>
-                                                                    <span class="item-meta course-item-status">
-                                                                        <img src="{{ asset('storage/website') }}/img/icons/lock.svg"
-                                                                            alt="icon">
-                                                                    </span>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header" id="headingThree">
-                                                <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#collapseThree"
-                                                    aria-expanded="false" aria-controls="collapseThree">
-                                                    Final Audit
-                                                </button>
-                                            </h2>
-                                            <div id="collapseThree" class="accordion-collapse collapse"
-                                                aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                                <div class="accordion-body">
-                                                    <ul class="list-wrap">
-                                                        <li class="course-item">
-                                                            <a href="#" class="course-item-link">
-                                                                <span class="item-name">Course Installation</span>
-                                                                <div class="course-item-meta">
-                                                                    <span class="item-meta duration">07:48</span>
-                                                                    <span class="item-meta course-item-status">
-                                                                        <img src="{{ asset('storage/website') }}/img/icons/lock.svg"
-                                                                            alt="icon">
-                                                                    </span>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                        <li class="course-item">
-                                                            <a href="#" class="course-item-link">
-                                                                <span class="item-name">Create a Simple React App</span>
-                                                                <div class="course-item-meta">
-                                                                    <span class="item-meta duration">07:48</span>
-                                                                    <span class="item-meta course-item-status">
-                                                                        <img src="{{ asset('storage/website') }}/img/icons/lock.svg"
-                                                                            alt="icon">
-                                                                    </span>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                        <li class="course-item">
-                                                            <a href="#" class="course-item-link">
-                                                                <span class="item-name">React for the Rest of us</span>
-                                                                <div class="course-item-meta">
-                                                                    <span class="item-meta duration">10:48</span>
-                                                                    <span class="item-meta course-item-status">
-                                                                        <img src="{{ asset('storage/website') }}/img/icons/lock.svg"
-                                                                            alt="icon">
-                                                                    </span>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -297,22 +184,32 @@
                                 aria-labelledby="instructors-tab" tabindex="0">
                                 <div class="courses__instructors-wrap">
                                     <div class="courses__instructors-thumb">
-                                        <img src="{{ asset('storage/website') }}/img/courses/course_instructors.png"
-                                            alt="img">
+                                        @if ($Instructors[0]->profile_photo_path == null)
+                                            <img src="{{ $Instructors[0]->profile_photo_url }}" alt="img"
+                                                class="rounded-circle" style="height: 200px; width: 200px;">
+                                        @else
+                                            <img src="{{ asset('storage') }}/{{ $Instructors[0]->profile_photo_path }}"
+                                                alt="img" class="rounded-circle"
+                                                style="height: 200px; width: 200px;">
+                                        @endif
                                     </div>
                                     <div class="courses__instructors-content">
-                                        <h2 class="title">Mark Jukarberg</h2>
-                                        <span class="designation">UX Design Lead</span>
+                                        <h2 class="title">{{ $Instructors[0]->name }}</h2>
+                                        <span class="designation">{{ $Instructors[0]->profession }}</span>
                                         <p class="avg-rating"><i class="fas fa-star"></i>(4.8 Ratings)</p>
                                         <p>Dorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                             incididunt ut labore et dolore magna aliqua Quis ipsum suspendisse ultrices
                                             gravida. Risus commodo viverra maecenas accumsan.</p>
                                         <div class="instructor__social">
                                             <ul class="list-wrap justify-content-start">
-                                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                                <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
-                                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                                <li><a href="{{ $Instructors[0]->youtube }}"><i
+                                                            class="fab fa-youtube"></i></a></li>
+                                                <li><a href="{{ $Instructors[0]->twitter }}"><i
+                                                            class="fab fa-twitter"></i></a></li>
+                                                <li><a href="{{ $Instructors[0]->linkedin }}"><i
+                                                            class="fab fa-linkedin"></i></a></li>
+                                                <li><a href="{{ $Instructors[0]->instagram }}"><i
+                                                            class="fab fa-instagram"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -394,28 +291,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="course-review-head">
-                                        <div class="review-author-thumb">
-                                            <img src="{{ asset('storage/website') }}/img/courses/review-author.png"
-                                                alt="img">
-                                        </div>
-                                        <div class="review-author-content">
-                                            <div class="author-name">
-                                                <h5 class="name">Jura Hujaor <span>2 Days ago</span></h5>
-                                                <div class="author-rating">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                            </div>
-                                            <h4 class="title">The best LMS Design System</h4>
-                                            <p>Maximus ligula eleifend id nisl quis interdum. Sed malesuada tortor non
-                                                turpis semper bibendum nisi porta, malesuada risus nonerviverra dolor.
-                                                Vestibulum ante ipsum primis in faucibus.</p>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -425,7 +300,7 @@
                     <div class="courses__details-sidebar">
                         <div class="courses__cost-wrap">
                             <span>This Course Fee:</span>
-                            <h2 class="title">$18.00 <del>$32.00</del></h2>
+                            <h2 class="title">${{ $Course->sellingPrice }} <del>${{ $Course->actualPrice }}</del></h2>
                         </div>
                         <div class="courses__information-wrap">
                             <h5 class="title">Course includes:</h5>
@@ -434,8 +309,26 @@
                                     <img src="{{ asset('storage/website') }}/img/icons/course_icon01.svg" alt="img"
                                         class="injectable">
                                     Level
-                                    <span>Expert</span>
+                                    <span>{{ $Course->level }}</span>
                                 </li>
+                                @php
+                                    $tutorials = json_decode($Course->tutorials);
+                                    $totalTutorials = count(json_decode(json_encode($tutorials->tutorials), true));
+                                @endphp
+
+                                @foreach ($tutorials->tutorials as $tutorial)
+                                    @foreach ($tutorial->files as $file)
+                                        @php
+                                            $videoPath = asset(str_replace('public', 'storage', $file));
+                                            $video = new \FFMpeg\FFMpeg();
+                                            $video = $video->open($videoPath);
+                                            $duration = $video->getFFProbe()->format($videoPath)->get('duration');
+                                            $formattedDuration = gmdate("H:i:s", $duration);
+                                        @endphp
+                                        @dd($formattedDuration)
+                                    @endforeach
+                                @endforeach
+
                                 <li>
                                     <img src="{{ asset('storage/website') }}/img/icons/course_icon02.svg" alt="img"
                                         class="injectable">
@@ -446,13 +339,7 @@
                                     <img src="{{ asset('storage/website') }}/img/icons/course_icon03.svg" alt="img"
                                         class="injectable">
                                     Lessons
-                                    <span>12</span>
-                                </li>
-                                <li>
-                                    <img src="{{ asset('storage/website') }}/img/icons/course_icon04.svg" alt="img"
-                                        class="injectable">
-                                    Quizzes
-                                    <span>145</span>
+                                    <span>{{ $totalTutorials }}</span>
                                 </li>
                                 <li>
                                     <img src="{{ asset('storage/website') }}/img/icons/course_icon05.svg" alt="img"
@@ -463,24 +350,14 @@
                                 <li>
                                     <img src="{{ asset('storage/website') }}/img/icons/course_icon06.svg" alt="img"
                                         class="injectable">
-                                    Graduation
-                                    <span>25K</span>
+                                    Students
+                                    <span>{{ $Course->student }}</span>
                                 </li>
                             </ul>
                         </div>
                         <div class="courses__payment">
                             <h5 class="title">Secure Payment:</h5>
                             <img src="{{ asset('storage/website') }}/img/others/payment.png" alt="img">
-                        </div>
-                        <div class="courses__details-social">
-                            <h5 class="title">Share this course:</h5>
-                            <ul class="list-wrap">
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                            </ul>
                         </div>
                         <div class="courses__details-enroll">
                             <div class="tg-button-wrap">

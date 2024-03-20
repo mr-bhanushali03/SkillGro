@@ -193,7 +193,7 @@
                                             data-category="{{ $course->category }}" data-skill="{{ $course->level }}"
                                             data-instructor="{{ $instructor->id == $course->user_id ? $instructor->name : '' }}">
                                             <div class="courses__item-thumb">
-                                                <a href="{{ url('courseDetail') }}" class="shine__animate-link">
+                                                <a href="{{ url('courseInDetail', ['name' => encrypt($course->title)]) }}" class="shine__animate-link">
                                                     <img src="{{ str_replace('public', 'storage', asset($course->banner)) }}"
                                                         alt="img">
                                                 </a>
@@ -201,22 +201,22 @@
                                             <div class="courses__item-content">
                                                 <ul class="courses__item-meta list-wrap">
                                                     <li class="courses__item-tag">
-                                                        <a href="{{ url('courses') }}">{{ $course->category }}</a>
+                                                        <a href="javascript:void(0)">{{ $course->category }}</a>
                                                     </li>
                                                     <li class="avg-rating"><i class="fas fa-star"></i>
                                                         ({{ $course->rating }} Reviews)
                                                     </li>
                                                 </ul>
                                                 <h5 class="title"><a
-                                                        href="{{ url('courseDetail') }}">{{ $course->title }}</a></h5>
+                                                        href="{{ url('courseInDetail', ['name' => encrypt($course->title)]) }}">{{ $course->title }}</a></h5>
                                                 <p class="author">By
-                                                    <a href="#">
+                                                    <a href="javascript:void(0)">
                                                         {{ $course->user_id == $instructor->id ? $instructor->name : '' }}
                                                     </a>
                                                 </p>
                                                 <div class="courses__item-bottom">
                                                     <div class="button">
-                                                        <a href="{{ url('courseDetail') }}">
+                                                        <a href="{{ url('courseInDetail', ['name' => encrypt($course->title)]) }}">
                                                             <span class="text">Enroll Now</span>
                                                             <i class="flaticon-arrow-right"></i>
                                                         </a>
@@ -238,7 +238,8 @@
                                             data-category="{{ $course->category }}" data-skill="{{ $course->level }}"
                                             data-instructor="{{ $instructor->id == $course->user_id ? $instructor->name : '' }}">
                                             <div class="courses__item-thumb">
-                                                <a href="{{ url('courseDetail') }}" class="shine__animate-link">
+                                                <a href="{{ url('courseInDetail', ['name' => encrypt($course->title)]) }}"
+                                                    class="shine__animate-link">
                                                     <img src="{{ str_replace('public', 'storage', asset($course->banner)) }}"
                                                         alt="img">
                                                 </a>
@@ -246,7 +247,7 @@
                                             <div class="courses__item-content">
                                                 <ul class="courses__item-meta list-wrap">
                                                     <li class="courses__item-tag">
-                                                        <a href="{{ url('courses') }}">{{ $course->category }}</a>
+                                                        <a href="javascript:void(0)">{{ $course->category }}</a>
                                                         <div class="avg-rating">
                                                             <i class="fas fa-star"></i> ({{ $course->rating }} Reviews)
                                                         </div>
@@ -256,16 +257,16 @@
                                                     </li>
                                                 </ul>
                                                 <h5 class="title"><a
-                                                        href="{{ url('courseDetail') }}">{{ $course->title }}</a></h5>
+                                                        href="{{ url('courseInDetail', ['name' => encrypt($course->title)]) }}">{{ $course->title }}</a></h5>
                                                 <p class="author">By
-                                                    <a href="#">
+                                                    <a href="javascript:void(0)">
                                                         {{ $course->user_id == $instructor->id ? $instructor->name : '' }}
                                                     </a>
                                                 </p>
                                                 <p class="info">{!! \Illuminate\Support\Str::limit(strip_tags($course->description), 100) !!}...</p>
                                                 <div class="courses__item-bottom">
                                                     <div class="button">
-                                                        <a href="{{ url('courseDetail') }}">
+                                                        <a href="{{ url('courseInDetail', ['name' => encrypt($course->title)]) }}">
                                                             <span class="text">Enroll Now</span>
                                                             <i class="flaticon-arrow-right"></i>
                                                         </a>
