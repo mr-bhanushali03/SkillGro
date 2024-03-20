@@ -110,7 +110,7 @@
                                 @endif
                                 <img src="{{ str_replace('public', 'storage', asset($course->banner)) }}"
                                     alt="{{ $course->title }}" class="img-fluid rounded mx-auto d-block">
-                                <h5 class="mb-1 mt-4 fs-4"><a href="apps-ecommerce-course-details.html"
+                                <h5 class="mb-1 mt-4 fs-4"><a href="{{ route('courseDetail', ['title' => encrypt($course->title)]) }}"
                                         class="link-primary card-title">{{ $course->title }}</a></h5>
                                 <div class="row mt-4">
                                     <div class="col-6 border-end-dashed border-end">
@@ -125,7 +125,7 @@
                                 </div>
                                 <p class="category d-none">{{ $course->category }}</p>
                                 <div class="mt-4">
-                                    <a href="apps-ecommerce-course-details.html"
+                                    <a href="{{ route('courseDetail', ['title' => encrypt($course->title)]) }}"
                                         class="btn btn-light w-100 mb-2 d-flex justify-content-center"><i
                                             class="ri-eye-fill me-2"></i>View Details</a>
                                     <div class="d-flex gap-2 justify-content-center">

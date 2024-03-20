@@ -61,6 +61,7 @@ Route::middleware([
     Route::get('deleteCategory/{id}', [CategoryController::class,'deleteCategory'])->name('deleteCategory');
     Route::get('deleteAllCategory',[CategoryController::class,'deleteAll'])->name('deleteAllCategory');
     Route::get('course', [CourseController::class,'courses'])->name('course');
+    Route::get('courseDetail/{title}', [CourseController::class,'courseDetail'])->name('courseDetail');
     Route::post('addCourse',[CourseController::class,'addCourse'])->name('addCourse');
     Route::get('delete/{id}',[CourseController::class,'delete'])->name('delete');
     Route::get('deleteAllCourses',[CourseController::class,'deleteAll'])->name('deleteAllCourses');

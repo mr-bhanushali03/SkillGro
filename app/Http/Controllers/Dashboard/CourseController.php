@@ -116,4 +116,13 @@ class CourseController extends Controller
         Course::where('user_id', auth()->user()->id)->delete();
         return redirect()->route('course')->withSuccess('You have successfully deleted all Courses!');
     }
+
+    function courseDetail($title) {
+        $title = decrypt($title);
+        $data = [
+            'Title' => 'Course Detail',
+            'Course' => Course::where('title', $title)->first(),
+        ];
+        return view('dashboard.courseDetail', $data);
+    }
 }
