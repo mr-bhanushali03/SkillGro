@@ -17,8 +17,11 @@ class HomeController extends Controller
 
     function index()
     {
-        $Categories = $this->Categories();
-        return view('website.index', compact('Categories'));
+        $data = [
+            'Categories' => $this->Categories(),
+            'Instructors' => User::where('role', 'Instructor')->orderBy('id', 'desc')->get(),
+        ];
+        return view('website.index', $data);
     }
 
     function about()

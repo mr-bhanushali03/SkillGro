@@ -27,12 +27,12 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="tel:+123889900456" style="color: #949bb1">
+                                    <a href="tel:+9175667565368" style="color: #949bb1">
                                         <i class="fa fa-phone"></i> +91 75667565368
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="mailto:example@email.com" style="color: #949bb1">
+                                    <a href="mailto:mrbhanushali03@email.com" style="color: #949bb1">
                                         <i class="fa fa-envelope"></i> mrbhanushali03@gmail.com
                                     </a>
                                 </li>

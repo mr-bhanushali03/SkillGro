@@ -318,22 +318,43 @@
 
                                 @foreach ($tutorials->tutorials as $tutorial)
                                     @foreach ($tutorial->files as $file)
-                                        @php
-                                            $videoPath = asset(str_replace('public', 'storage', $file));
-                                            $video = new \FFMpeg\FFMpeg();
-                                            $video = $video->open($videoPath);
-                                            $duration = $video->getFFProbe()->format($videoPath)->get('duration');
-                                            $formattedDuration = gmdate("H:i:s", $duration);
-                                        @endphp
-                                        @dd($formattedDuration)
+                                        <span class="total-Duration"
+                                            style="display: none;">{{ asset(str_replace('public', 'storage', $file)) }}</span>
                                     @endforeach
                                 @endforeach
+
+                                <script>
+                                    document.addEventListener("DOMContentLoaded", function() {
+                                        var videoElements = document.querySelectorAll('.total-Duration');
+                                        var totalDuration = 0;
+
+                                        videoElements.forEach(function(videoElement) {
+                                            var videoPath = videoElement.textContent.trim(); 
+                                            var video = document.createElement('video');
+                                            video.preload = "metadata";
+                                            video.src = videoPath;
+
+                                            video.addEventListener('loadedmetadata', function() {
+                                                var duration = video.duration;
+                                                totalDuration += duration; 
+                                                var formattedDuration = formatDuration(totalDuration);
+                                                document.getElementById('total-duration').textContent = formattedDuration;
+                                            });
+                                        });
+
+                                        function formatDuration(duration) {
+                                            var minutes = Math.floor(duration / 60);
+                                            var seconds = Math.round(duration % 60);
+                                            return minutes + 'm ' + seconds + 's';
+                                        }
+                                    });
+                                </script>
 
                                 <li>
                                     <img src="{{ asset('storage/website') }}/img/icons/course_icon02.svg" alt="img"
                                         class="injectable">
                                     Duration
-                                    <span>11h 20m</span>
+                                    <span id="total-duration"></span>
                                 </li>
                                 <li>
                                     <img src="{{ asset('storage/website') }}/img/icons/course_icon03.svg" alt="img"
@@ -361,7 +382,7 @@
                         </div>
                         <div class="courses__details-enroll">
                             <div class="tg-button-wrap">
-                                <a href="{{ url('cart') }}" class="btn btn-two arrow-btn">
+                                <a href="javascript:void(0)" class="btn btn-two arrow-btn">
                                     Enroll Now
                                     <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg" alt="img"
                                         class="injectable">

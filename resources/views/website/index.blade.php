@@ -459,363 +459,70 @@
                 <div class="col-xl-8">
                     <div class="swiper-container instructor-active">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="instructor__item-three">
-                                    <div class="instructor__thumb-three">
-                                        <img src="{{ asset('storage/website') }}/img/instructor/h2_instructor01.png"
-                                            alt="img" />
-                                        <div class="shape-one">
-                                            <img src="{{ asset('storage/website') }}/img/instructor/h2_instructor_img_shape01.svg"
-                                                alt="img" class="injectable" />
-                                        </div>
-                                    </div>
-                                    <div class="instructor__content-three">
-                                        <div class="ratting-wrap">
-                                            <div class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
+                            @foreach ($Instructors as $instructor)
+                                <div class="swiper-slide">
+                                    <div class="instructor__item-three">
+                                        <div class="instructor__thumb-three">
+                                            @if ($instructor->profile_photo_path == null)
+                                                <img src="{{ $instructor->profile_photo_url }}" alt="img"
+                                                    class="rounded-circle"
+                                                    style="height: 200px; width: 200px; margin-bottom: 100px;">
+                                            @else
+                                                <img src="{{ asset('storage') }}/{{ $instructor->profile_photo_path }}"
+                                                    alt="img">
+                                            @endif
+                                            <div class="shape-one">
+                                                <img src="{{ asset('storage/website') }}/img/instructor/h2_instructor_img_shape01.svg"
+                                                    alt="img" class="injectable" />
                                             </div>
-                                            <span>(4.8 Ratings)</span>
                                         </div>
-                                        <h2 class="title">Olivia Mia</h2>
-                                        <span class="designation">Web Design</span>
-                                        <p>
-                                            Histudy The standard chunk of Lorem Ipsum used since
-                                            the 1500s is reproduced below for those interested.
-                                        </p>
-                                        <div class="instructor__social">
-                                            <ul class="list-wrap">
-                                                <li>
-                                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="tg-button-wrap">
-                                            <a href="{{ url('instructorDetail') }}" class="btn arrow-btn">Join My Class
-                                                <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg"
-                                                    alt="img" class="injectable" /></a>
+                                        <div class="instructor__content-three">
+                                            <div class="ratting-wrap">
+                                                <div class="ratting">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <span>(4.8 Ratings)</span>
+                                            </div>
+                                            <h2 class="title">{{ $instructor->name }}</h2>
+                                            <span class="designation">{{ $instructor->profession }}</span>
+                                            <p>
+                                                Histudy The standard chunk of Lorem Ipsum used since
+                                                the 1500s is reproduced below for those interested.
+                                            </p>
+                                            <div class="instructor__social">
+                                                <ul class="list-wrap">
+                                                    <li>
+                                                        <a href="{{ $instructor->youtube }}"><i
+                                                                class="fab fa-youtube"></i></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{ $instructor->linkedin }}"><i
+                                                                class="fab fa-twitter"></i></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{ $instructor->linkedin }}"><i
+                                                                class="fab fa-linkedin"></i></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{ $instructor->instagram }}"><i
+                                                                class="fab fa-instagram"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="tg-button-wrap">
+                                                <a href="{{ url('instructorDetail') }}" class="btn arrow-btn">Join My
+                                                    Class
+                                                    <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg"
+                                                        alt="img" class="injectable" /></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="instructor__item-three">
-                                    <div class="instructor__thumb-three">
-                                        <img src="{{ asset('storage/website') }}/img/instructor/h2_instructor02.png"
-                                            alt="img" />
-                                        <div class="shape-one">
-                                            <img src="{{ asset('storage/website') }}/img/instructor/h2_instructor_img_shape01.svg"
-                                                alt="img" class="injectable" />
-                                        </div>
-                                    </div>
-                                    <div class="instructor__content-three">
-                                        <div class="ratting-wrap">
-                                            <div class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                            <span>(4.8 Ratings)</span>
-                                        </div>
-                                        <h2 class="title">William Hope</h2>
-                                        <span class="designation">Digital Marketing</span>
-                                        <p>
-                                            Histudy The standard chunk of Lorem Ipsum used since
-                                            the 1500s is reproduced below for those interested.
-                                        </p>
-                                        <div class="instructor__social">
-                                            <ul class="list-wrap">
-                                                <li>
-                                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="tg-button-wrap">
-                                            <a href="{{ url('instructorDetail') }}" class="btn arrow-btn">Join My Class
-                                                <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg"
-                                                    alt="img" class="injectable" /></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="instructor__item-three">
-                                    <div class="instructor__thumb-three">
-                                        <img src="{{ asset('storage/website') }}/img/instructor/h2_instructor03.png"
-                                            alt="img" />
-                                        <div class="shape-one">
-                                            <img src="{{ asset('storage/website') }}/img/instructor/h2_instructor_img_shape01.svg"
-                                                alt="img" class="injectable" />
-                                        </div>
-                                    </div>
-                                    <div class="instructor__content-three">
-                                        <div class="ratting-wrap">
-                                            <div class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                            <span>(4.8 Ratings)</span>
-                                        </div>
-                                        <h2 class="title">Sophia Ava</h2>
-                                        <span class="designation">Web Development</span>
-                                        <p>
-                                            Histudy The standard chunk of Lorem Ipsum used since
-                                            the 1500s is reproduced below for those interested.
-                                        </p>
-                                        <div class="instructor__social">
-                                            <ul class="list-wrap">
-                                                <li>
-                                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="tg-button-wrap">
-                                            <a href="{{ url('instructorDetail') }}" class="btn arrow-btn">Join My Class
-                                                <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg"
-                                                    alt="img" class="injectable" /></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="instructor__item-three">
-                                    <div class="instructor__thumb-three">
-                                        <img src="{{ asset('storage/website') }}/img/instructor/h2_instructor04.png"
-                                            alt="img" />
-                                        <div class="shape-one">
-                                            <img src="{{ asset('storage/website') }}/img/instructor/h2_instructor_img_shape01.svg"
-                                                alt="img" class="injectable" />
-                                        </div>
-                                    </div>
-                                    <div class="instructor__content-three">
-                                        <div class="ratting-wrap">
-                                            <div class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                            <span>(4.8 Ratings)</span>
-                                        </div>
-                                        <h2 class="title">Mark Jukarberg</h2>
-                                        <span class="designation">UX Design Lead</span>
-                                        <p>
-                                            Histudy The standard chunk of Lorem Ipsum used since
-                                            the 1500s is reproduced below for those interested.
-                                        </p>
-                                        <div class="instructor__social">
-                                            <ul class="list-wrap">
-                                                <li>
-                                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="tg-button-wrap">
-                                            <a href="{{ url('instructorDetail') }}" class="btn arrow-btn">Join My Class
-                                                <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg"
-                                                    alt="img" class="injectable" /></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="instructor__item-three">
-                                    <div class="instructor__thumb-three">
-                                        <img src="{{ asset('storage/website') }}/img/instructor/h2_instructor05.png"
-                                            alt="img" />
-                                        <div class="shape-one">
-                                            <img src="{{ asset('storage/website') }}/img/instructor/h2_instructor_img_shape01.svg"
-                                                alt="img" class="injectable" />
-                                        </div>
-                                    </div>
-                                    <div class="instructor__content-three">
-                                        <div class="ratting-wrap">
-                                            <div class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                            <span>(4.8 Ratings)</span>
-                                        </div>
-                                        <h2 class="title">David Millar</h2>
-                                        <span class="designation">UX/UI Design</span>
-                                        <p>
-                                            Histudy The standard chunk of Lorem Ipsum used since
-                                            the 1500s is reproduced below for those interested.
-                                        </p>
-                                        <div class="instructor__social">
-                                            <ul class="list-wrap">
-                                                <li>
-                                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="tg-button-wrap">
-                                            <a href="{{ url('instructorDetail') }}" class="btn arrow-btn">Join My Class
-                                                <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg"
-                                                    alt="img" class="injectable" /></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="instructor__item-three">
-                                    <div class="instructor__thumb-three">
-                                        <img src="{{ asset('storage/website') }}/img/instructor/h2_instructor04.png"
-                                            alt="img" />
-                                        <div class="shape-one">
-                                            <img src="{{ asset('storage/website') }}/img/instructor/h2_instructor_img_shape01.svg"
-                                                alt="img" class="injectable" />
-                                        </div>
-                                    </div>
-                                    <div class="instructor__content-three">
-                                        <div class="ratting-wrap">
-                                            <div class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                            <span>(4.8 Ratings)</span>
-                                        </div>
-                                        <h2 class="title">Mark Jukarberg</h2>
-                                        <span class="designation">UX Design Lead</span>
-                                        <p>
-                                            Histudy The standard chunk of Lorem Ipsum used since
-                                            the 1500s is reproduced below for those interested.
-                                        </p>
-                                        <div class="instructor__social">
-                                            <ul class="list-wrap">
-                                                <li>
-                                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="tg-button-wrap">
-                                            <a href="{{ url('instructorDetail') }}" class="btn arrow-btn">Join My Class
-                                                <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg"
-                                                    alt="img" class="injectable" /></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="instructor__item-three">
-                                    <div class="instructor__thumb-three">
-                                        <img src="{{ asset('storage/website') }}/img/instructor/h2_instructor03.png"
-                                            alt="img" />
-                                        <div class="shape-one">
-                                            <img src="{{ asset('storage/website') }}/img/instructor/h2_instructor_img_shape01.svg"
-                                                alt="img" class="injectable" />
-                                        </div>
-                                    </div>
-                                    <div class="instructor__content-three">
-                                        <div class="ratting-wrap">
-                                            <div class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                            <span>(4.8 Ratings)</span>
-                                        </div>
-                                        <h2 class="title">Olivia Mia</h2>
-                                        <span class="designation">Web Design</span>
-                                        <p>
-                                            Histudy The standard chunk of Lorem Ipsum used since
-                                            the 1500s is reproduced below for those interested.
-                                        </p>
-                                        <div class="instructor__social">
-                                            <ul class="list-wrap">
-                                                <li>
-                                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="tg-button-wrap">
-                                            <a href="{{ url('instructorDetail') }}" class="btn arrow-btn">Join My Class
-                                                <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg"
-                                                    alt="img" class="injectable" /></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -825,48 +532,18 @@
                     <div class="instructor-slider-dot">
                         <div class="swiper instructor-nav">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <button>
-                                        <img src="{{ asset('storage/website') }}/img/instructor/instructor_nav01.png"
-                                            alt="img" />
-                                    </button>
-                                </div>
-                                <div class="swiper-slide">
-                                    <button>
-                                        <img src="{{ asset('storage/website') }}/img/instructor/instructor_nav02.png"
-                                            alt="img" />
-                                    </button>
-                                </div>
-                                <div class="swiper-slide">
-                                    <button>
-                                        <img src="{{ asset('storage/website') }}/img/instructor/instructor_nav03.png"
-                                            alt="img" />
-                                    </button>
-                                </div>
-                                <div class="swiper-slide">
-                                    <button>
-                                        <img src="{{ asset('storage/website') }}/img/instructor/instructor_nav04.png"
-                                            alt="img" />
-                                    </button>
-                                </div>
-                                <div class="swiper-slide">
-                                    <button>
-                                        <img src="{{ asset('storage/website') }}/img/instructor/h2_instructor05.png"
-                                            alt="img" />
-                                    </button>
-                                </div>
-                                <div class="swiper-slide">
-                                    <button>
-                                        <img src="{{ asset('storage/website') }}/img/instructor/instructor_nav04.png"
-                                            alt="img" />
-                                    </button>
-                                </div>
-                                <div class="swiper-slide">
-                                    <button>
-                                        <img src="{{ asset('storage/website') }}/img/instructor/instructor_nav03.png"
-                                            alt="img" />
-                                    </button>
-                                </div>
+                                @foreach ($Instructors as $instructor)
+                                    <div class="swiper-slide">
+                                        <button>
+                                            @if ($instructor->profile_photo_path == null)
+                                                <img src="{{ $instructor->profile_photo_url }}" alt="img">
+                                            @else
+                                                <img src="{{ asset('storage') }}/{{ $instructor->profile_photo_path }}"
+                                                    alt="img">
+                                            @endif
+                                        </button>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                         <div class="instructor__nav-two">

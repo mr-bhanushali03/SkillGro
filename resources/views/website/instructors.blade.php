@@ -61,10 +61,10 @@
                                 </p>
                                 <div class="instructor__social">
                                     <ul class="list-wrap">
-                                        <li><a href="{{ $instructor->youtube }}"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="{{ $instructor->linkedin }}"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="{{ $instructor->instagram }}"><i class="fab fa-whatsapp"></i></a></li>
-                                        <li><a href="{{ $instructor->twitter }}"><i class="fab fa-instagram"></i></a></li>
+                                        <li><a href="{{ $instructor->youtube }}"><i class="fab fa-youtube"></i></a></li>
+                                        <li><a href="{{ $instructor->twitter }}"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href="{{ $instructor->linkedin }}"><i class="fab fa-linkedin"></i></a></li>
+                                        <li><a href="{{ $instructor->instagram }}"><i class="fab fa-instagram"></i></a></li>
                                     </ul>
                                 </div>
                             </div>

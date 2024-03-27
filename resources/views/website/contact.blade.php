@@ -49,7 +49,12 @@
                                 </div>
                                 <div class="content">
                                     <h4 class="title">Address</h4>
-                                    <p>Awamileaug Drive, Kensington <br> London, UK</p>
+                                    <p>Amit Sales Agency
+                                        Near Command Sector,
+                                        Behind Indian Bank,
+                                        Char Rasta,
+                                        Vapi,
+                                        India.</p>
                                 </div>
                             </li>
                             <li>
@@ -59,8 +64,7 @@
                                 </div>
                                 <div class="content">
                                     <h4 class="title">Phone</h4>
-                                    <a href="tel:0123456789">+1 (800) 123 456 789</a>
-                                    <a href="tel:0123456789">+1 (800) 123 456 789</a>
+                                    <a href="tel:+9175667565368">+91 75667565368</a>
                                 </div>
                             </li>
                             <li>
@@ -70,8 +74,7 @@
                                 </div>
                                 <div class="content">
                                     <h4 class="title">E-mail Address</h4>
-                                    <a href="mailto:info@gmail.com">info@gmail.com</a>
-                                    <a href="mailto:info@gmail.com">info@gmail.com</a>
+                                    <a href="mailto:mrbhanushali03@gmail.com">mrbhanushali03@gmail.com</a>
                                 </div>
                             </li>
                         </ul>
@@ -81,7 +84,7 @@
                     <div class="contact-form-wrap">
                         <h4 class="title">Send Us Message</h4>
                         <p>Your email address will not be published. Required fields are marked *</p>
-                        <form id="contact-form" action="#" method="POST">
+                        <form id="contact-form" action="javascript:void(0)" method="POST">
                             <div class="form-grp">
                                 <textarea name="message" placeholder="Comment" required></textarea>
                             </div>
@@ -113,7 +116,7 @@
             <!-- contact-map -->
             <div class="contact-map">
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48409.69813174607!2d-74.05163325136718!3d40.68264649999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25bae694479a3%3A0xb9949385da52e69e!2sBarclays%20Center!5e0!3m2!1sen!2sbd!4v1684309529719!5m2!1sen!2sbd"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3740.405649605229!2d72.91704357434597!3d20.36615788112256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be0cf71b5d10e4b%3A0xcd8c9e84a0c22bc!2sCommand%20Sector!5e0!3m2!1sen!2sin!4v1711536970864!5m2!1sen!2sin"
                     style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
