@@ -7,18 +7,9 @@ use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\CourseController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Auth\PaymentController;
 use Illuminate\Support\Facades\Auth;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index')->name('website.home');
@@ -35,7 +26,6 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('privacy', 'privacy')->name('website.privacy');
     Route::get('support', 'support')->name('website.support');
     Route::get('terms', 'terms')->name('website.terms');
-    Route::get('cart', 'cart')->name('website.cart');
 })->middleware('web');
 
 Route::controller(LoginRegisterController::class)->group(function () {
@@ -65,6 +55,9 @@ Route::middleware([
     Route::post('addCourse',[CourseController::class,'addCourse'])->name('addCourse');
     Route::get('delete/{id}',[CourseController::class,'delete'])->name('delete');
     Route::get('deleteAllCourses',[CourseController::class,'deleteAll'])->name('deleteAllCourses');
+    Route::post('payment',[PaymentController::class,'payment'])->name('payment');
+    Route::get('paymentSuccess',[PaymentController::class,'success'])->name('paymentSuccess');
+    Route::get('paymentFailed',[PaymentController::class,'failed'])->name('paymentFailed');
 });
 
 Route::controller(GoogleController::class)->group(function(){

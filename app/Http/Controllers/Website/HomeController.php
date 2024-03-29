@@ -60,6 +60,7 @@ class HomeController extends Controller
             'Course' => Course::where('title', decrypt($name))->first(),
             'Categories' => $this->Categories(),
             'Instructors' => User::where('role', 'Instructor')->get(),
+            'Students' => User::find(auth()->id()),
         ];
         return view('website.courseDetail', $data);
     }
@@ -113,11 +114,5 @@ class HomeController extends Controller
     {
         $Categories = $this->Categories();
         return view('website.terms', compact('Categories'));
-    }
-
-    function cart()
-    {
-        $Categories = $this->Categories();
-        return view('website.cart', compact('Categories'));
     }
 }

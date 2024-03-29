@@ -329,14 +329,14 @@
                                         var totalDuration = 0;
 
                                         videoElements.forEach(function(videoElement) {
-                                            var videoPath = videoElement.textContent.trim(); 
+                                            var videoPath = videoElement.textContent.trim();
                                             var video = document.createElement('video');
                                             video.preload = "metadata";
                                             video.src = videoPath;
 
                                             video.addEventListener('loadedmetadata', function() {
                                                 var duration = video.duration;
-                                                totalDuration += duration; 
+                                                totalDuration += duration;
                                                 var formattedDuration = formatDuration(totalDuration);
                                                 document.getElementById('total-duration').textContent = formattedDuration;
                                             });
@@ -382,11 +382,15 @@
                         </div>
                         <div class="courses__details-enroll">
                             <div class="tg-button-wrap">
-                                <a href="javascript:void(0)" class="btn btn-two arrow-btn">
-                                    Enroll Now
-                                    <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg" alt="img"
-                                        class="injectable">
-                                </a>
+                                <form id="paymentForm" action="{{ route('payment') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="payment_id" id="paymentIdInput" value="">
+                                    <button type="button" id="rzp-button" class="btn btn-two arrow-btn">
+                                        Enroll Now
+                                        <img src="{{ asset('storage/website') }}/img/icons/right_arrow.svg"
+                                            alt="img" class="injectable">
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -395,4 +399,48 @@
         </div>
     </section>
     <!-- courses-details-area-end -->
+@endsection
+
+@section('script')
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        @if (auth()->check())
+            var options = {
+                key: "{{ env('RAZORPAY_KEY_ID') }}",
+                amount: {{ $Course->sellingPrice * 100 }},
+                currency: 'INR',
+                image: "{{ $Students->profile_photo_path == null ? $Students->profile_photo_url : URL::asset('storage/' . $Students->profile_photo_path) }}",
+                name: '{{ $Students->name }}',
+                email: '{{ $Students->email }}',
+                notes: {
+                    course_name: '{{ $Course->title }}',
+                    student_id: {{ $Students->id }},
+                    course_id: {{ $Course->id }},
+                    instructor_id: {{ $Course->user_id }},
+                    student_name: '{{ $Students->name }}',
+                    student_email: '{{ $Students->email }}',
+                    student_contact: '{{ $Students->mobile == null ? null : $Students->mobile }}',
+                },
+                prefill: {
+                    name: '{{ $Students->name }}',
+                    email: '{{ $Students->email }}',
+                    contact: '{{ $Students->mobile == null ? null : $Students->mobile }}',
+                },
+                handler: function(response) {
+                    var paymentId = response.razorpay_payment_id;
+                    document.getElementById('paymentIdInput').value = paymentId;
+                    document.getElementById('paymentForm').submit();
+                }
+            };
+
+            document.getElementById('rzp-button').onclick = function() {
+                var rzp = new Razorpay(options);
+                rzp.open();
+            };
+        @else
+            document.getElementById('rzp-button').onclick = function() {
+                window.location.href = "{{ route('login') }}";
+            };
+        @endif
+    </script>
 @endsection
