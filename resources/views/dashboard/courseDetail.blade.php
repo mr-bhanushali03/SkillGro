@@ -166,13 +166,15 @@
                                                                                 class="text-body">{{ str_replace('public/tutorial_files/', '', $file) }}</a>
                                                                         </h5>
                                                                     </div>
-                                                                    <div class="dropdown">
-                                                                        <a href="{{ asset(str_replace('public', 'storage', $file)) }}"
-                                                                            class="btn btn-soft-secondary btn-sm btn-icon"
-                                                                            download>
-                                                                            <i class="ri-download-2-fill"></i>
-                                                                        </a>
-                                                                    </div>
+                                                                    @if (auth()->user()->role == 'Instructor')
+                                                                        <div class="dropdown">
+                                                                            <a href="{{ asset(str_replace('public', 'storage', $file)) }}"
+                                                                                class="btn btn-soft-secondary btn-sm btn-icon"
+                                                                                download>
+                                                                                <i class="ri-download-2-fill"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                    @endif
                                                                 </div>
                                                             @endforeach
                                                         </div>

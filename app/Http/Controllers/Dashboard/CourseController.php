@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Dashboard;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use Illuminate\Support\Facades\Validator;
 use App\Models\Course;
+use App\Models\StudentCourse;
+use Illuminate\Support\Facades\Validator;
 
 class CourseController extends Controller
 {
@@ -25,8 +26,7 @@ class CourseController extends Controller
         $data = [
             'Title' => 'Courses',
             'Categories' => $this->Categories(),
-            'courses' => Course::where('user_id', auth()->user()->id)
-                ->paginate(8),
+            'courses' => Course::where('user_id', auth()->user()->id)->paginate(8),
         ];
         return view('dashboard.courses', $data);
     }
@@ -107,22 +107,42 @@ class CourseController extends Controller
         return redirect()->route('course')->withSuccess('You have successfully added a new Course!');
     }
 
-    function delete($id) {
+    function delete($id)
+    {
         Course::where('id', $id)->delete();
         return redirect()->route('course')->withSuccess('You have successfully deleted a Course!');
     }
 
-    function deleteAll() {
+    function deleteAll()
+    {
         Course::where('user_id', auth()->user()->id)->delete();
         return redirect()->route('course')->withSuccess('You have successfully deleted all Courses!');
     }
 
-    function courseDetail($title) {
+    function courseDetail($title)
+    {
         $title = decrypt($title);
         $data = [
             'Title' => 'Course Detail',
             'Course' => Course::where('title', $title)->first(),
         ];
         return view('dashboard.courseDetail', $data);
+    }
+
+    function enrollCourse()
+    {
+        $studentCourse = StudentCourse::where('student_id', auth()->user()->id)
+            ->join('courses', 'student_courses.course_id', '=', 'courses.id')
+            ->join('users as student', 'student_courses.student_id', '=', 'student.id')
+            ->join('users as instructor', 'student_courses.instructor_id', '=', 'instructor.id')
+            ->select('student_courses.*', 'courses.*', 'student.*', 'instructor.*')
+            ->get();
+
+        $data = [
+            'Title' => 'Enroll Course',
+            'courses' => $studentCourse,
+        ];
+        
+        return view('dashboard.enrollCourse', $data);
     }
 }

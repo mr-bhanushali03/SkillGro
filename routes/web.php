@@ -58,6 +58,7 @@ Route::middleware([
     Route::post('payment',[PaymentController::class,'payment'])->name('payment');
     Route::get('paymentSuccess',[PaymentController::class,'success'])->name('paymentSuccess');
     Route::get('paymentFailed',[PaymentController::class,'failed'])->name('paymentFailed');
+    Route::get('enrollCourse',[CourseController::class,'enrollCourse'])->name('enrollCourse');
 });
 
 Route::controller(GoogleController::class)->group(function(){

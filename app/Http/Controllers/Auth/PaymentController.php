@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Payment;
 use App\Models\StudentCourse;
+use App\Models\Category;
 use Razorpay\Api\Api;
 
 class PaymentController extends Controller
@@ -42,11 +43,19 @@ class PaymentController extends Controller
 
     function success()
     {
-        return 'Payment Successfull';
+        $data = [
+            'Title' => 'Payment Success',
+            'Categories' => Category::all()
+        ];
+        return view('dashboard.paymentSuccess', $data);
     }
 
     function failed()
     {
-        return 'Payment Failed';
+        $data = [
+            'Title' => 'Payment Failed',
+            'Categories' => Category::all()
+        ];
+        return view('dashboard.paymentFailed', $data);
     }
 }

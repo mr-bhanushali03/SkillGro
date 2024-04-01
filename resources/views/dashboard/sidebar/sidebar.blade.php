@@ -34,22 +34,34 @@
                 <ul class="navbar-nav" id="navbar-nav">
                     <li class="menu-title"><span data-key="t-menu">Menu</span></li>
 
-                    @if (auth()->user()->role == 'Super Admin')    
-                    <li class="nav-item">
-                        <a class="nav-link menu-link {{ request()->is('category*') ? 'active' : '' }}" href="{{ route('category') }}"
-                            target="_self" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
-                            <i class="las la-chart-pie"></i> <span data-key="t-layouts">Category</span>
-                        </a>
-                    </li>
+                    @if (auth()->user()->role == 'Super Admin')
+                        <li class="nav-item">
+                            <a class="nav-link menu-link {{ request()->is('category*') ? 'active' : '' }}"
+                                href="{{ route('category') }}" target="_self" role="button" aria-expanded="false"
+                                aria-controls="sidebarLayouts">
+                                <i class="las la-chart-pie"></i> <span data-key="t-layouts">Category</span>
+                            </a>
+                        </li>
                     @endif
-                    
-                    @if (auth()->user()->role == 'Instructor')    
-                    <li class="nav-item">
-                        <a class="nav-link menu-link {{ request()->is('course*') ? 'active' : '' }}" href="{{ route('course') }}"
-                            target="_self" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
-                            <i class="ri-git-repository-fill"></i> <span data-key="t-layouts">Course</span>
-                        </a>
-                    </li>                    
+
+                    @if (auth()->user()->role == 'Instructor')
+                        <li class="nav-item">
+                            <a class="nav-link menu-link {{ request()->is('course*') ? 'active' : '' }}"
+                                href="{{ route('course') }}" target="_self" role="button" aria-expanded="false"
+                                aria-controls="sidebarLayouts">
+                                <i class="ri-git-repository-fill"></i> <span data-key="t-layouts">Course</span>
+                            </a>
+                        </li>
+                    @endif
+
+                    @if (auth()->user()->role == 'Student')
+                        <li class="nav-item">
+                            <a class="nav-link menu-link {{ request()->is('enrollCourse*') ? 'active' : '' }}"
+                                href="{{ route('enrollCourse') }}" target="_self" role="button" aria-expanded="false"
+                                aria-controls="sidebarLayouts">
+                                <i class="ri-honour-fill"></i> <span data-key="t-layouts">Enroll Coursee</span>
+                            </a>
+                        </li>
                     @endif
 
                     {{-- <li class="nav-item">
