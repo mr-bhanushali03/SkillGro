@@ -327,6 +327,7 @@
                                     document.addEventListener("DOMContentLoaded", function() {
                                         var videoElements = document.querySelectorAll('.total-Duration');
                                         var totalDuration = 0;
+                                        var loadedCount = 0;
 
                                         videoElements.forEach(function(videoElement) {
                                             var videoPath = videoElement.textContent.trim();
@@ -335,19 +336,23 @@
                                             video.src = videoPath;
 
                                             video.addEventListener('loadedmetadata', function() {
-                                                var duration = video.duration;
-                                                totalDuration += duration;
-                                                var formattedDuration = formatDuration(totalDuration);
-                                                document.getElementById('total-duration').textContent = formattedDuration;
+                                                totalDuration += video.duration;
+                                                loadedCount++;
+
+                                                // Check if all videos have loaded metadata
+                                                if (loadedCount === videoElements.length) {
+                                                    var formattedDuration = formatDuration(totalDuration);
+                                                    document.getElementById('total-duration').textContent = formattedDuration;
+                                                }
                                             });
                                         });
-
-                                        function formatDuration(duration) {
-                                            var minutes = Math.floor(duration / 60);
-                                            var seconds = Math.round(duration % 60);
-                                            return minutes + 'm ' + seconds + 's';
-                                        }
                                     });
+
+                                    function formatDuration(duration) {
+                                        var minutes = Math.floor(duration / 60);
+                                        var seconds = Math.round(duration % 60);
+                                        return minutes + 'm ' + seconds + 's';
+                                    }
                                 </script>
 
                                 <li>
