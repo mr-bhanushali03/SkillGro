@@ -53,22 +53,22 @@
                             <li class="courses__item-tag">
                                 <a href="javascript:void(0)">{{ $Course->category }}</a>
                             </li>
-                            <li class="avg-rating"><i class="fas fa-star"></i> ({{ $Course->rating }} Reviews)</li>
+                            <li class="avg-rating"><i class="fas fa-star"></i>({{ $Course->rating }} Reviews)</li>
                         </ul>
                         <h2 class="title">{{ $Course->title }}</h2>
                         <div class="courses__details-meta">
                             <ul class="list-wrap">
                                 <li class="author-two">
-                                    @if ($Instructors[0]->profile_photo_path == null)
-                                        <img src="{{ $Instructors[0]->profile_photo_url }}" alt="img"
+                                    @if ($Instructors->profile_photo_path == null)
+                                        <img src="{{ $Instructors->profile_photo_url }}" alt="img"
                                             class="rounded-circle" style="height: 30px; width: 30px;">
                                     @else
-                                        <img src="{{ asset('storage') }}/{{ $Instructors[0]->profile_photo_path }}"
+                                        <img src="{{ asset('storage') }}/{{ $Instructors->profile_photo_path }}"
                                             alt="img" class="rounded-circle" style="height: 30px; width: 30px;">
                                     @endif
                                     By
                                     <a
-                                        href="javascript:void(0)">{{ $Course->user_id == $Instructors[0]->id ? $Instructors[0]->name : '' }}</a>
+                                        href="javascript:void(0)">{{ $Course->user_id == $Instructors->id ? $Instructors->name : '' }}</a>
                                 </li>
                                 <li class="date"><i
                                         class="flaticon-calendar"></i>{{ $Course->created_at->format('Y-m-d') }}</li>
@@ -131,15 +131,30 @@
                                                     data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
                                                         <ul class="list-wrap">
-                                                            @foreach ($tutorial->files as $file)
+                                                            @foreach ($tutorial->files as $files)
+                                                            @if (is_array($files))
+                                                                @foreach ($files as $file)
+                                                                    <li class="course-item open-item">
+                                                                        <div class="course-item-link popup-video">
+                                                                            <i class="fas fa-play"></i>
+                                                                            <span class="item-name">{{ str_replace('public/tutorial_files/', '', $file) }}</span>
+                                                                            <div class="course-item-meta">
+                                                                                <span class="video" style="display: none;">{{ asset(str_replace('public', 'storage', $file)) }}</span>
+                                                                                <span class="item-meta duration">
+                                                                                    <i class="fas fa-clock"></i>
+                                                                                    <span class="duration-text"></span>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                @endforeach
+                                                            @else
                                                                 <li class="course-item open-item">
                                                                     <div class="course-item-link popup-video">
                                                                         <i class="fas fa-play"></i>
-                                                                        <span
-                                                                            class="item-name">{{ str_replace('public/tutorial_files/', '', $file) }}</span>
+                                                                        <span class="item-name">{{ str_replace('public/tutorial_files/', '', $files) }}</span>
                                                                         <div class="course-item-meta">
-                                                                            <span class="video"
-                                                                                style="display: none;">{{ asset(str_replace('public', 'storage', $file)) }}</span>
+                                                                            <span class="video" style="display: none;">{{ asset(str_replace('public', 'storage', $files)) }}</span>
                                                                             <span class="item-meta duration">
                                                                                 <i class="fas fa-clock"></i>
                                                                                 <span class="duration-text"></span>
@@ -147,31 +162,34 @@
                                                                         </div>
                                                                     </div>
                                                                 </li>
-
-                                                                <script>
-                                                                    document.addEventListener("DOMContentLoaded", function() {
-                                                                        var videoElements = document.querySelectorAll('.video');
-                                                                        videoElements.forEach(function(videoElement) {
-                                                                            var videoPath = videoElement.textContent;
-                                                                            var video = document.createElement('video');
-                                                                            video.preload = "metadata";
-                                                                            video.src = videoPath;
-                                                                            video.addEventListener('loadedmetadata', function() {
-                                                                                var duration = video.duration;
-                                                                                var formattedDuration = formatDuration(duration);
-                                                                                videoElement.nextElementSibling.querySelector('.duration-text').textContent =
-                                                                                    formattedDuration;
-                                                                            });
-                                                                        });
-
-                                                                        function formatDuration(duration) {
-                                                                            var minutes = Math.floor(duration / 60);
-                                                                            var seconds = Math.round(duration % 60);
-                                                                            return minutes + 'm ' + seconds + 's';
-                                                                        }
+                                                            @endif
+                                                        @endforeach
+                                                        
+                                                        <script>
+                                                            document.addEventListener("DOMContentLoaded", function() {
+                                                                var videoElements = document.querySelectorAll('.video');
+                                                        
+                                                                videoElements.forEach(function(videoElement) {
+                                                                    var videoPath = videoElement.textContent;
+                                                                    var video = document.createElement('video');
+                                                        
+                                                                    video.preload = "metadata";
+                                                                    video.src = videoPath;
+                                                        
+                                                                    video.addEventListener('loadedmetadata', function() {
+                                                                        var duration = video.duration;
+                                                                        var formattedDuration = formatDuration(duration);
+                                                                        videoElement.nextElementSibling.querySelector('.duration-text').textContent = formattedDuration;
                                                                     });
-                                                                </script>
-                                                            @endforeach
+                                                                });
+                                                        
+                                                                function formatDuration(duration) {
+                                                                    var minutes = Math.floor(duration / 60);
+                                                                    var seconds = Math.round(duration % 60);
+                                                                    return minutes + 'm ' + seconds + 's';
+                                                                }
+                                                            });
+                                                        </script>                                                        
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -184,31 +202,31 @@
                                 aria-labelledby="instructors-tab" tabindex="0">
                                 <div class="courses__instructors-wrap">
                                     <div class="courses__instructors-thumb">
-                                        @if ($Instructors[0]->profile_photo_path == null)
-                                            <img src="{{ $Instructors[0]->profile_photo_url }}" alt="img"
+                                        @if ($Instructors->profile_photo_path == null)
+                                            <img src="{{ $Instructors->profile_photo_url }}" alt="img"
                                                 class="rounded-circle" style="height: 200px; width: 200px;">
                                         @else
-                                            <img src="{{ asset('storage') }}/{{ $Instructors[0]->profile_photo_path }}"
+                                            <img src="{{ asset('storage') }}/{{ $Instructors->profile_photo_path }}"
                                                 alt="img" class="rounded-circle"
                                                 style="height: 200px; width: 200px;">
                                         @endif
                                     </div>
                                     <div class="courses__instructors-content">
-                                        <h2 class="title">{{ $Instructors[0]->name }}</h2>
-                                        <span class="designation">{{ $Instructors[0]->profession }}</span>
+                                        <h2 class="title">{{ $Instructors->name }}</h2>
+                                        <span class="designation">{{ $Instructors->profession }}</span>
                                         <p class="avg-rating"><i class="fas fa-star"></i>(4.8 Ratings)</p>
                                         <p>Dorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                             incididunt ut labore et dolore magna aliqua Quis ipsum suspendisse ultrices
                                             gravida. Risus commodo viverra maecenas accumsan.</p>
                                         <div class="instructor__social">
                                             <ul class="list-wrap justify-content-start">
-                                                <li><a href="{{ $Instructors[0]->youtube }}"><i
+                                                <li><a href="{{ $Instructors->youtube }}"><i
                                                             class="fab fa-youtube"></i></a></li>
-                                                <li><a href="{{ $Instructors[0]->twitter }}"><i
+                                                <li><a href="{{ $Instructors->twitter }}"><i
                                                             class="fab fa-twitter"></i></a></li>
-                                                <li><a href="{{ $Instructors[0]->linkedin }}"><i
+                                                <li><a href="{{ $Instructors->linkedin }}"><i
                                                             class="fab fa-linkedin"></i></a></li>
-                                                <li><a href="{{ $Instructors[0]->instagram }}"><i
+                                                <li><a href="{{ $Instructors->instagram }}"><i
                                                             class="fab fa-instagram"></i></a></li>
                                             </ul>
                                         </div>
@@ -317,9 +335,16 @@
                                 @endphp
 
                                 @foreach ($tutorials->tutorials as $tutorial)
-                                    @foreach ($tutorial->files as $file)
-                                        <span class="total-Duration"
-                                            style="display: none;">{{ asset(str_replace('public', 'storage', $file)) }}</span>
+                                    @foreach ($tutorial->files as $files)
+                                        @if (is_array($files))
+                                            @foreach ($files as $file)
+                                                <span class="total-Duration"
+                                                    style="display: none;">{{ asset(str_replace('public', 'storage', $file)) }}</span>
+                                            @endforeach
+                                        @else
+                                            <span class="total-Duration"
+                                                style="display: none;">{{ asset(str_replace('public', 'storage', $files)) }}</span>
+                                        @endif
                                     @endforeach
                                 @endforeach
 

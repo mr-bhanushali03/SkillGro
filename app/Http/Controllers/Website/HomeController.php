@@ -56,10 +56,11 @@ class HomeController extends Controller
 
     function courseInDetail($name)
     {
+        $course = Course::where('title', decrypt($name))->first();
         $data = [
-            'Course' => Course::where('title', decrypt($name))->first(),
+            'Course' => $course,
             'Categories' => $this->Categories(),
-            'Instructors' => User::where('role', 'Instructor')->get(),
+            'Instructors' => User::where('id', $course->user_id)->first(),
             'Students' => User::find(auth()->id()),
         ];
         return view('website.courseDetail', $data);

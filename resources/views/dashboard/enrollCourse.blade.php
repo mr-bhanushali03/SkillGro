@@ -43,73 +43,91 @@
                     <div>
                         <div id="teamlist">
                             <div class="team-list grid-view-filter row" id="team-member-list">
-                                @foreach ($courses as $course)
-                                    <div class="col course">
-                                        <div class="card team-box">
-                                            <div class="team-cover"> <img
-                                                    src="{{ str_replace('public', 'storage', asset($course->banner)) }}"
-                                                    alt="" class="img-fluid"> </div>
-                                            <div class="card-body p-4">
-                                                <div class="row align-items-center team-row">
-                                                    <div class="col team-settings">
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <div class="flex-shrink-0 me-2"> <button type="button"
-                                                                        class="btn btn-light btn-icon rounded-circle btn-sm favourite-btn ">
-                                                                        <i class="ri-star-fill fs-14"></i> </button> </div>
+                                @if ($courses->isEmpty())
+                                    <div class="col-12 text-center mt-4">
+                                        <lord-icon src="https://cdn.lordicon.com/nocovwne.json" trigger="loop"
+                                            colors="primary:#121331,secondary:#16697a" style="width:150px;height:150px">
+                                        </lord-icon>
+                                        <h5 class="mt-4">No Course Available</h5>
+                                    </div>
+                                @else
+                                    @foreach ($courses as $course)
+                                        <div class="col course">
+                                            <div class="card team-box">
+                                                <div class="team-cover"> <img
+                                                        src="{{ str_replace('public', 'storage', asset($course->banner)) }}"
+                                                        alt="" class="img-fluid"> </div>
+                                                <div class="card-body p-4">
+                                                    <div class="row align-items-center team-row">
+                                                        <div class="col team-settings">
+                                                            <div class="row">
+                                                                <div class="col">
+                                                                    <div class="flex-shrink-0 me-2"> <button type="button"
+                                                                            class="btn btn-light btn-icon rounded-circle btn-sm favourite-btn ">
+                                                                            <i class="ri-star-fill fs-14"></i> </button>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-lg-4 col">
-                                                        <div class="team-profile-img">
-                                                            <div
-                                                                class="avatar-lg img-thumbnail rounded-circle flex-shrink-0">
-                                                                @if ($course->profile_photo_path == null)
-                                                                    <img src="{{ $course->profile_photo_url }}"
-                                                                        alt="img"
-                                                                        class="member-img img-fluid d-block rounded-circle"
-                                                                        style="height: 100%;">
-                                                                @else
-                                                                    <img src="{{ asset('storage') }}/{{ $course->profile_photo_path }}"
-                                                                        alt="img"
-                                                                        class="member-img img-fluid d-block rounded-circle"
-                                                                        style="height: 100%;">
-                                                                @endif
-                                                            </div>
-                                                            <div class="team-content"> <a class="member-name"
-                                                                    data-bs-toggle="offcanvas" href="#member-overview"
-                                                                    aria-controls="member-overview">
-                                                                    <h5 class="fs-16 mb-1">{{ $course->title }}</h5>
-                                                                </a>
-                                                                <p class="text-muted member-designation mb-0">
-                                                                    {{ $course->name }}</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 col">
-                                                        <div class="row text-muted text-center">
-                                                            <div class="col-6 border-end border-end-dashed">
-                                                                <h5 class="mb-1 projects-num">{{ $course->student }}</h5>
-                                                                <p class="text-muted mb-0">Students</p>
-                                                            </div>
-                                                            <div class="col-6">
-                                                                <h5 class="mb-1 tasks-num">{{ $course->rating }} <i
-                                                                        class="ri-star-fill fs-14"></i></h5>
-                                                                <p class="text-muted mb-0">Ratings</p>
+                                                        <div class="col-lg-4 col">
+                                                            <div class="team-profile-img">
+                                                                <div
+                                                                    class="avatar-lg img-thumbnail rounded-circle flex-shrink-0">
+                                                                    @if ($course->profile_photo_path == null)
+                                                                        <img src="{{ $course->profile_photo_url }}"
+                                                                            alt="img"
+                                                                            class="member-img img-fluid d-block rounded-circle"
+                                                                            style="height: 100%;">
+                                                                    @else
+                                                                        <img src="{{ asset('storage') }}/{{ $course->profile_photo_path }}"
+                                                                            alt="img"
+                                                                            class="member-img img-fluid d-block rounded-circle"
+                                                                            style="height: 100%;">
+                                                                    @endif
+                                                                </div>
+                                                                <div class="team-content"> <a class="member-name"
+                                                                        data-bs-toggle="offcanvas" href="#member-overview"
+                                                                        aria-controls="member-overview">
+                                                                        <h5 class="fs-16 mb-1">{{ $course->title }}</h5>
+                                                                    </a>
+                                                                    <p class="text-muted member-designation mb-0">
+                                                                        {{ $course->name }}</p>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-lg-2 col">
-                                                        <div class="text-end"> <a href="{{ route('courseDetail', ['title' => encrypt($course->title)]) }}"
-                                                                class="btn btn-light view-btn">View Course</a> </div>
+                                                        <div class="col-lg-4 col">
+                                                            <div class="row text-muted text-center">
+                                                                <div class="col-6 border-end border-end-dashed">
+                                                                    <h5 class="mb-1 projects-num">{{ $course->student }}
+                                                                    </h5>
+                                                                    <p class="text-muted mb-0">Students</p>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <h5 class="mb-1 tasks-num">{{ $course->rating }} <i
+                                                                            class="ri-star-fill fs-14"></i></h5>
+                                                                    <p class="text-muted mb-0">Ratings</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-2 col">
+                                                            <div class="text-end"> <a
+                                                                    href="{{ route('courseDetail', ['title' => encrypt($course->title)]) }}"
+                                                                    class="btn btn-light view-btn">View Course</a> </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                @endforeach
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
+
+                        <div class="mt-30">
+                            {{ $courses->links('pagination::bootstrap-5') }}
+                        </div>
+                        <!-- pagination-element -->
+
                         <div class="py-4 mt-4 text-center d-none" id="noresult">
                             <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop"
                                 colors="primary:#405189,secondary:#0ab39c" style="width:72px;height:72px"></lord-icon>

@@ -74,18 +74,25 @@ class CourseController extends Controller
 
                 // Check if the numeric part of the collection key matches the current key
                 if ($titleNumeric == $fileNumeric) {
+                    // Check if the key exists in $tutorialData, if not, initialize it as an empty array
+                    if (!isset($tutorialData[$collectionKey])) {
+                        $tutorialData[$collectionKey] = [];
+                    }
+
                     // Move the file to the public storage folder
                     foreach ($file as $index => $uploadedFile) {
                         $path = $uploadedFile->storeAs('public/tutorial_files', $uploadedFile->getClientOriginalName());
-                        $tutorialData[$collectionKey] = $path;
+                        // Append the file path to the array associated with $collectionKey
+                        $tutorialData[$collectionKey][] = $path;
                     }
                 }
             }
 
             // Assign the tutorial title and its corresponding files to the data array
             $data['tutorials'][$key] = ['title' => $title, 'files' => $tutorialData];
-            $jsonData = json_encode($data);
         }
+
+        $jsonData = json_encode($data);
 
         // Merge tutorial data with other request data
         $data = [
@@ -136,13 +143,13 @@ class CourseController extends Controller
             ->join('users as student', 'student_courses.student_id', '=', 'student.id')
             ->join('users as instructor', 'student_courses.instructor_id', '=', 'instructor.id')
             ->select('student_courses.*', 'courses.*', 'student.*', 'instructor.*')
-            ->get();
+            ->paginate(3);
 
         $data = [
             'Title' => 'Enroll Course',
             'courses' => $studentCourse,
         ];
-        
+
         return view('dashboard.enrollCourse', $data);
     }
 }

@@ -152,30 +152,58 @@
                                                         aria-labelledby="{{ $loop->index }}"
                                                         data-bs-parent="#accordionlefticon">
                                                         <div class="accordion-body">
-                                                            @foreach ($tutorial->files as $file)
-                                                                <div class="d-flex align-items-center mb-3">
-                                                                    <div class="avatar-sm">
-                                                                        <div
-                                                                            class="avatar-title bg-light text-secondary rounded fs-24">
-                                                                            <i class="ri-video-line"></i>
+                                                            @foreach ($tutorial->files as $files)
+                                                                @if (is_array($files))
+                                                                    @foreach ($files as $file)
+                                                                        <div class="d-flex align-items-center mb-3">
+                                                                            <div class="avatar-sm">
+                                                                                <div
+                                                                                    class="avatar-title bg-light text-secondary rounded fs-24">
+                                                                                    <i class="ri-video-line"></i>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="ms-3 flex-grow-1">
+                                                                                <h5 class="fs-14 mb-0"><a
+                                                                                        href="{{ asset(str_replace('public', 'storage', $file)) }}"
+                                                                                        class="text-body">{{ str_replace('public/tutorial_files/', '', $file) }}</a>
+                                                                                </h5>
+                                                                            </div>
+                                                                            @if (auth()->user()->role == 'Instructor')
+                                                                                <div class="dropdown">
+                                                                                    <a href="{{ asset(str_replace('public', 'storage', $file)) }}"
+                                                                                        class="btn btn-soft-secondary btn-sm btn-icon"
+                                                                                        download>
+                                                                                        <i class="ri-download-2-fill"></i>
+                                                                                    </a>
+                                                                                </div>
+                                                                            @endif
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="ms-3 flex-grow-1">
-                                                                        <h5 class="fs-14 mb-0"><a
-                                                                                href="{{ asset(str_replace('public', 'storage', $file)) }}"
-                                                                                class="text-body">{{ str_replace('public/tutorial_files/', '', $file) }}</a>
-                                                                        </h5>
-                                                                    </div>
-                                                                    @if (auth()->user()->role == 'Instructor')
-                                                                        <div class="dropdown">
-                                                                            <a href="{{ asset(str_replace('public', 'storage', $file)) }}"
-                                                                                class="btn btn-soft-secondary btn-sm btn-icon"
-                                                                                download>
-                                                                                <i class="ri-download-2-fill"></i>
-                                                                            </a>
+                                                                    @endforeach
+                                                                @else
+                                                                    <div class="d-flex align-items-center mb-3">
+                                                                        <div class="avatar-sm">
+                                                                            <div
+                                                                                class="avatar-title bg-light text-secondary rounded fs-24">
+                                                                                <i class="ri-video-line"></i>
+                                                                            </div>
                                                                         </div>
-                                                                    @endif
-                                                                </div>
+                                                                        <div class="ms-3 flex-grow-1">
+                                                                            <h5 class="fs-14 mb-0"><a
+                                                                                    href="{{ asset(str_replace('public', 'storage', $files)) }}"
+                                                                                    class="text-body">{{ str_replace('public/tutorial_files/', '', $files) }}</a>
+                                                                            </h5>
+                                                                        </div>
+                                                                        @if (auth()->user()->role == 'Instructor')
+                                                                            <div class="dropdown">
+                                                                                <a href="{{ asset(str_replace('public', 'storage', $files)) }}"
+                                                                                    class="btn btn-soft-secondary btn-sm btn-icon"
+                                                                                    download>
+                                                                                    <i class="ri-download-2-fill"></i>
+                                                                                </a>
+                                                                            </div>
+                                                                        @endif
+                                                                    </div>
+                                                                @endif
                                                             @endforeach
                                                         </div>
                                                     </div>
