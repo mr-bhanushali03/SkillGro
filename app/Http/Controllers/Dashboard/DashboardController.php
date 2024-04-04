@@ -21,8 +21,12 @@ class DashboardController extends Controller
     {
         if (Auth::user()->role == 'Instructor') {
             $courses = Course::where('user_id', auth()->user()->id)->get();
-            $paymentCount = Payment::where('student_name', auth()->user()->name)->get();
-            $payments = Payment::where('student_name', auth()->user()->name)->paginate(10);
+            $enrolledCourses = StudentCourse::where('instructor_id', auth()->user()->id)
+                ->join('courses', 'student_courses.course_id', '=', 'courses.id')
+                ->select('student_courses.*', 'courses.*')
+                ->get();
+            $paymentCount = Payment::whereIn('course_name', $courses->pluck('title'))->get();
+            $payments = Payment::whereIn('course_name', $courses->pluck('title'))->paginate(10);
         } else {
             $courses = StudentCourse::where('student_id', auth()->user()->id)
                 ->join('courses', 'student_courses.course_id', '=', 'courses.id')
@@ -40,6 +44,7 @@ class DashboardController extends Controller
             'Courses' => $courses,
             'Payments' => $paymentCount,
             'PaymentList' => $payments,
+            'EnrolledCourses' => isset($enrolledCourses) ? $enrolledCourses : null,
         ];
         
         return Auth::check()
