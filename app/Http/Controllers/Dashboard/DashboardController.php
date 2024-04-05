@@ -41,9 +41,9 @@ class DashboardController extends Controller
 
         $data = [
             'Title' => 'Dashboard',
-            'Courses' => $courses,
-            'Payments' => $paymentCount,
-            'PaymentList' => $payments,
+            'Courses' => isset($courses) ? $courses : null,
+            'Payments' => isset($paymentCount) ? $paymentCount : 0,
+            'PaymentList' => isset($payments) ? $payments : null,
             'EnrolledCourses' => isset($enrolledCourses) ? $enrolledCourses : null,
         ];
         
